@@ -14,3 +14,16 @@
 input, h1{
   margin-bottom: 2vh;
 }
+.header{
+  display: flex;
+  justify-content: space-between;
+  padding-right: 10vw;
+  padding-left: 5vw;
+  background-color: aqua;
+  height: 10vh;
+  align-items: center;
+  margin-bottom: 3vh;
+}
+.space{
+  width: 9vw;
+}
