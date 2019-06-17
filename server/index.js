@@ -5,6 +5,7 @@ const massive = require('massive');
 require('dotenv').config();
 
 // controller imports
+const uc = require('./controllers/userController')
 
 
 const {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET} = process.env
@@ -25,6 +26,7 @@ massive(CONNECTION_STRING)
     .catch(()=>{console.log('Database connection failed...')})
 
 // endpoints
+app.get('/test/', uc.getUser)
 
 
 app.listen(SERVER_PORT, ()=> {
