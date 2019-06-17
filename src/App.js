@@ -1,16 +1,19 @@
 import React from 'react';
+import {HashRouter} from 'react-router-dom';
 
 import './reset.css'
 import './App.css';
 import Header from './Components/Header';
-import Dashboard from './Components/Dashboard';
+import routes from './routes';
 
 function App() {
   return (
-    <main className="App">
-      <Header />
-      <Dashboard />
-    </main>
+    <HashRouter>
+      <main className="App">
+        <Header />
+        {routes}
+      </main>
+    </HashRouter>
   );
 }
 
