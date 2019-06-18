@@ -6,6 +6,7 @@ require('dotenv').config();
 
 // controller imports
 const uc = require('./controllers/userController')
+const ac = require('./controllers/authController')
 
 
 const {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET} = process.env
@@ -27,6 +28,9 @@ massive(CONNECTION_STRING)
 
 // endpoints
 app.get('/test/', uc.getUser)
+app.get('/auth/logout', ac.logout)
+app.post('/auth/register', ac.register)
+app.post('/auth/login', ac.login)
 
 
 app.listen(SERVER_PORT, ()=> {

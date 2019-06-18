@@ -1,2 +1,3 @@
-INSERT INTO costomer (name_first, name_last, email, phone_number, is_admin, username, password)
-VALUES ($1, $2, $3, $4, $5, $6, $7)
+INSERT INTO customer (first_name, last_name, username, password, email, phone_number)
+VALUES ($1, $2, $3, $4, $5, $6)
+RETURNING *

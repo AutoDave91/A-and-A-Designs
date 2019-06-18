@@ -9,7 +9,10 @@ function April(){
             <Link to='/alexis'><button>Alexis</button></Link>
             <Link to='/'><button>Home</button></Link>
             <Link to='/bookmarks'><button>Bookmarks</button></Link>
-            <Link to='/login'><button>Logout</button></Link>
+                {/* if logged in */}
+                <button>Log out</button>
+                {/* if !logged in */}
+            <Link to='/login'><button>Login</button></Link>
             <h1>April</h1>
             <Item />
         </main>
