@@ -7,6 +7,7 @@ require('dotenv').config();
 // controller imports
 const uc = require('./controllers/userController')
 const ac = require('./controllers/authController')
+const pc = require('./controllers/productController')
 
 
 const {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET} = process.env
@@ -32,6 +33,12 @@ app.get('/auth/logout', ac.logout)
 app.post('/auth/register', ac.register)
 app.post('/auth/login', ac.login)
 
+app.get('/api/inventory', pc.getAll)
+app.get('/api/alexis', pc.getAlexis)
+app.get('/api/april', pc.getApril)
+app.post('/api/add/step1', pc.wizard)
+app.post('/api/add/step2', pc.wizard)
+app.post('/api/add/step3', pc.wizard)
 
 app.listen(SERVER_PORT, ()=> {
     console.log(`Listening on port ${SERVER_PORT}.`)

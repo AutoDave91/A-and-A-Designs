@@ -8,12 +8,10 @@ import routes from './routes';
 
 function App() {
   return (
-    <HashRouter>
-      <main className="App">
-        <Header />
-        {routes}
-      </main>
-    </HashRouter>
+    <main className="App">
+      <Header />
+      {routes}
+    </main>
   );
 }
 

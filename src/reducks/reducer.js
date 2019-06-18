@@ -1,63 +1,44 @@
-// import axios from 'axios';
+import axios from 'axios';
 
 const initialState ={
-    username: '',
-    password: '',
-    loggedIn: false,
-    user: []
+    productName: "",
+    description: "",
+    price: 0,
+    image: "",
+    designer: '',
+    inventory: []
 }
 
-// const UPDATE_USERNAME = 'UPDATE_USERNAME';
-// const UPDATE_PASSWORD = 'UPDATE_PASSWORD';
-// const REGISTER = 'REGISTER';
-// const LOGIN = 'LOGIN';
-// const LOGOUT = 'LOGOUT';
+const ADD_STEP_ONE = "ADD_STEP_ONE";
+const ADD_STEP_TWO = 'ADD_STEP_TWO';
 
-// export const updateUsername = (username)=>{
-//     return{
-//         type:UPDATE_USERNAME,
-//         payload: username
-//     }
-// }
-// export const updatePassword = (password)=>{
-//     return{
-//         type: UPDATE_PASSWORD,
-//         payload: password
-//     }
-// }
-// export const register = (username, password)=>{
-//     // console.log(username, password)
-//     let user = axios
-//         .post('/api/register', {username, password})
-//         .then(response => response.data)
-//         .catch(console.log('Error while registering.'))
-//     return{
-//         type: REGISTER,
-//         payload: user
-//     }
-// }
-// export const login = (username, password)=>{
-//     // console.log(username, password)
-//     let user = axios
-//         .post('/api/login', {username, password})
-//         .then(response => response.data)
-//         .catch(console.log('Error while LOGINing.'))
-//     return{
-//         type: LOGIN,
-//         payload: user
-//     }
-// }
-// export const logout = ()=>{
-//     let user = axios.post('/api/logout')
-//     return{
-//         type: LOGOUT
-//     }
-// }
+export const addStep1 = (productName, description, price)=>{
+    let data = axios.post('/api/add/step1', {productName, description, price})
+        .then(res => res.data)
+    return{
+        type: ADD_STEP_ONE,
+        payload: data
+    }
+}
+export const addStep2 = (image, designer)=>{
+    let data =axios.post('/api/add/step2', {image, designer})
+        .then(res => res.data)
+    return{
+        type: ADD_STEP_TWO,
+        payload: data
+    }
+}
 
 function reducer(state= initialState, action){
     switch(action.type){
+        case ADD_STEP_ONE:
+        console.log({ ...state, inventory: action.payload });
+        return { ...state, inventory: action.payload };
+        case ADD_STEP_TWO:
+        return { ...state, inventory: action.payload };
         default: return state;
     }
+
 }
 
 export default reducer
