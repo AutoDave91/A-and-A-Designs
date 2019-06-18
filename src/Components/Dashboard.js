@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import Axios from 'axios';
 
 import Item from './Item'
 
@@ -11,11 +12,11 @@ class Dashboard extends Component{
             user: {}
         }
     }
-    // componentDidMount(){
-    //     Axios.get('/test').then(response=>
-    //         this.setState({inventory: response.data}))
-    //         .catch(()=> console.log('error at componentDidMount'))
-    // }
+    componentDidMount(){
+        Axios.get('/api/inventory').then(response=>
+            this.setState({inventory: response.data}))
+            .catch(()=> console.log('error at componentDidMount'))
+    }
 
     render(){
         console.log(this.state.inventory)
@@ -35,7 +36,9 @@ class Dashboard extends Component{
                 </nav>
                 <section className='home-items'>
                     <h1>Home</h1>
-                    <Item />
+                    {this.state.inventory.map((item, index)=>(
+                        <Item key={index} item={item} inventory={this.state.inventory}/>
+                    ))}
                 </section>
                 <section className='about'>
                     <h2>About</h2>

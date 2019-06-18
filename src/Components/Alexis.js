@@ -32,7 +32,9 @@ class Alexis extends Component {
                 </nav>
                 <section>
                     <h1>Alexis</h1>
-                    <Item key={this.state.inventory.inventory_id} inventory={this.state.inventory} index={this.state.index}/>
+                    {this.state.inventory.map((item, index)=>(
+                        <Item key={index} item={item} inventory={this.state.inventory}/>
+                    ))}
                 </section>
             </main>
         )
