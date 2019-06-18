@@ -6,6 +6,10 @@ import Cart from './Components/Cart';
 import April from './Components/April';
 import Alexis from './Components/Alexis';
 import Login from './Components/Login';
+import AdminOnly from './Components/AdminOnly';
+import Step1 from './Components/Wizard/Step1';
+import Step2 from './Components/Wizard/Step2';
+import Step3 from './Components/Wizard/Step3';
 
 export default(
     <Switch>
@@ -14,5 +18,10 @@ export default(
         <Route path='/alexis' component={Alexis}></Route>
         <Route path='/login' component={Login}></Route>
         <Route path='/cart' component={Cart}></Route>
+        {/* below is adminOnly */}
+        <Route path='/designer' component={AdminOnly}></Route>
+        <Route  path="/step1" component={Step1}></Route>
+        <Route  path="/step2" component={Step2}></Route>
+        <Route  path="/step3" component={Step3}></Route>
     </Switch>
 )

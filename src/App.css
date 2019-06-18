@@ -1,3 +1,13 @@
+input, h1{
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+}
+nav{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 10vh;
+}
 .App {
   text-align: center;
 }
@@ -8,11 +18,13 @@
   align-items: center;
   margin: auto;
 }
+.login_register{
+  background-color: burlywood;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+}
 .login{
   margin-bottom: 10vh;
-}
-input, h1{
-  margin-bottom: 2vh;
 }
 .header{
   display: flex;
@@ -22,8 +34,33 @@ input, h1{
   background-color: aqua;
   height: 10vh;
   align-items: center;
-  margin-bottom: 3vh;
 }
 .space{
   width: 9vw;
+}
+.admin-container{
+  display: flex;
+  justify-content: space-evenly;
+  margin-left: 5vw;
+  margin-right: 5vw;
+}
+.admin-elements{
+  background-color: burlywood;
+  width: 45%;
+  min-height: 25vh;
+}
+.home-items{
+  background-color: burlywood;
+  width: 90%;
+  margin: auto;
+  padding-top: 1vh;
+  height: 50vh;
+}
+.about{
+  background-color: coral;
+  width: 90%;
+  margin-top: 2vh;
+  margin-left: 5vw;
+  padding-top: 3vh;
+  height: 20vh;
 }
