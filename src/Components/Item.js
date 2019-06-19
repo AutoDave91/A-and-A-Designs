@@ -1,22 +1,15 @@
 import React from 'react';
 
 function Item(props){
-    // console.log(props.inventory[0])
+    // console.log(props.item)
     return(
         <main>
             <section className= "item-profile">
-                {/* <img className = 'item-img' src={props.inventory.image_URL} alt={props.inventory.product_name}/> */}
-                {/* <img className = 'item-img' src={`${props.inventory.image_URL}`} alt={props.inventory.product_name}/> */}
-                {/* <img className = 'item-img' src={'https://i.postimg.cc/Z50JhS3G/Daddys-Little-Princess.jpg'} alt={props.inventory.product_name}/> */}
-                {/* <h3>{props.inventory.product_name}</h3>
-                <h3>{props.inventory.description}</h3>
-                <h3>{props.inventory.price}</h3> */}
-                {/* to see it... */}
-                <img className = 'item-img' src={'https://i.postimg.cc/Z50JhS3G/Daddys-Little-Princess.jpg'} alt={props.inventory[0].product_name}/>
-                <h3>{props.inventory[0].product_name}</h3>
-                <h3>{props.inventory[0].description}</h3>
-                <h3>{props.inventory[0].price}</h3>
-                {/* back to actual */}
+                <img className = 'item-img' src={props.item.image_url} alt={props.item.product_name}/>
+                <h3>{props.item.product_name}</h3>
+                <h3>{props.item.description}</h3>
+                <h3>{props.item.price}</h3>
+                
                 <button>Add to Cart</button>
             </section>
         </main>

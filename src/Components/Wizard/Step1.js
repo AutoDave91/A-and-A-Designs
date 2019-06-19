@@ -46,8 +46,8 @@ class Step1 extends Component{
                     <h2>Price</h2>
                     <input onChange={this.handlePrice} value={this.state.price}></input>
                 </section>
-                <Link to='/designers'><button>Cancel</button></Link>
-                <Link to='/step2'><button onClick={this.handleClick}>Next</button></Link>
+                <Link to='/designer'><button>Cancel</button></Link>
+                <Link to='/designer/step2'><button onClick={this.handleClick}>Next</button></Link>
             </main>
         )
     }

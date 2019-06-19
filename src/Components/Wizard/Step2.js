@@ -37,8 +37,8 @@ class Step2 extends Component{
                     <h2>Designer</h2>
                     <input onChange={this.handleDesigner} value={this.state.designer}></input>
                 </section>
-                <Link to='/step1'><button>Back</button></Link>
-                <Link to='/step3'><button onClick={this.handleClick}>Next</button></Link>
+                <Link to='/designer/step1'><button>Back</button></Link>
+                <Link to='/designer/step3'><button onClick={this.handleClick}>Next</button></Link>
             </main>
         )
     }

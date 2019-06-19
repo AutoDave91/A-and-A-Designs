@@ -29,8 +29,8 @@ class Step3 extends Component{
                 <h3>Description: {description}</h3>
                 <h3>Price: {price}</h3>
                 <h3>Designer: {designer}</h3> */}
-                <Link to='/step2'><button>Back</button></Link>
-                <Link to='/'><button>Confirm</button></Link>
+                <Link to='/designer/step2'><button>Back</button></Link>
+                <Link to='/designer'><button>Confirm</button></Link>
             </main>
         )
     }

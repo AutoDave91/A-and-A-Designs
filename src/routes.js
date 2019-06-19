@@ -19,9 +19,9 @@ export default(
         <Route path='/login' component={Login}></Route>
         <Route path='/cart' component={Cart}></Route>
         {/* below is adminOnly */}
-        <Route path='/designer' component={AdminOnly}></Route>
-        <Route  path="/step1" component={Step1}></Route>
-        <Route  path="/step2" component={Step2}></Route>
-        <Route  path="/step3" component={Step3}></Route>
+        <Route exact path='/designer' component={AdminOnly}></Route>
+        <Route  path="/designer/step1" component={Step1}></Route>
+        <Route  path="/designer/step2" component={Step2}></Route>
+        <Route  path="/designer/step3" component={Step3}></Route>
     </Switch>
 )

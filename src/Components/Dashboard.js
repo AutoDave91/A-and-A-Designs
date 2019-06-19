@@ -19,7 +19,7 @@ class Dashboard extends Component{
     }
 
     render(){
-        console.log(this.state.inventory)
+        // console.log(this.state.inventory)
         return(
             <main>
                 <nav>
