@@ -6,18 +6,20 @@ async function register(req, res){
     const password = newPassword
     const db = req.app.get('db');
     const result = await db.get_user([username])
-    const existingUser = result[0];
+    const existingUser = result.length;
+    console.log('existingUser', existingUser)
     const salt = bcrypt.genSaltSync(10);
     const hash = bcrypt.hashSync(password, salt);
     console.log(req.body)
-    const registeredUser = await db.add_user([first_name, last_name, username, hash, email, phone_number])
-    const user = registeredUser[0];
-
-    if(existingUser){
-        return res.status(409).json('Username taken');
+    
+    if(existingUser > 0){
+        console.log('Choose another username');
+    } else {
+        const registeredUser = await db.add_user([first_name, last_name, username, hash, email, phone_number])
+        const user = registeredUser[0];
+        req.session.customer = {username: user.username, id: user.id}
+        return res.status(201).json(req.session.customer)
     }
-    req.session.customer = {username: user.username, id: user.id}
-    return res.status(201).json(req.session.customer)
 }
 async function login(req, res){
     const {username, password} = req.body;

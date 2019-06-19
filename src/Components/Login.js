@@ -72,8 +72,8 @@ class Login extends Component {
             })
             .catch(()=>{
                 this.setState({
-                    username: '',
-                    password: '',
+                    newUsername: '',
+                    newPassword: '',
                     first_name: '',
                     last_name: '',
                     email: '',
@@ -94,8 +94,8 @@ class Login extends Component {
 
     render(){
         let {username, password, newUsername, newPassword, first_name, last_name, email, phone_number} = this.state;
-        console.log(this.state.user)
-        console.log(this.state.user.admin)
+        // console.log(this.state.user)
+        // console.log(this.state.user.admin)
         // let {user} = this.props;
         if(this.state.redirect === true && this.state.user.admin === true){
             return <Redirect to='/designer' />

@@ -5,7 +5,7 @@ function Item(props){
     return(
         <main>
             <section className= "item-profile">
-                <img className = 'item-img' src={props.item.image_url} alt={props.item.product_name}/>
+                <img className = 'item-img' src={require(`../images/${props.item.image}.jpg`)} alt={props.item.product_name}/>
                 <h3>{props.item.product_name}</h3>
                 <h3>{props.item.description}</h3>
                 <h3>{props.item.price}</h3>
