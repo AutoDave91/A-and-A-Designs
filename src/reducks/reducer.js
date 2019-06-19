@@ -25,6 +25,7 @@ const HANDLE_DESCRIPTION = 'HANDLE_DESCRIPTION';
 const HANDLE_PRICE = 'HANDLE_PRICE';
 const HANDLE_IMAGE = 'HANDLE_IMAGE';
 const HANDLE_DESIGNER = 'HANDLE_DESIGNER';
+const COMPLETE_WIZARD = 'COMPLETE_WIZARD';
 
 export const handleName = (product_name)=>{
     return{
@@ -54,6 +55,14 @@ export const handleDesigner = (designer)=>{
     return{
         type:HANDLE_DESIGNER,
         payload: designer
+    }
+}
+export const completeWizard = (product_name, description, price, image, designer)=>{
+    let data = axios.post('/api/new_item', {product_name, description, price, image, designer})
+        .then(res => res.data)
+    return{
+        type: COMPLETE_WIZARD,
+        payload: data
     }
 }
 
@@ -110,9 +119,6 @@ function reducer(state= initialState, action){
             return {...state, image: action.payload};
         case HANDLE_DESIGNER:
             return {...state, designer: action.payload};
-        case ADD_STEP_ONE:
-            // console.log({ ...state, inventory: action.payload });
-            return { ...state, inventory: action.payload };
         case ADD_STEP_TWO:
             return { ...state, inventory: action.payload };
         case GET_USER:

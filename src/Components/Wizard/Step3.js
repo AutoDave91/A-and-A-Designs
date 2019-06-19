@@ -10,6 +10,11 @@ class Step3 extends Component{
         }
     }
 
+    onClick(){
+        let {completeWizard, product_name, description, price, image, designer} = this.props;
+        completeWizard(product_name, description, price, image, designer)
+    }
+
     render(){
         console.log('Starting Step3', this.props.product_name, this.props.description, this.props.price, this.props.image, this.props.designer)
         return(
@@ -22,7 +27,7 @@ class Step3 extends Component{
                 <h3>{this.props.price}</h3>
                 <h3>Designer: {this.props.designer}</h3>
                 <Link to='/designer/step2'><button>Back</button></Link>
-                <Link to='/designer'><button onClick={console.log('Send to database!')}>Confirm</button></Link>
+                <Link to='/designer'><button onClick={this.onClick}>Confirm</button></Link>
             </main>
         )
     }
