@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
 import Axios from 'axios';
 
 import Item from './Item'
@@ -22,17 +23,23 @@ class Dashboard extends Component{
         // console.log(this.state.inventory)
         return(
             <main>
+                <h1>Welcome {this.props.username}</h1>
                 <nav>
                     <Link to='/alexis'><button>Alexis</button></Link>
                     <Link to='/april'><button>April</button></Link>
-                    <Link to='/bookmarks'><button>Bookmarks</button></Link>
-                    <Link to='/newsletter'><button>Newsletter</button></Link>
+
+                    {/* user features */}
+                    {/* <Link to='/bookmarks'><button>Bookmarks</button></Link>
+                    <Link to='/newsletter'><button>Newsletter</button></Link> */}
+
                     {/* if logged in */}
-                    <button>Log out</button>
+                    {/* <button>Log out</button> */}
+
                     {/* if !logged in */}
                     <Link to='/login'><button>Login</button></Link>
+
                     {/* if admin */}
-                    <Link to='/designer'><button>Admin</button></Link>
+                    {/* <Link to='/designer'><button>Admin</button></Link> */}
                 </nav>
                 <section className='items'>
                     {/* <h1>Home</h1> */}
@@ -48,4 +55,10 @@ class Dashboard extends Component{
         )
     }
 }
-export default Dashboard;
+
+const mapStateToProps = state =>{
+    return{
+        username: state.username
+    }
+}
+export default connect(mapStateToProps)(Dashboard);

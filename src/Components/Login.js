@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 import Axios from 'axios';
+import {connect} from 'react-redux';
+
+import {setUsername} from '../reducks/reducer';
 
 class Login extends Component {
     constructor(){
@@ -14,46 +17,19 @@ class Login extends Component {
             last_name: '',
             email: '',
             phone_number: '',
-            user: []
+            user: {},
+            redirect: false,
         }
         this.register = this.register.bind(this);
         this.login = this.login.bind(this);
         this.logout = this.logout.bind(this);
-        this.usernameInput = this.usernameInput.bind(this);
-        this.passwordInput = this.passwordInput.bind(this);
-        this.newUsernameInput = this.newUsernameInput.bind(this)
-        this.newPasswordInput = this.newPasswordInput.bind(this)
-        this.first_nameInput = this.first_nameInput.bind(this)
-        this.last_nameInput = this.last_nameInput.bind(this)
-        this.emailInput = this.emailInput.bind(this)
-        this.phone_numberInput = this.phone_numberInput.bind(this)
+        this.handleChange = this.handleChange.bind(this);
         this.updateUser = this.updateUser.bind(this)
     }
 
-    usernameInput(value){
-        this.setState({username: value} )
+    handleChange(e){
+        this.setState({[e.target.name]: e.target.value})
         // console.log(this.state.username)
-    }
-    passwordInput(value){
-        this.setState({password: value} )
-    }
-    newUsernameInput(value){
-        this.setState({newUsername: value} )
-    }
-    newPasswordInput(value){
-        this.setState({newPassword: value} )
-    }
-    first_nameInput(value){
-        this.setState({first_name: value} )
-    }
-    last_nameInput(value){
-        this.setState({last_name: value} )
-    }
-    emailInput(value){
-        this.setState({email: value} )
-    }
-    phone_numberInput(value){
-        this.setState({phone_number: value} )
     }
     updateUser(user){
         // console.log('triggered')
@@ -65,8 +41,9 @@ class Login extends Component {
         let {username, password} = this.state;
         Axios.post('/auth/login', {username, password})
             .then(user=>{
-                console.log(username, password)
-                this.setState({username: '', password: ''});
+                // console.log(username, password)
+                this.props.setUsername(user.data.username);
+                this.setState({username: '', password: '', redirect: true});
                 console.log(user.data)
                 this.updateUser(user.data);
                 console.log('Logged in');
@@ -80,13 +57,15 @@ class Login extends Component {
         let {newUsername, newPassword, first_name, last_name, email, phone_number} = this.state;
         Axios.post('/auth/register', {newUsername, newPassword, first_name, last_name, email, phone_number})
             .then(user=>{
+                this.props.setUsername(user.data.username);
                 this.setState({
                     newUsername: '',
                     newPassword: '',
                     first_name: '',
                     last_name: '',
                     email: '',
-                    phone_number: ''
+                    phone_number: '',
+                    redirect: true,
                 });
                 this.updateUser(user.data)
                 console.log('registered')
@@ -115,30 +94,45 @@ class Login extends Component {
 
     render(){
         let {username, password, newUsername, newPassword, first_name, last_name, email, phone_number} = this.state;
+        console.log(this.state.user)
+        console.log(this.state.user.admin)
         // let {user} = this.props;
+        if(this.state.redirect === true && this.state.user.admin === true){
+            return <Redirect to='/designer' />
+        }
+        if(this.state.redirect === true && this.state.user.admin === false){
+            return <Redirect to='/' />
+        }
 
         return(
             <main className='login_register'>
                 <Link to='/'><button>Home</button></Link>
                 <section className='login'>
                     <h1>Login</h1>
-                    <input name='username' placeholder='username' value={username} onChange={e => this.usernameInput(e.target.value)}/>
-                    <input name='password' placeholder='password' value={password} onChange={e => this.passwordInput(e.target.value)}/>
+                    <input name='username' placeholder='username' value={username} onChange={this.handleChange}/>
+                    <input name='password' placeholder='password' value={password} onChange={this.handleChange}/>
                     <button onClick={this.login}>Login</button>
                 </section>
                 <h2>---OR---</h2>
                 <section className='register'>
                     <h1>Register</h1>
-                    <input name='username' placeholder='username' value={newUsername} onChange={e => this.newUsernameInput(e.target.value)}/>
-                    <input name='password' placeholder='password' value={newPassword} onChange={e => this.newPasswordInput(e.target.value)}/>
-                    <input name='first_name' placeholder='first name' value={first_name} onChange={e => this.first_nameInput(e.target.value)}/>
-                    <input name='last_name' placeholder='last name' value={last_name} onChange={e => this.last_nameInput(e.target.value)}/>
-                    <input name='email' placeholder='email' value={email} onChange={e => this.emailInput(e.target.value)}/>
-                    <input name='phone_number' placeholder='phone number' value={phone_number} onChange={e => this.phone_numberInput(e.target.value)}/>
+                    <input name='newUsername' placeholder='username' value={newUsername} onChange={this.handleChange}/>
+                    <input name='newPassword' placeholder='password' value={newPassword} onChange={this.handleChange}/>
+                    <input name='first_name' placeholder='first name' value={first_name} onChange={this.handleChange}/>
+                    <input name='last_name' placeholder='last name' value={last_name} onChange={this.handleChange}/>
+                    <input name='email' placeholder='email' value={email} onChange={this.handleChange}/>
+                    <input name='phone_number' placeholder='phone number' value={phone_number} onChange={this.handleChange}/>
                     <button onClick={this.register}>Sign Up</button>
                 </section>
             </main>
         )
     }
 }
-export default Login;
+
+const mapStateToProps = state =>{
+    return{
+        username: state.username
+    }
+}
+
+export default connect(mapStateToProps, {setUsername})(Login);

@@ -32,6 +32,7 @@ app.get('/test/', uc.getUser)
 app.get('/auth/logout', ac.logout)
 app.post('/auth/register', ac.register)
 app.post('/auth/login', ac.login)
+// app.get('/auth/user', ac.getUser)
 
 app.get('/api/inventory', pc.getAll)
 app.get('/api/alexis', pc.getAlexis)
@@ -39,6 +40,8 @@ app.get('/api/april', pc.getApril)
 app.post('/api/add/step1', pc.wizard)
 app.post('/api/add/step2', pc.wizard)
 app.post('/api/add/step3', pc.wizard)
+// app.post('/api/cart/:item', pc.addCart)
+// app.delete('/api/cart/:id', pc.removeCart)
 
 app.listen(SERVER_PORT, ()=> {
     console.log(`Listening on port ${SERVER_PORT}.`)

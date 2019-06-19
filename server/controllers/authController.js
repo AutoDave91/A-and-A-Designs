@@ -32,14 +32,17 @@ async function login(req, res){
     if(!isAuthenticated){
         return res.status(403).json('Try again');
     }
-    req.session.customer = {id: user.id, username: user.username}
+    req.session.customer = {id: user.id, username: user.username, admin: user.admin}
     return res.send(req.session.customer)
 }
 async function logout(req, res){
     req.session.destroy();
     return res.sendStatus(200);
 }
+async function getUser(req, res){
+    console.log('getUser', req, res)
+}
 
 module.exports={
-    register, login, logout
+    register, login, logout, getUser
 }

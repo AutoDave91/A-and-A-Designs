@@ -24,9 +24,9 @@ class April extends Component{
                 <nav>
                     <Link to='/alexis'><button>Alexis</button></Link>
                     <Link to='/'><button>Home</button></Link>
-                    <Link to='/bookmarks'><button>Bookmarks</button></Link>
+                    {/* <Link to='/bookmarks'><button>Bookmarks</button></Link> */}
                         {/* if logged in */}
-                        <button>Log out</button>
+                        {/* <button>Log out</button> */}
                         {/* if !logged in */}
                     <Link to='/login'><button>Login</button></Link>
                 </nav>
