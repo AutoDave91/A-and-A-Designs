@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import {Link, Redirect} from 'react-router-dom';
-import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
+// import {connect} from 'react-redux';
 
 class Step3 extends Component{
     constructor(){
@@ -19,7 +19,7 @@ class Step3 extends Component{
     // }
 
     render(){
-        let {productName, description, price, image, designer} = this.state;
+        // let {productName, description, price, image, designer} = this.state;
 
         return(
             <main>

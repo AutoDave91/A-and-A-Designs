@@ -32,9 +32,11 @@ class April extends Component{
                 </nav>
                 <section>
                     <h1>April</h1>
-                    {this.state.inventory.map((item, index)=>(
-                        <Item key={index} item={item} inventory={this.state.inventory}/>
-                    ))}
+                    <section className='items'>
+                        {this.state.inventory.map((item, index)=>(
+                            <Item key={index} item={item} inventory={this.state.inventory}/>
+                        ))}
+                    </section>
                 </section>
             </main>
         )

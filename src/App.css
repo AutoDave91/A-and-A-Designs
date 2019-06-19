@@ -49,12 +49,19 @@ nav{
   width: 45%;
   min-height: 25vh;
 }
-.home-items{
+.items{
   background-color: burlywood;
-  width: 90%;
+  width: 90vw;
   margin: auto;
   padding-top: 1vh;
-  height: 50vh;
+  padding-bottom: 3vh;
+  display: flex;
+  flex-flow: wrap;
+  justify-content: space-around;
+}
+.item-profile{
+  margin-left: 3vw;
+  margin-top: 3vh;
 }
 .about{
   background-color: coral;
@@ -63,4 +70,8 @@ nav{
   margin-left: 5vw;
   padding-top: 3vh;
   height: 20vh;
+}
+img{
+  height: 15vh;
+  width: 10vw;
 }

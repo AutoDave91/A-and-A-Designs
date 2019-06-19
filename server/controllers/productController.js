@@ -3,7 +3,7 @@ const newItem = {}
 function wizard(){
  console.log('nope!')
 }
-function getAlexis(){
+function getAlexis(req, res){
     const db = req.app.get('db');
     db.get_Alexis().then(response =>res.status(200).json(response))
         .catch(()=> {
@@ -11,7 +11,7 @@ function getAlexis(){
             res.sendStatus(500)
         })
 }
-function getApril(){
+function getApril(req, res){
     const db = req.app.get('db');
     db.get_April().then(response =>res.status(200).json(response))
         .catch(()=> {

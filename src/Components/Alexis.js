@@ -14,7 +14,7 @@ class Alexis extends Component {
 
     componentDidMount(){
         Axios.get('/api/alexis').then(response=>
-            this.setState({properties: response.data}))
+            this.setState({inventory: response.data}))
             .catch(()=>console.log('DidMount failed in Alexis'))
     }
 
@@ -32,9 +32,11 @@ class Alexis extends Component {
                 </nav>
                 <section>
                     <h1>Alexis</h1>
-                    {this.state.inventory.map((item, index)=>(
-                        <Item key={index} item={item} inventory={this.state.inventory}/>
-                    ))}
+                    <section className='items'>
+                        {this.state.inventory.map((item, index)=>(
+                            <Item key={index} item={item} inventory={this.state.inventory}/>
+                        ))}
+                    </section>
                 </section>
             </main>
         )

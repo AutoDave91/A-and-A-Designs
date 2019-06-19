@@ -34,8 +34,8 @@ class Dashboard extends Component{
                     {/* if admin */}
                     <Link to='/designer'><button>Admin</button></Link>
                 </nav>
-                <section className='home-items'>
-                    <h1>Home</h1>
+                <section className='items'>
+                    {/* <h1>Home</h1> */}
                     {this.state.inventory.map((item, index)=>(
                         <Item key={index} item={item} inventory={this.state.inventory}/>
                     ))}
