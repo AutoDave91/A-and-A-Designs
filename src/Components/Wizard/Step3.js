@@ -1,38 +1,40 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-// import {connect} from 'react-redux';
+import {connect} from 'react-redux';
 
 class Step3 extends Component{
     constructor(){
         super()
         this.state ={
-            // productName: this.props.productName,
-            // description: this.props.description,
-            // price: this.props.price,
-            // image: this.props.image,
-            // designer: this.props.designer
+            
         }
     }
 
-    // componentDidMount(){
-
-    // }
-
     render(){
-        // let {productName, description, price, image, designer} = this.state;
-
+        console.log('Starting Step3', this.props.product_name, this.props.description, this.props.price, this.props.image, this.props.designer)
         return(
             <main>
                 <h1>Confirmation</h1>
-                {/* <img src={image} alt={`${productName}`}/>
-                <h3>Name: {productName}</h3>
-                <h3>Description: {description}</h3>
-                <h3>Price: {price}</h3>
-                <h3>Designer: {designer}</h3> */}
+                <img className = 'item-img' src={require(`../../images/${this.props.image}.jpg`)} alt={this.props.product_name}/>
+                {/* <h3>{this.props.image}</h3> */}
+                <h3>{this.props.product_name}</h3>
+                <h3>{this.props.description}</h3>
+                <h3>{this.props.price}</h3>
+                <h3>Designer: {this.props.designer}</h3>
                 <Link to='/designer/step2'><button>Back</button></Link>
-                <Link to='/designer'><button>Confirm</button></Link>
+                <Link to='/designer'><button onClick={console.log('Send to database!')}>Confirm</button></Link>
             </main>
         )
     }
 }
-export default Step3;
+
+const mapStateToProps = state =>{
+    return{
+        image: state.image,
+        product_name: state.product_name,
+        description: state.description,
+        price: state.price,
+        designer: state.designer
+    }
+}
+export default connect(mapStateToProps)(Step3);

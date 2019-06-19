@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const initialState ={
-    productName: "",
+    product_name: "",
     description: "",
     price: 0,
     image: "",
@@ -20,9 +20,45 @@ const GET_USER = 'GET_USER';
 const ADD_TO_CART = 'ADD_TO_CART';
 const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
 const SET_USERNAME = 'SET_USERNAME';
+const HANDLE_NAME = 'HANDLE_NAME';
+const HANDLE_DESCRIPTION = 'HANDLE_DESCRIPTION';
+const HANDLE_PRICE = 'HANDLE_PRICE';
+const HANDLE_IMAGE = 'HANDLE_IMAGE';
+const HANDLE_DESIGNER = 'HANDLE_DESIGNER';
 
-export const addStep1 = (productName, description, price)=>{
-    let data = axios.post('/api/add/step1', {productName, description, price})
+export const handleName = (product_name)=>{
+    return{
+        type:HANDLE_NAME,
+        payload: product_name
+    }
+}
+export const handleDescription = (description)=>{
+    return{
+        type:HANDLE_DESCRIPTION,
+        payload: description
+    }
+}
+export const handlePrice = (price)=>{
+    return{
+        type:HANDLE_PRICE,
+        payload: price
+    }
+}
+export const handleImage = (image)=>{
+    return{
+        type:HANDLE_IMAGE,
+        payload: image
+    }
+}
+export const handleDesigner = (designer)=>{
+    return{
+        type:HANDLE_DESIGNER,
+        payload: designer
+    }
+}
+
+export const addStep1 = (product_name, description, price)=>{
+    let data = axios.post('/api/add/step1', {product_name, description, price})
         .then(res => res.data)
     return{
         type: ADD_STEP_ONE,
@@ -64,6 +100,16 @@ export const setUsername =(username)=>{
 
 function reducer(state= initialState, action){
     switch(action.type){
+        case HANDLE_NAME:
+            return {...state, product_name:action.payload};
+        case HANDLE_DESCRIPTION:
+            return {...state, description:action.payload};
+        case HANDLE_PRICE:
+            return {...state, price:action.payload};
+        case HANDLE_IMAGE:
+            return {...state, image: action.payload};
+        case HANDLE_DESIGNER:
+            return {...state, designer: action.payload};
         case ADD_STEP_ONE:
             // console.log({ ...state, inventory: action.payload });
             return { ...state, inventory: action.payload };

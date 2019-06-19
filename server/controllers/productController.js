@@ -1,7 +1,20 @@
-const newItem = {}
+// let newItem = {}
 
-function wizard(){
- console.log('nope!')
+function wizard1(req, res){
+    let {product_name, description, price} = req.body;
+    newItem = {...newItem, product_name, description, price}
+    // console.log(newItem)
+}
+function wizard2(req, res){
+    let {image, designer} = req.body;
+    // console.log(req.body)
+    newItem ={...newItem, image, designer}
+    // console.log(newItem)
+}
+function addProduct(req, res){
+    const db =req.app.get('db');
+    // console.log('sending', newItem)
+
 }
 function getAlexis(req, res){
     const db = req.app.get('db');
@@ -29,5 +42,5 @@ function getAll(req, res){
 }
 
 module.exports ={
-    wizard, getAlexis, getApril, getAll
+    wizard1, wizard2, addProduct, getAlexis, getApril, getAll
 }
