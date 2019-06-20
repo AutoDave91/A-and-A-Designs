@@ -16,6 +16,7 @@ class Cart extends Component{
         this.props.getUser();
         // this.props.removeFromCart();
     }
+    // Component did update
 
     render(){
         console.log(this.props.cart)
@@ -33,7 +34,7 @@ class Cart extends Component{
                                     <h3>{item.product_name}</h3>
                                     <h3 id='description'>{item.description}</h3>
                                     <h3>{item.price}</h3>
-                                    <button onClick={this.props.removeFromCart}>Delete</button>
+                                    <button onClick={()=>this.props.removeFromCart(index)}>Delete</button>
                                 </div>
                             )
                         }) : null : null}

@@ -13,6 +13,7 @@ class Dashboard extends Component{
             inventory: [],
             user: {}
         }
+        this.logout = this.logout.bind(this)
     }
 
     componentDidMount(){

@@ -89,11 +89,10 @@ export const addToCart =(name, description, price, image)=>{
     }
 }
 export const removeFromCart =(index)=>{
-    let item = {index: index}
     return{
         type: REMOVE_FROM_CART,
         // payload: axios.delete(`/api/cart/${id}`, {price})
-        payload: item
+        payload: index
     }
 }
 export const setUsername =(username)=>{
@@ -128,12 +127,20 @@ function reducer(state= initialState, action){
             // return {...state, user: action.payload.data};
             return{...state, cart: [...state.cart, action.payload]};
         case REMOVE_FROM_CART:
+            let newCart = state.cart
+            newCart.splice(action.payload, 1)
+            console.log(action.payload)
             // return {...state, user: action.payload.data};
-            return{...state, cart:[...state.cart.splice(action.payload, 1)]}
+            return{...state, cart: newCart}
         case SET_USERNAME:
             return {...state, username: action.payload};
         case LOGOUT:
-            return {...state}
+            return {...state, user: {},
+            cart: [],
+            username: '',
+            loggedIn: false,
+            admin: false,
+            userid: ''}
         default: return state;
     }
 

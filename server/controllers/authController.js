@@ -46,6 +46,7 @@ async function login(req, res){
 }
 async function logout(req, res){
     req.session.destroy();
+    console.log('logged out')
     return res.sendStatus(200);
 }
 async function getUser(req, res){
