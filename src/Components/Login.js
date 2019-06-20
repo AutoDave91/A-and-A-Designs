@@ -3,7 +3,7 @@ import {Link, Redirect} from 'react-router-dom';
 import Axios from 'axios';
 import {connect} from 'react-redux';
 
-import {setUsername} from '../reducks/reducer';
+import {setUsername, setAdmin} from '../reducks/reducer';
 
 class Login extends Component {
     constructor(){
@@ -19,6 +19,7 @@ class Login extends Component {
             phone_number: '',
             user: {},
             redirect: false,
+            admin: false,
         }
         this.register = this.register.bind(this);
         this.login = this.login.bind(this);
@@ -32,7 +33,6 @@ class Login extends Component {
         // console.log(this.state.username)
     }
     updateUser(user){
-        // console.log('triggered')
         this.setState({
             user,
         })
@@ -40,9 +40,11 @@ class Login extends Component {
     login(){
         let {username, password} = this.state;
         Axios.post('/auth/login', {username, password})
-            .then(user=>{
+        .then(user=>{
+                console.log(user.data.admin)
                 // console.log(username, password)
                 this.props.setUsername(user.data.username);
+                this.props.setAdmin(user.data.admin);
                 this.setState({username: '', password: '', redirect: true});
                 console.log(user.data)
                 this.updateUser(user.data);
@@ -94,8 +96,8 @@ class Login extends Component {
 
     render(){
         let {username, password, newUsername, newPassword, first_name, last_name, email, phone_number} = this.state;
-        // console.log(this.state.user)
-        // console.log(this.state.user.admin)
+        console.log(this.state.user)
+        console.log(this.state.user.admin)
         // let {user} = this.props;
         if(this.state.redirect === true && this.state.user.admin === true){
             return <Redirect to='/designer' />
@@ -135,4 +137,4 @@ const mapStateToProps = state =>{
     }
 }
 
-export default connect(mapStateToProps, {setUsername})(Login);
+export default connect(mapStateToProps, {setUsername, setAdmin})(Login);

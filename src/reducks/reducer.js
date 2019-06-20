@@ -19,7 +19,6 @@ const initialState ={
 const GET_USER = 'GET_USER';
 const ADD_TO_CART = 'ADD_TO_CART';
 const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
-const SET_USERNAME = 'SET_USERNAME';
 const HANDLE_NAME = 'HANDLE_NAME';
 const HANDLE_DESCRIPTION = 'HANDLE_DESCRIPTION';
 const HANDLE_PRICE = 'HANDLE_PRICE';
@@ -27,6 +26,8 @@ const HANDLE_IMAGE = 'HANDLE_IMAGE';
 const HANDLE_DESIGNER = 'HANDLE_DESIGNER';
 const COMPLETE_WIZARD = 'COMPLETE_WIZARD';
 const LOGOUT = 'LOGOUT';
+const SET_USERNAME = 'SET_USERNAME';
+const SET_ADMIN = 'SET_ADMIN'
 
 export const logout = ()=>{
     let data = axios.get('/auth/logout')
@@ -101,6 +102,12 @@ export const setUsername =(username)=>{
         payload: username
     }
 }
+export const setAdmin =(admin)=>{
+    return{
+        type: SET_ADMIN,
+        payload: admin
+    }
+}
 
 function reducer(state= initialState, action){
     switch(action.type){
@@ -134,6 +141,8 @@ function reducer(state= initialState, action){
             return{...state, cart: newCart}
         case SET_USERNAME:
             return {...state, username: action.payload};
+        case SET_ADMIN:
+            return {...state, admin: action.payload};
         case LOGOUT:
             return {...state, user: {},
             cart: [],

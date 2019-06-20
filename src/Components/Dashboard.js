@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import Axios from 'axios';
 
 import Item from './Item';
-import {logout} from '../reducks/reducer';
+import {logout, getUser} from '../reducks/reducer';
 
 class Dashboard extends Component{
     constructor(){
@@ -17,9 +17,11 @@ class Dashboard extends Component{
     }
 
     componentDidMount(){
-        Axios.get('/api/inventory').then(response=>
-            this.setState({inventory: response.data}))
+        Axios.get('/api/inventory')
+            .then(response=>{
+                this.setState({inventory: response.data})})
             .catch(()=> console.log('error at componentDidMount'))
+        this.props.getUser()
     }
     logout(){
         this.props.logout()
@@ -27,6 +29,8 @@ class Dashboard extends Component{
 
     render(){
         // console.log(this.state.inventory)
+        console.log(this.props)
+        console.log(this.state.user)
         return(
             <main>
                 {this.props.username ? (
@@ -34,9 +38,10 @@ class Dashboard extends Component{
                         <h1>Welcome {this.props.username}</h1>
                         <button onClick={this.logout}>Log out</button>
                     </div>
-                ) : (
-                    <Link to='/login'><button>Login</button></Link>
-                )}
+                    ) : (
+                        <Link to='/login'><button>Login</button></Link>
+                    )
+                }
                 <nav>
 
                     <Link to='/alexis'><button>Alexis</button></Link>
@@ -46,7 +51,11 @@ class Dashboard extends Component{
                     {/* <Link to='/bookmarks'><button>Bookmarks</button></Link>
                     <Link to='/newsletter'><button>Newsletter</button></Link> */}
                     {/* if admin */}
-                    {/* <Link to='/designer'><button>Admin</button></Link> */}
+                    {console.log(this.props.admin)}
+                    {this.props.admin === true ? (
+                        <Link to='/designer'><button>Admin</button></Link>
+                        ) : null
+                    }
                 </nav>
                 <section className='items'>
                     {/* <h1>Home</h1> */}
@@ -68,4 +77,4 @@ const mapStateToProps = state =>{
         username: state.username
     }
 }
-export default connect(mapStateToProps, {logout})(Dashboard);
+export default connect(mapStateToProps, {logout, getUser})(Dashboard);
