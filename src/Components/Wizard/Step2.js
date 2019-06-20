@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 
-import {handleImage, handleDesigner, addStep2} from '../../reducks/reducer';
+import {handleImage, handleDesigner} from '../../reducks/reducer';
 
 class Step2 extends Component{
     constructor(){
@@ -13,21 +13,13 @@ class Step2 extends Component{
         }
         this.handleImage = this.handleImage.bind(this)
         this.handleDesigner = this.handleDesigner.bind(this)
-        this.handleClick = this.handleClick.bind(this)
     }
 
    handleImage(e){
         this.props.handleImage(e.target.value)
-        // this.setState({image: e.target.value})
     }
     handleDesigner(e){
         this.props.handleDesigner(e.target.value)
-        // this.setState({designer: e.target.value})
-    }
-    handleClick(){
-        console.log(this.props.product_name, this.props.description, this.props.price, this.props.image, this.props.designer)
-        // let {image, designer} = this.state
-        // this.props.addStep2(image, designer)
     }
 
     render(){
@@ -48,4 +40,4 @@ class Step2 extends Component{
     }
 }
 
-export default connect((state)=>state, {handleImage, handleDesigner, addStep2})(Step2);
+export default connect((state)=>state, {handleImage, handleDesigner})(Step2);
