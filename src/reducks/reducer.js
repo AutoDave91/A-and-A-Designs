@@ -119,6 +119,12 @@ function reducer(state= initialState, action){
             return {...state, image: action.payload};
         case HANDLE_DESIGNER:
             return {...state, designer: action.payload};
+        case COMPLETE_WIZARD:
+            return {...state, product_name: "",
+            description: "",
+            price: 0,
+            image: "",
+            designer: ''}
         case ADD_STEP_TWO:
             return { ...state, inventory: action.payload };
         case GET_USER:

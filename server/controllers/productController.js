@@ -12,8 +12,9 @@ function wizard2(req, res){
     // console.log(newItem)
 }
 function addProduct(req, res){
+    const {product_name, description, price, image, designer} = req.body;
     const db =req.app.get('db');
-    db.add_inventory().then(response =>res.status(200).json(response))
+    db.add_inventory([product_name, description, price, image, designer]).then(response =>res.status(200).json(response))
         .catch(()=>console.log('Failed to add from Wizard'))
     // console.log('sending', newItem)
 

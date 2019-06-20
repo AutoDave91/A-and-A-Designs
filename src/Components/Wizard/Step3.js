@@ -2,21 +2,25 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 
+import {completeWizard} from '../../reducks/reducer';
+
 class Step3 extends Component{
     constructor(){
         super()
         this.state ={
             
         }
+        this.onClick = this.onClick.bind(this)
     }
 
     onClick(){
-        let {completeWizard, product_name, description, price, image, designer} = this.props;
-        completeWizard(product_name, description, price, image, designer)
+        let {product_name, description, price, image, designer} = this.props;
+        this.props.completeWizard(product_name, description, price, image, designer)
     }
 
     render(){
-        console.log('Starting Step3', this.props.product_name, this.props.description, this.props.price, this.props.image, this.props.designer)
+        console.log(this.props)
+        // console.log('Starting Step3', this.props.product_name, this.props.description, this.props.price, this.props.image, this.props.designer)
         return(
             <main>
                 <h1>Confirmation</h1>
@@ -42,4 +46,4 @@ const mapStateToProps = state =>{
         designer: state.designer
     }
 }
-export default connect(mapStateToProps)(Step3);
+export default connect(mapStateToProps, {completeWizard})(Step3);
