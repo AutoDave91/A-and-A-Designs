@@ -8,14 +8,14 @@ const initialState ={
     designer: '',
     inventory: [],
     user: {},
+    cart: [],
     username: '',
     loggedIn: false,
     admin: false,
-    userid: ''
+    userid: '',
+    index: 0,
 }
 
-const ADD_STEP_ONE = "ADD_STEP_ONE";
-const ADD_STEP_TWO = 'ADD_STEP_TWO';
 const GET_USER = 'GET_USER';
 const ADD_TO_CART = 'ADD_TO_CART';
 const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
@@ -26,7 +26,15 @@ const HANDLE_PRICE = 'HANDLE_PRICE';
 const HANDLE_IMAGE = 'HANDLE_IMAGE';
 const HANDLE_DESIGNER = 'HANDLE_DESIGNER';
 const COMPLETE_WIZARD = 'COMPLETE_WIZARD';
+const LOGOUT = 'LOGOUT';
 
+export const logout = ()=>{
+    let data = axios.get('/auth/logout')
+    return{
+        type: LOGOUT,
+        payload: data
+    }
+}
 export const handleName = (product_name)=>{
     return{
         type:HANDLE_NAME,
@@ -65,39 +73,27 @@ export const completeWizard = (product_name, description, price, image, designer
         payload: data
     }
 }
-
-export const addStep1 = (product_name, description, price)=>{
-    let data = axios.post('/api/add/step1', {product_name, description, price})
-        .then(res => res.data)
-    return{
-        type: ADD_STEP_ONE,
-        payload: data
-    }
-}
-export const addStep2 = (image, designer)=>{
-    let data =axios.post('/api/add/step2', {image, designer})
-        .then(res => res.data)
-    return{
-        type: ADD_STEP_TWO,
-        payload: data
-    }
-}
 export const getUser = ()=>{
     return{
         type: GET_USER,
         payload: axios.get('/auth/user').catch(()=>console.log('error getting user'))
     }
 }
-export const addToCart =(item, price)=>{
+export const addToCart =(name, description, price, image)=>{
+    let item = {name: name, description: description, price: price, image: image}
+    console.log(item)
     return{
         type: ADD_TO_CART,
-        payload: axios.post(`/api/cart/${item}`, {price})
+        // payload: axios.post(`/api/cart/${item}`, {price})
+        payload: item
     }
 }
-export const removeFromCart =(id, price)=>{
+export const removeFromCart =(index)=>{
+    let item = {index: index}
     return{
         type: REMOVE_FROM_CART,
-        payload: axios.delete(`/api/cart/${id}`, {price})
+        // payload: axios.delete(`/api/cart/${id}`, {price})
+        payload: item
     }
 }
 export const setUsername =(username)=>{
@@ -125,16 +121,19 @@ function reducer(state= initialState, action){
             price: 0,
             image: "",
             designer: ''}
-        case ADD_STEP_TWO:
-            return { ...state, inventory: action.payload };
         case GET_USER:
             return {...state, user:action.payload.data};
         case ADD_TO_CART:
-            return {...state, user: action.payload.data};
+            // console.log(action.payload)
+            // return {...state, user: action.payload.data};
+            return{...state, cart: [...state.cart, action.payload]};
         case REMOVE_FROM_CART:
-            return {...state, user: action.payload.data};
+            // return {...state, user: action.payload.data};
+            return{...state, cart:[...state.cart.splice(action.payload, 1)]}
         case SET_USERNAME:
             return {...state, username: action.payload};
+        case LOGOUT:
+            return {...state}
         default: return state;
     }
 

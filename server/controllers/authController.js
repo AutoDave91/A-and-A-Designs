@@ -34,7 +34,14 @@ async function login(req, res){
     if(!isAuthenticated){
         return res.status(403).json('Try again');
     }
-    req.session.customer = {id: user.id, username: user.username, admin: user.admin, first_name: user.first_name}
+    req.session.customer = {
+        id: user.id,
+        username: user.username,
+        admin: user.admin,
+        first_name: user.first_name,
+        cart:[],
+        total: 0
+    }
     return res.send(req.session.customer)
 }
 async function logout(req, res){
@@ -42,7 +49,11 @@ async function logout(req, res){
     return res.sendStatus(200);
 }
 async function getUser(req, res){
-    console.log('getUser', req, res)
+    if(req.session.customer){
+        res.json(req.session.customer)
+    } else {
+        res.status(401).json(console.log('awaiting non-login cart functionality'))
+    }
 }
 
 module.exports={

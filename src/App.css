@@ -41,11 +41,12 @@ nav{
 .admin-container{
   display: flex;
   justify-content: space-evenly;
-  margin-left: 5vw;
-  margin-right: 5vw;
+  margin-left: 2vw;
+  margin-right: 2vw;
+  margin-bottom: 5vh;
 }
 .admin-elements{
-  background-color: burlywood;
+  background-color: bisque;
   width: 45%;
   min-height: 25vh;
 }
@@ -74,4 +75,10 @@ nav{
 img{
   height: 15vh;
   width: 10vw;
+}
+.cart{
+  background-color: coral;
+  width: 75%;
+  min-height: 25vh;
+  margin: auto;
 }

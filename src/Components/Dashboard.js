@@ -3,7 +3,8 @@ import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import Axios from 'axios';
 
-import Item from './Item'
+import Item from './Item';
+import {logout} from '../reducks/reducer';
 
 class Dashboard extends Component{
     constructor(){
@@ -13,31 +14,36 @@ class Dashboard extends Component{
             user: {}
         }
     }
+
     componentDidMount(){
         Axios.get('/api/inventory').then(response=>
             this.setState({inventory: response.data}))
             .catch(()=> console.log('error at componentDidMount'))
+    }
+    logout(){
+        this.props.logout()
     }
 
     render(){
         // console.log(this.state.inventory)
         return(
             <main>
-                <h1>Welcome {this.props.username}</h1>
+                {this.props.username ? (
+                    <div>
+                        <h1>Welcome {this.props.username}</h1>
+                        <button onClick={this.logout}>Log out</button>
+                    </div>
+                ) : (
+                    <Link to='/login'><button>Login</button></Link>
+                )}
                 <nav>
+
                     <Link to='/alexis'><button>Alexis</button></Link>
                     <Link to='/april'><button>April</button></Link>
 
                     {/* user features */}
                     {/* <Link to='/bookmarks'><button>Bookmarks</button></Link>
                     <Link to='/newsletter'><button>Newsletter</button></Link> */}
-
-                    {/* if logged in */}
-                    {/* <button>Log out</button> */}
-
-                    {/* if !logged in */}
-                    <Link to='/login'><button>Login</button></Link>
-
                     {/* if admin */}
                     {/* <Link to='/designer'><button>Admin</button></Link> */}
                 </nav>
@@ -61,4 +67,4 @@ const mapStateToProps = state =>{
         username: state.username
     }
 }
-export default connect(mapStateToProps)(Dashboard);
+export default connect(mapStateToProps, {logout})(Dashboard);

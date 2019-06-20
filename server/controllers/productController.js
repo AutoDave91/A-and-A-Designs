@@ -1,22 +1,8 @@
-// let newItem = {}
-
-function wizard1(req, res){
-    let {product_name, description, price} = req.body;
-    newItem = {...newItem, product_name, description, price}
-    // console.log(newItem)
-}
-function wizard2(req, res){
-    let {image, designer} = req.body;
-    // console.log(req.body)
-    newItem ={...newItem, image, designer}
-    // console.log(newItem)
-}
 function addProduct(req, res){
     const {product_name, description, price, image, designer} = req.body;
     const db =req.app.get('db');
     db.add_inventory([product_name, description, price, image, designer]).then(response =>res.status(200).json(response))
         .catch(()=>console.log('Failed to add from Wizard'))
-    // console.log('sending', newItem)
 
 }
 function getAlexis(req, res){
@@ -43,7 +29,31 @@ function getAll(req, res){
             res.sendStatus(500)
         })
 }
+function addCart(req, res){
+    const {product} = req.params
+    const {price} = req.body
+    const db = req.app.get('db')
+
+    db.get_product(product).then(response => {
+        let productObject = response;
+        req.session.customer.cart.push(productObject)
+        req.session.customer.total += +price;
+        res.status(200).json(req.session.customer)
+    })
+}
+function removeCart(req, res){
+    const {id} = req.params.id
+    const {price} = req.body
+    const db = req.app.get('db')
+
+    db.remove_product(id).then(response => {
+        let item = response;
+        req.session.user.cart.splice(item ,1)
+        req.session.user.total -= +price
+        res.status(200).json(req.session.user)
+    })
+}
 
 module.exports ={
-    wizard1, wizard2, addProduct, getAlexis, getApril, getAll
+    addProduct, getAlexis, getApril, getAll, addCart, removeCart
 }
