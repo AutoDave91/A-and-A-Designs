@@ -41,13 +41,13 @@ class Cart extends Component{
                         }) : null : (<h1>Please sign in to view cart.</h1>)} */}
 
                         <section>
-                            {this.props.user.cart && this.props.user.cart.map((product, index)=>{
+                            {this.props.cart.cart && this.props.cart.cart.map((product, index)=>{
                             return(
                                 <div key={index}>
-                                <img className = 'item-img' src={require(`../images/${this.props.product.image}.jpg`)} alt={this.props.product.product_name}/>
-                                <h3>{this.props.product.product_name}</h3>
-                                <h3 id='description'>{this.props.product.description}</h3>
-                                <h3>{this.props.product.price}</h3>
+                                <img className = 'item-img' src={require(`../images/${this.props.cart.cart.image[index]}.jpg`)} alt={this.props.cart.cart.product_name[index]}/>
+                                <h3>{this.props.cart.cart.product_name[index]}</h3>
+                                <h3 id='description'>{this.props.cart.cart.description[index]}</h3>
+                                <h3>{this.props.cart.cart.price[index]}</h3>
                                 <textarea placeholder='Special Requests (size, color, ect)'/>
                                 <button onClick={()=>{this.props.removeFromCart(index); console.log('deleted item ', index)}}>Delete</button>
                             </div>)})}

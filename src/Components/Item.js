@@ -12,7 +12,7 @@ class Item extends Component{
     }
     
     render(){
-        console.log(this.props.item)
+        // console.log(this.props.item)
         let {product_name, image, description, price} = this.props.item
         return(
             <main>
