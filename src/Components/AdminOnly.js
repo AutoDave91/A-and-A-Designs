@@ -33,7 +33,7 @@ class AdminOnly extends Component {
                 <header>
                     <Link to='/'><button>Home</button></Link>
                     <Link to='/designer/step1'><button>Add Item</button></Link>
-                    <h1>Welcome {this.props.username}. How may I assist you?</h1>
+                    <h1>How may I assist you?</h1>
                 </header>
                 <section className='admin-container'>
                     <section className='admin-elements'>

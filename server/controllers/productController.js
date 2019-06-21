@@ -30,16 +30,18 @@ function getAll(req, res){
         })
 }
 function addCart(req, res){
-    const {product} = req.params
+    console.log(req.session.customer.cart)
+    console.log(req.body)
     const {price} = req.body
-    const db = req.app.get('db')
+    const productObject = req.body
+    // const db = req.app.get('db')
 
-    db.get_product(product).then(response => {
-        let productObject = response;
+    // db.get_product(product).then(response => {
+    //     let productObject = response;
         req.session.customer.cart.push(productObject)
-        req.session.customer.total += +price;
+        req.session.customer.total += +price
         res.status(200).json(req.session.customer)
-    })
+    
 }
 function removeCart(req, res){
     const {id} = req.params.id

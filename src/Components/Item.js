@@ -4,15 +4,15 @@ import { connect } from 'react-redux';
 import {getUser, addToCart} from '../reducks/reducer';
 
 class Item extends Component{
-    // console.log(props.item)
     constructor(){
         super()
         this.state={
-
+            
         }
     }
-
+    
     render(){
+        console.log(this.props.item)
         let {product_name, image, description, price} = this.props.item
         return(
             <main>
@@ -22,7 +22,7 @@ class Item extends Component{
                     <h3 id='description'>{description}</h3>
                     <h3>{price}</h3>
                     
-                    <button id='addToCart' onClick={()=> {this.props.addToCart(product_name,description, price, image); console.log('Added to cart')}}>Add to Cart</button>
+                    <button id='addToCart' onClick={()=> {this.props.addToCart(product_name, image, description, price); console.log('Added to cart')}}>Add to Cart</button>
                 </section>
             </main>
         )

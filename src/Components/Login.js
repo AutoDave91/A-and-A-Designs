@@ -23,7 +23,6 @@ class Login extends Component {
         }
         this.register = this.register.bind(this);
         this.login = this.login.bind(this);
-        this.logout = this.logout.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.updateUser = this.updateUser.bind(this)
     }
@@ -86,15 +85,6 @@ class Login extends Component {
                 console.log('error registering')
             })
     }
-    logout(){
-        Axios.get('/auth/logout')
-            .then(()=>{
-                this.props.updateUser({})
-            })
-            .catch(()=>{
-                console.log('error logging out')
-            })
-      }
 
     render(){
         let {username, password, newUsername, newPassword, first_name, last_name, email, phone_number} = this.state;

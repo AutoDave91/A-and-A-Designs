@@ -13,7 +13,6 @@ class Dashboard extends Component{
             inventory: [],
             user: {}
         }
-        this.logout = this.logout.bind(this)
     }
 
     componentDidMount(){
@@ -23,14 +22,13 @@ class Dashboard extends Component{
             .catch(()=> console.log('error at componentDidMount'))
         this.props.getUser()
     }
-    logout(){
-        this.props.logout()
-    }
 
     render(){
         // console.log(this.props)
         // console.log(this.state.user)
         // console.log(this.props.customer)
+        console.log(this.state.inventory)
+        console.log(this.props.inventory)
         return(
             <main>
                 <nav>

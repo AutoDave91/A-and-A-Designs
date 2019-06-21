@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 
-import {completeWizard} from '../../reducks/reducer';
+import {completeWizard} from '../../reducks/wizardReducer';
 
 class Step3 extends Component{
     constructor(){

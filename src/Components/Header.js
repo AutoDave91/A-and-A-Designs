@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import {connect} from 'react-redux';
+import Axios from 'axios';
 
-import {getUser} from '../reducks/reducer';
+import {getUser, logout} from '../reducks/reducer';
 
 class Header extends Component {
     constructor(){
@@ -10,6 +11,7 @@ class Header extends Component {
         this.state={
             user: {}
         }
+        // this.logout = this.logout.bind(this)
     }
 
     componentDidMount(){
@@ -17,23 +19,24 @@ class Header extends Component {
     }
 
     render(){
+        console.log(this.state.user)
         console.log(this.props)
         console.log(this.state.user)
         return(
             <main className='header'>
-                <div className='space' />
+                {/* <div className='space' /> */}
 
                 {this.props.state.user.username ? (
                     <div>
                         <h1>Welcome {this.props.state.user.username}</h1>
-                        <button onClick={this.logout}>Log out</button>
+                        <button onClick={this.props.logout}>Log out</button>
                     </div>
                     ) : (
                         <Link to='/login'><button>Login</button></Link>
                     )
                 }
                 <h1>A & A Designs</h1>
-                <Link to='/cart'><button>Cart</button></Link>
+                <Link to='/cart'><button onClick={()=>{console.log(`send ${this.props.state.cart} to ${this.props.state.user.cart}`)}}>Cart</button></Link>
             </main>
         )
     }
@@ -44,5 +47,5 @@ const mapStateToProps = state =>{
         state
     }
 }
-export default connect(mapStateToProps, {getUser})(Header);
+export default connect(mapStateToProps, {getUser, logout})(Header);
 // export default Header;

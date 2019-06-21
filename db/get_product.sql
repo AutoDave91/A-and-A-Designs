@@ -1,2 +1,2 @@
 SELECT * FROM inventory
-WHERE id = $1
+WHERE product_id = $1

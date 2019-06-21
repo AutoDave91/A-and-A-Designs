@@ -61,8 +61,7 @@ nav{
   justify-content: space-evenly;
 }
 .item-profile{
-  /* margin-left: 3vw; */
-  /* margin-top: 3vh; */
+  padding-top: 2vh;
   width: 25vw;
   margin: auto;
 }

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 
-import {handleName, handleDescription, handlePrice} from '../../reducks/reducer';
+import {handleName, handleDescription, handlePrice} from '../../reducks/wizardReducer';
 
 class Step1 extends Component{
     constructor(){

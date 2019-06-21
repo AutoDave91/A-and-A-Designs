@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 
-import {handleImage, handleDesigner} from '../../reducks/reducer';
+import {handleImage, handleDesigner} from '../../reducks/wizardReducer';
 
 class Step2 extends Component{
     constructor(){

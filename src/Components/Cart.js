@@ -15,21 +15,19 @@ class Cart extends Component{
     componentDidMount(){
         this.props.getUser();
     }
-    componentDidUpdate(){
-        this.props.getUser()
-    }
 
     render(){
         console.log(this.props.cart)
-        console.log(this.props.customer)
+        // console.log(this.props.customer)
+        // console.log(this.props.state)
+        console.log(this.props.user)
         return(
             <main>
                 <Link to='/'><button>Home</button></Link>
-                <h1>Welcome {this.props.username}</h1>
                 <section className='cart'>
                     <h1>Cart</h1>
                     <section>
-                        {this.props.username ? this.props.cart ? this.props.cart.map((item, index)=>{
+                        {/* {this.props.username ? this.props.cart ? this.props.cart.map((item, index)=>{
                             return(
                                 <div key={index}>
                                     <img className = 'item-img' src={require(`../images/${item.image}.jpg`)} alt={item.product_name}/>
@@ -40,7 +38,20 @@ class Cart extends Component{
                                     <button onClick={()=>{this.props.removeFromCart(index); console.log('deleted item ', index)}}>Delete</button>
                                 </div>
                             )
-                        }) : null : (<h1>Please sign in to view cart.</h1>)}
+                        }) : null : (<h1>Please sign in to view cart.</h1>)} */}
+
+                        <section>
+                            {this.props.user.cart && this.props.user.cart.map((product, index)=>{
+                            return(
+                                <div key={index}>
+                                <img className = 'item-img' src={require(`../images/${this.props.product.image}.jpg`)} alt={this.props.product.product_name}/>
+                                <h3>{this.props.product.product_name}</h3>
+                                <h3 id='description'>{this.props.product.description}</h3>
+                                <h3>{this.props.product.price}</h3>
+                                <textarea placeholder='Special Requests (size, color, ect)'/>
+                                <button onClick={()=>{this.props.removeFromCart(index); console.log('deleted item ', index)}}>Delete</button>
+                            </div>)})}
+                        </section>
                     </section>
                 </section>
                 <button onClick={()=>{console.log('send this.props.cart to orders table')}}>Checkout</button>
