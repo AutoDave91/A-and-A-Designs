@@ -1,18 +1,18 @@
 import React, {Component} from 'react';
 // import { connect } from 'react-redux';
 
-// import {editItem} from '../reducks/reducer';
+// import {deleteItem} from '../reducks/reducer';
 
 class AdminItem extends Component{
-    // console.log(props.item)
     constructor(){
         super()
         this.state={
-
+            
         }
     }
-
+    
     render(){
+        // console.log(this.props.item)
         return(
             <main>
                 <section className= "item-profile">

@@ -7,7 +7,7 @@ async function register(req, res){
     const db = req.app.get('db');
     const result = await db.get_user([username])
     const existingUser = result.length;
-    console.log('existingUser', existingUser)
+    // console.log('existingUser', existingUser)
     const salt = bcrypt.genSaltSync(10);
     const hash = bcrypt.hashSync(password, salt);
     console.log(req.body)
@@ -17,7 +17,7 @@ async function register(req, res){
     } else {
         const registeredUser = await db.add_user([first_name, last_name, username, hash, email, phone_number])
         const user = registeredUser[0];
-        req.session.customer = {username: user.username, id: user.id}
+        req.session.customer = {username: user.username, id: user.id, admin: user.admin}
         return res.status(201).json(req.session.customer)
     }
 }
@@ -53,7 +53,7 @@ async function getUser(req, res){
     if(req.session.customer){
         res.json(req.session.customer)
     } else {
-        res.status(401).json(console.log('awaiting non-login cart functionality'))
+        res.status(401).json(console.log('req.session.customer check, ', req.session.customer))
     }
 }
 

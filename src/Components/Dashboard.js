@@ -28,37 +28,27 @@ class Dashboard extends Component{
     }
 
     render(){
-        // console.log(this.state.inventory)
-        console.log(this.props)
-        console.log(this.state.user)
+        // console.log(this.props)
+        // console.log(this.state.user)
+        // console.log(this.props.customer)
         return(
             <main>
-                {this.props.username ? (
-                    <div>
-                        <h1>Welcome {this.props.username}</h1>
-                        <button onClick={this.logout}>Log out</button>
-                    </div>
-                    ) : (
-                        <Link to='/login'><button>Login</button></Link>
-                    )
-                }
                 <nav>
-
                     <Link to='/alexis'><button>Alexis</button></Link>
                     <Link to='/april'><button>April</button></Link>
 
                     {/* user features */}
                     {/* <Link to='/bookmarks'><button>Bookmarks</button></Link>
                     <Link to='/newsletter'><button>Newsletter</button></Link> */}
+
                     {/* if admin */}
-                    {console.log(this.props.admin)}
+                    {/* {console.log(this.props.admin)} */}
                     {this.props.admin === true ? (
                         <Link to='/designer'><button>Admin</button></Link>
                         ) : null
                     }
                 </nav>
                 <section className='items'>
-                    {/* <h1>Home</h1> */}
                     {this.state.inventory.map((item, index)=>(
                         <Item key={index} item={item} inventory={this.state.inventory}/>
                     ))}
@@ -74,7 +64,7 @@ class Dashboard extends Component{
 
 const mapStateToProps = state =>{
     return{
-        username: state.username
+        admin: state.user.admin
     }
 }
 export default connect(mapStateToProps, {logout, getUser})(Dashboard);

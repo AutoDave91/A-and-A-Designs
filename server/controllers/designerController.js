@@ -1,8 +1,8 @@
 function getPopular(){
-    console.log('designerController')
+    console.log('getPopular')
 }
 function getOrder(){
-    console.log('designerController')
+    console.log('getOrder')
 }
 
 module.exports={

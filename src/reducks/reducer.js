@@ -14,6 +14,7 @@ const initialState ={
     admin: false,
     userid: '',
     index: 0,
+    loading: false
 }
 
 const GET_USER = 'GET_USER';
@@ -28,7 +29,14 @@ const COMPLETE_WIZARD = 'COMPLETE_WIZARD';
 const LOGOUT = 'LOGOUT';
 const SET_USERNAME = 'SET_USERNAME';
 const SET_ADMIN = 'SET_ADMIN'
+const LOGIN ='LOGIN';
 
+export const login = (username, password)=>{
+    return{
+        type:LOGIN,
+        payload: axios.post('/auth/login', {username, password})
+    }
+}
 export const logout = ()=>{
     let data = axios.get('/auth/logout')
     return{
@@ -82,17 +90,15 @@ export const getUser = ()=>{
 }
 export const addToCart =(name, description, price, image)=>{
     let item = {name: name, description: description, price: price, image: image}
-    console.log(item)
+    // console.log(item)
     return{
         type: ADD_TO_CART,
-        // payload: axios.post(`/api/cart/${item}`, {price})
         payload: item
     }
 }
 export const removeFromCart =(index)=>{
     return{
         type: REMOVE_FROM_CART,
-        // payload: axios.delete(`/api/cart/${id}`, {price})
         payload: index
     }
 }
@@ -110,6 +116,8 @@ export const setAdmin =(admin)=>{
 }
 
 function reducer(state= initialState, action){
+    console.log(state)
+    // console.log(action)
     switch(action.type){
         case HANDLE_NAME:
             return {...state, product_name:action.payload};
@@ -128,21 +136,22 @@ function reducer(state= initialState, action){
             image: "",
             designer: ''}
         case GET_USER:
+            // console.log(action.payload)
             return {...state, user:action.payload.data};
         case ADD_TO_CART:
-            // console.log(action.payload)
-            // return {...state, user: action.payload.data};
             return{...state, cart: [...state.cart, action.payload]};
         case REMOVE_FROM_CART:
             let newCart = state.cart
             newCart.splice(action.payload, 1)
-            console.log(action.payload)
-            // return {...state, user: action.payload.data};
             return{...state, cart: newCart}
         case SET_USERNAME:
             return {...state, username: action.payload};
         case SET_ADMIN:
             return {...state, admin: action.payload};
+        case `${LOGIN}_PENDING`:
+                return {...state, loading: true};
+        case `${LOGIN}_FULFILLED`:
+            return {...state, user: action.payload.data, loading: false};
         case LOGOUT:
             return {...state, user: {},
             cart: [],

@@ -58,11 +58,13 @@ nav{
   padding-bottom: 3vh;
   display: flex;
   flex-flow: wrap;
-  justify-content: space-around;
+  justify-content: space-evenly;
 }
 .item-profile{
-  margin-left: 3vw;
-  margin-top: 3vh;
+  /* margin-left: 3vw; */
+  /* margin-top: 3vh; */
+  width: 25vw;
+  margin: auto;
 }
 .about{
   background-color: coral;
@@ -73,7 +75,7 @@ nav{
   height: 20vh;
 }
 img{
-  height: 15vh;
+  height: 20vh;
   width: 10vw;
 }
 .cart{

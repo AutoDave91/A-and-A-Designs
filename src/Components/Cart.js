@@ -5,8 +5,8 @@ import {Link} from 'react-router-dom';
 import {getUser, removeFromCart} from '../reducks/reducer';
 
 class Cart extends Component{
-    constructor(props){
-        super(props)
+    constructor(){
+        super()
         this.state ={
             
         }
@@ -14,12 +14,14 @@ class Cart extends Component{
 
     componentDidMount(){
         this.props.getUser();
-        // this.props.removeFromCart();
     }
-    // Component did update
+    componentDidUpdate(){
+        this.props.getUser()
+    }
 
     render(){
         console.log(this.props.cart)
+        console.log(this.props.customer)
         return(
             <main>
                 <Link to='/'><button>Home</button></Link>
@@ -34,13 +36,14 @@ class Cart extends Component{
                                     <h3>{item.product_name}</h3>
                                     <h3 id='description'>{item.description}</h3>
                                     <h3>{item.price}</h3>
-                                    <button onClick={()=>this.props.removeFromCart(index)}>Delete</button>
+                                    <textarea placeholder='Special Requests (size, color, ect)'/>
+                                    <button onClick={()=>{this.props.removeFromCart(index); console.log('deleted item ', index)}}>Delete</button>
                                 </div>
                             )
-                        }) : null : null}
+                        }) : null : (<h1>Please sign in to view cart.</h1>)}
                     </section>
                 </section>
-                <button>Checkout</button>
+                <button onClick={()=>{console.log('send this.props.cart to orders table')}}>Checkout</button>
             </main>
         )
     }
