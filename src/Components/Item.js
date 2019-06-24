@@ -7,13 +7,19 @@ class Item extends Component{
     constructor(){
         super()
         this.state={
-            
+            size: '',
+            quantity: 1
         }
+        this.handleChange = this.handleChange.bind(this)
+    }
+
+    handleChange(e){
+        this.setState({[e.target.name]: e.target.value})
     }
     
     render(){
         // console.log(this.props.item)
-        let {product_name, image, description, price} = this.props.item
+        let {product_id, product_name, image, description, price} = this.props.item
         return(
             <main>
                 <section className= "item-profile">
@@ -22,7 +28,11 @@ class Item extends Component{
                     <h3 id='description'>{description}</h3>
                     <h3>{price}</h3>
                     
-                    <button id='addToCart' onClick={()=> {this.props.addToCart(product_name, image, description, price); console.log('Added to cart')}}>Add to Cart</button>
+                    <section className='size-quantity'>
+                        <h3>Size: <input className='size' name='size' type='text' onChange={this.handleChange} /></h3>
+                        <h3>Quantity: <input className='quantity' name='quantity' type='number' placeholder={this.state.quantity} onChange={this.handleChange}/></h3>
+                    </section>
+                    <button id='addToCart' onClick={()=> {this.props.addToCart(product_id, product_name, image, this.state.size, description, price, this.state.quantity); this.setState({size: '', quantity: 1})}}>Add to Cart</button>
                 </section>
             </main>
         )

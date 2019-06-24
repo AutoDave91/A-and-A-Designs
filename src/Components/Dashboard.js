@@ -24,8 +24,8 @@ class Dashboard extends Component{
     }
 
     render(){
-        // console.log(this.props)
-        // console.log(this.state.user)
+        console.log(this.props)
+        console.log(this.state.user)
         // console.log(this.props.customer)
         // console.log(this.state.inventory)
         // console.log(this.props.inventory)
@@ -41,7 +41,7 @@ class Dashboard extends Component{
 
                     {/* if admin */}
                     {/* {console.log(this.props.admin)} */}
-                    {this.props.admin === true ? (
+                    {this.props.reducer.user.admin === true ? (
                         <Link to='/designer'><button>Admin</button></Link>
                         ) : null
                     }
@@ -62,7 +62,7 @@ class Dashboard extends Component{
 
 const mapStateToProps = state =>{
     return{
-        admin: state.user.admin
+        reducer: state.reducer
     }
 }
 export default connect(mapStateToProps, {logout, getUser})(Dashboard);

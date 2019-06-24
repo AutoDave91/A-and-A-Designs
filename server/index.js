@@ -40,11 +40,12 @@ app.get('/auth/user', ac.getUser)
 app.get('/api/inventory', pc.getAll)
 app.get('/api/alexis', pc.getAlexis)
 app.get('/api/april', pc.getApril)
-app.post('/api/new_item', pc.addProduct)
 app.post('/api/cart', pc.addCart)
 app.delete('/api/cart/:id', pc.removeCart)
 
 //--designerController-- 
+app.post('/api/new_item', dc.addProduct)
+app.delete('/api/remove_item', dc.removeProduct)
 app.get('/api/popular', dc.getPopular)
 app.get('/api/orders', dc.getOrder)
 

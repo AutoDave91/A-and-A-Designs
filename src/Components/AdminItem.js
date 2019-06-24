@@ -20,9 +20,10 @@ class AdminItem extends Component{
                     <h3>{this.props.item.product_name}</h3>
                     <h3 id='description'>{this.props.item.description}</h3>
                     <h3>{this.props.item.price}</h3>
+                    <h3>{this.props.item.ordered_amount} ordered.</h3>
                     <section>
                     <button id='editItem' onClick={()=> console.log(`edit item ${this.props.item.id}`)}>Edit</button>
-                    <button id='editItem' onClick={()=> console.log(`delete item ${this.props.item.id}`)}>Delete</button>
+                    <button id='deleteItem' onClick={()=> console.log(`delete item ${this.props.item.id}`)}>Delete</button>
                     </section>
                 </section>
             </main>

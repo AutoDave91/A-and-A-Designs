@@ -1,10 +1,3 @@
-function addProduct(req, res){
-    const {product_name, description, price, image, designer} = req.body;
-    const db =req.app.get('db');
-    db.add_inventory([product_name, description, price, image, designer]).then(response =>res.status(200).json(response))
-        .catch(()=>console.log('Failed to add from Wizard'))
-
-}
 function getAlexis(req, res){
     const db = req.app.get('db');
     db.get_Alexis().then(response =>res.status(200).json(response))
@@ -38,18 +31,24 @@ function addCart(req, res){
     req.session.customer.cart.push(productObject)
     req.session.customer.total += +price
     res.status(200).json(req.session.customer)
-    
 }
 function removeCart(req, res){
-    const {id} = req.params.id
-    const {price} = req.body
+    console.log('PC: req.params.id', req.params.id)
+    console.log(req.params)
+    const {id} = req.params
 
-    req.session.customer.cart.splice(id ,1)
-    req.session.customer.total -= +price
-    res.status(200).json(req.session.customer)
+    for(let i=0; i<req.session.customer.cart.length; i++){
+        if(req.session.customer.cart[i].product_id == id){
+            console.log('for loop check, ', req.session.customer.cart[i])
+            req.session.customer.cart.splice(i, 1)
+            req.session.customer.total -= +req.session.customer.cart[i].price
+        }
+    }
     
+    res.status(200).json(req.session.customer)
+    console.log('PC: req.session.customer.cart', req.session.customer.cart)
 }
 
 module.exports ={
-    addProduct, getAlexis, getApril, getAll, addCart, removeCart
+    getAlexis, getApril, getAll, addCart, removeCart
 }

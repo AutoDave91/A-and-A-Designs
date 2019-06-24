@@ -60,7 +60,7 @@ nav{
   flex-flow: wrap;
   justify-content: space-evenly;
 }
-.item-profile{
+.item-profile, .user-cart{
   padding-top: 2vh;
   width: 25vw;
   margin: auto;
@@ -79,7 +79,28 @@ img{
 }
 .cart{
   background-color: coral;
-  width: 75%;
+  width: 80%;
   min-height: 25vh;
   margin: auto;
+  display: flex;
+  flex-flow: wrap;
+  justify-content: space-evenly;
+}
+.size-quantity{
+  display: flex;
+  justify-content: center;
+}
+.size{
+  width: 5vw;
+  margin-right: 2vw;
+}
+.quantity{
+  width: 3vw;
+}
+.cart-footer{
+  display: flex;
+  justify-content: center;
+}
+.mark{
+  margin-right: 2vw;
 }

@@ -20,15 +20,15 @@ class Header extends Component {
 
     render(){
         // console.log(this.state.user)
-        // console.log(this.props)
+        console.log(this.props)
         // console.log(this.state.user)
         return(
             <main className='header'>
                 {/* <div className='space' /> */}
 
-                {this.props.state.user.username ? (
+                {this.props.reducer.user.username ? (
                     <div>
-                        <h1>Welcome {this.props.state.user.username}</h1>
+                        <h1>Welcome {this.props.reducer.user.username}</h1>
                         <button onClick={this.props.logout}>Log out</button>
                     </div>
                     ) : (
@@ -36,7 +36,7 @@ class Header extends Component {
                     )
                 }
                 <h1>A & A Designs</h1>
-                <Link to='/cart'><button onClick={()=>{console.log(`send ${this.props.state.cart.cart} to ${this.props.state.user.cart}`)}}>Cart</button></Link>
+                <Link to='/cart'><button onClick={()=>{console.log(`send ${this.props.reducer.cart.cart} to ${this.props.reducer.user.cart}`)}}>Cart</button></Link>
             </main>
         )
     }
@@ -44,7 +44,7 @@ class Header extends Component {
 
 const mapStateToProps = state =>{
     return{
-        state
+        reducer: state.reducer
     }
 }
 export default connect(mapStateToProps, {getUser, logout})(Header);
