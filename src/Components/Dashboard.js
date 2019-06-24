@@ -27,8 +27,8 @@ class Dashboard extends Component{
         // console.log(this.props)
         // console.log(this.state.user)
         // console.log(this.props.customer)
-        console.log(this.state.inventory)
-        console.log(this.props.inventory)
+        // console.log(this.state.inventory)
+        // console.log(this.props.inventory)
         return(
             <main>
                 <nav>

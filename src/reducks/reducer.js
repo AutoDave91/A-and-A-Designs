@@ -29,7 +29,7 @@ export const getUser = ()=>{
 export const addToCart =(product_name, image, description, price)=>{
     // let item = {name: name, description: description, price: price, image: image}
     // console.log(item)
-    console.log(product_name)
+    // console.log(product_name)
     return{
         type: ADD_TO_CART,
         // payload: item
@@ -69,7 +69,7 @@ export const logout = ()=>{
 }
 
 function reducer(state= initialState, action){
-    console.log(state)
+    // console.log(state)
     // console.log(action)
     switch(action.type){
         case GET_USER:

@@ -19,9 +19,9 @@ class Header extends Component {
     }
 
     render(){
-        console.log(this.state.user)
-        console.log(this.props)
-        console.log(this.state.user)
+        // console.log(this.state.user)
+        // console.log(this.props)
+        // console.log(this.state.user)
         return(
             <main className='header'>
                 {/* <div className='space' /> */}
@@ -36,7 +36,7 @@ class Header extends Component {
                     )
                 }
                 <h1>A & A Designs</h1>
-                <Link to='/cart'><button onClick={()=>{console.log(`send ${this.props.state.cart} to ${this.props.state.user.cart}`)}}>Cart</button></Link>
+                <Link to='/cart'><button onClick={()=>{console.log(`send ${this.props.state.cart.cart} to ${this.props.state.user.cart}`)}}>Cart</button></Link>
             </main>
         )
     }
