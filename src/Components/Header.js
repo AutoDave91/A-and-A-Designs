@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import {connect} from 'react-redux';
-import Axios from 'axios';
 
 import {getUser, logout} from '../reducks/reducer';
 
@@ -20,8 +19,7 @@ class Header extends Component {
 
     render(){
         // console.log(this.state.user)
-        console.log(this.props)
-        // console.log(this.state.user)
+        // console.log(this.props.reducer)
         return(
             <main className='header'>
                 {/* <div className='space' /> */}
@@ -33,10 +31,14 @@ class Header extends Component {
                     </div>
                     ) : (
                         <Link to='/login'><button>Login</button></Link>
-                    )
-                }
+                        )
+                    }
                 <h1>A & A Designs</h1>
-                <Link to='/cart'><button onClick={()=>{console.log(`send ${this.props.reducer.cart.cart} to ${this.props.reducer.user.cart}`)}}>Cart</button></Link>
+                {this.props.reducer.cart.cart !== undefined ? (
+                    <div>
+                        <Link to='/cart'><button onClick={()=>{console.log(`send ${this.props.reducer.cart.cart} to ${this.props.reducer.user.cart}`)}}>Cart</button></Link>
+                    </div>
+                    ) : <div className='space' />}
             </main>
         )
     }

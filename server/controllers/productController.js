@@ -23,8 +23,8 @@ function getAll(req, res){
         })
 }
 function addCart(req, res){
-    console.log(req.session.customer.cart)
-    console.log(req.body)
+    // console.log(req.session.customer.cart)
+    // console.log(req.body)
     const {price} = req.body
     const productObject = req.body
     
@@ -33,22 +33,28 @@ function addCart(req, res){
     res.status(200).json(req.session.customer)
 }
 function removeCart(req, res){
-    console.log('PC: req.params.id', req.params.id)
-    console.log(req.params)
+    // console.log('PC: req.params.id', req.params.id)
+    // console.log(req.session.customer.cart)
     const {id} = req.params
 
     for(let i=0; i<req.session.customer.cart.length; i++){
         if(req.session.customer.cart[i].product_id == id){
-            console.log('for loop check, ', req.session.customer.cart[i])
+            console.log('for loop check, ', (req.session.customer.total - req.session.customer.cart[i].price))
             req.session.customer.cart.splice(i, 1)
-            req.session.customer.total -= +req.session.customer.cart[i].price
+            req.session.customer.total -= req.session.customer.cart[i].price
         }
     }
     
     res.status(200).json(req.session.customer)
     console.log('PC: req.session.customer.cart', req.session.customer.cart)
 }
+function placeOrder(req, res){
+    const {product_id, customer_id, quantity, delivered, total, address , city , state , zip_code} = req.body;
+    const db =req.app.get('db');
+    db.add_order([product_id, customer_id, quantity, delivered, total, address , city , state , zip_code]).then(response =>res.status(200).json(response))
+        .catch(()=>console.log('Failed to add order'))
+}
 
 module.exports ={
-    getAlexis, getApril, getAll, addCart, removeCart
+    getAlexis, getApril, getAll, addCart, removeCart, placeOrder
 }

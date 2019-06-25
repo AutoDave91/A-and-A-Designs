@@ -41,6 +41,7 @@ app.get('/api/inventory', pc.getAll)
 app.get('/api/alexis', pc.getAlexis)
 app.get('/api/april', pc.getApril)
 app.post('/api/cart', pc.addCart)
+app.post('/api/order', pc.placeOrder)
 app.delete('/api/cart/:id', pc.removeCart)
 
 //--designerController-- 

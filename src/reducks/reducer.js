@@ -96,7 +96,8 @@ function reducer(state= initialState, action){
         case `${REMOVE_FROM_CART}_PENDING`:
             return{...state, loading:true}
         case `${REMOVE_FROM_CART}_FULFILLED`:
-                console.log(action.payload.data)
+                console.log('payload.data', action.payload.data)
+                console.log('user', state.user)
             return{...state, user: action.payload.data, loading:false}
         case SET_USERNAME:
             return {...state, username: action.payload};

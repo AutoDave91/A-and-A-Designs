@@ -24,8 +24,8 @@ class Dashboard extends Component{
     }
 
     render(){
-        console.log(this.props)
-        console.log(this.state.user)
+        // console.log(this.props)
+        // console.log(this.state.user)
         // console.log(this.props.customer)
         // console.log(this.state.inventory)
         // console.log(this.props.inventory)

@@ -55,7 +55,7 @@ export const completeWizard = (product_name, description, price, image, designer
 }
 
 function wizardReducer(state= initialState, action){
-    console.log(state)
+    // console.log(state)
     // console.log(action)
     switch(action.type){
         case HANDLE_NAME:
