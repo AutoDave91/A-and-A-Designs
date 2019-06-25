@@ -27,7 +27,7 @@ class Header extends Component {
                 {this.props.reducer.user.username ? (
                     <div>
                         <h1>Welcome {this.props.reducer.user.username}</h1>
-                        <button onClick={this.props.logout}>Log out</button>
+                        <Link to='/'><button onClick={this.props.logout}>Log out</button></Link>
                     </div>
                     ) : (
                         <Link to='/login'><button>Login</button></Link>

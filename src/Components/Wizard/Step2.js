@@ -23,7 +23,8 @@ class Step2 extends Component{
     }
 
     render(){
-        console.log('Starting Step2', this.props.product_name, this.props.description, this.props.price)
+        console.log(this.props)
+        console.log('Starting Step2', this.props.reducer.product_name, this.props.reducer.description, this.props.reducer.price)
         return(
             <main>
                 <h1>Step2</h1>
@@ -40,4 +41,9 @@ class Step2 extends Component{
     }
 }
 
-export default connect((state)=>state, {handleImage, handleDesigner})(Step2);
+const mapStateToProps = state =>{
+    console.log(state)
+    return{ reducer: state.wr 
+    }
+}
+export default connect(mapStateToProps, {handleImage, handleDesigner})(Step2);

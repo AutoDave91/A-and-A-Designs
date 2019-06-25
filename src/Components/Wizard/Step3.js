@@ -14,7 +14,7 @@ class Step3 extends Component{
     }
 
     onClick(){
-        let {product_name, description, price, image, designer} = this.props;
+        let {product_name, description, price, image, designer} = this.props.reducer;
         this.props.completeWizard(product_name, description, price, image, designer)
     }
 
@@ -24,12 +24,12 @@ class Step3 extends Component{
         return(
             <main>
                 <h1>Confirmation</h1>
-                <img className = 'item-img' src={require(`../../images/${this.props.wizardReducer.image}.jpg`)} alt={this.props.wizardReducer.product_name}/>
+                <img className = 'item-img' src={require(`../../images/${this.props.reducer.image}.jpg`)} alt={this.props.reducer.product_name}/>
                 {/* <h3>{this.props.image}</h3> */}
-                <h3>{this.props.wizardReducer.product_name}</h3>
-                <h3>{this.props.wizardReducer.description}</h3>
-                <h3>{this.props.wizardReducer.price}</h3>
-                <h3>Designer: {this.props.wizardReducer.designer}</h3>
+                <h3>{this.props.reducer.product_name}</h3>
+                <h3>{this.props.reducer.description}</h3>
+                <h3>{this.props.reducer.price}</h3>
+                <h3>Designer: {this.props.reducer.designer}</h3>
                 <Link to='/designer/step2'><button>Back</button></Link>
                 <Link to='/designer'><button onClick={this.onClick}>Confirm</button></Link>
             </main>
@@ -38,14 +38,7 @@ class Step3 extends Component{
 }
 
 const mapStateToProps = state =>{
-    return{ reducer: state.wizardReducer 
-    //     {
-    //     image: state.image,
-    //     product_name: state.product_name,
-    //     description: state.description,
-    //     price: state.price,
-    //     designer: state.designer
-    // }
+    return{ reducer: state.wr
     }
 }
 export default connect(mapStateToProps, {completeWizard})(Step3);

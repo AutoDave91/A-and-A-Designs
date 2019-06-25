@@ -47,4 +47,8 @@ class Step1 extends Component{
     }
 }
 
-export default connect((state) => state, {handleName, handleDescription, handlePrice})(Step1);
+const mapStateToProps = state =>{
+    return{ reducer: state.wr
+    }
+}
+export default connect(mapStateToProps, {handleName, handleDescription, handlePrice})(Step1);

@@ -104,3 +104,13 @@ img{
 .mark{
   margin-right: 2vw;
 }
+.order-list{
+  padding: 1vh;
+}
+ul, li{
+  list-style-type: none;
+}
+.city-state-zip{
+  display: flex;
+  justify-content: center
+}

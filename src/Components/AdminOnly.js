@@ -9,9 +9,20 @@ class AdminOnly extends Component {
     constructor(){
         super()
         this.state ={
+            inventory: [],
             orders: [],
-            popular: [],
-            inventory: []
+            designer: 'A & A Designs',
+            order: 0,
+            product: 'product',
+            quantity: 0,
+            notes: 'notes',
+            name: ['first', 'last'],
+            email: 'email',
+            address: 'street',
+            city: 'city',
+            state: 'state',
+            zip_code: 'zip code',
+            delivered: false
         }
     }
 
@@ -19,10 +30,7 @@ class AdminOnly extends Component {
         Axios.get('/api/inventory').then(response=>
             this.setState({inventory: response.data}))
             .catch(()=> console.log('inventory error at componentDidMount'))
-        Axios.get('/api/popular').then(response=>
-            this.setState({popular: response.data}))
-            .catch(()=> console.log('popular error at componentDidMount'))
-        Axios.get('/api/orders').then(response=>
+       Axios.get('/api/orders').then(response=>
             this.setState({orders: response.data}))
             .catch(()=> console.log('order error at componentDidMount'))
     }
@@ -30,6 +38,7 @@ class AdminOnly extends Component {
     render(){
         console.log('Order Check: ', this.state.orders)
         let {orders} = this.state;
+        let {designer, order, product, quantity, notes, delivered, name, email, address, city, state, zip_code} = this.state
 
         return(
             <main>
@@ -42,11 +51,38 @@ class AdminOnly extends Component {
                     <section className='admin-elements'>
                         <h1>Orders</h1>
                         {orders.map((order, index)=>(
-                            <p>{order.designer}, {order.quantity} of {order.product_name} ordered by {order.first_name}.</p>
+                            <p key={index} className='order-list' onClick={()=>{this.setState({
+                                designer: order.designer,
+                                order: order.order_id,
+                                product: order.product_name,
+                                quantity: order.quantity,
+                                notes: order.notes,
+                                delivered: order.delivered,
+                                name: [order.first_name, order.last_name],
+                                email: order.email,
+                                address: order.address,
+                                city: order.city,
+                                state: order.state,
+                                zip_code: order.zip_code
+                                })
+                            }}>{order.designer.toUpperCase()}, {order.first_name} ordered {order.quantity} of {order.product_name}. Order {order.order_id} delivered: {order.delivered.toString().toUpperCase()}</p>
                         ))}
                     </section>
                     <section className='admin-elements'>
-                        <h1>Popular Items</h1>
+                        <h1>Order Details</h1>
+                        <ul>
+                            <li>Designer: {designer.toUpperCase()}</li>
+                            <li>Order {order} has been shipped: {delivered.toString()}</li>
+                            <li>{quantity} of {product}</li>
+                            <li>{notes}</li>
+                            <h1>Customer Profile</h1>
+                            <ul className='customer-profile'>
+                                <li>{`${name[0]} ${name[1]}`}</li>
+                                <li>{email}</li>
+                                <li>{address}</li>
+                                <li>{`${city}, ${state}, ${zip_code}`}</li>
+                            </ul>
+                        </ul>
                     </section>
                 </section>
                 <h1 className='items'>Inventory</h1>
