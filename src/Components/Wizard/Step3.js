@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 
 import {completeWizard} from '../../reducks/wizardReducer';
@@ -21,6 +21,10 @@ class Step3 extends Component{
     render(){
         console.log(this)
         // console.log('Starting Step3', this.props.product_name, this.props.description, this.props.price, this.props.image, this.props.designer)
+
+        {if(!this.props.auth.user || this.props.auth.user.admin !== true){
+            return <Redirect to='/' />
+            }}
         return(
             <main>
                 <h1>Confirmation</h1>
@@ -38,7 +42,7 @@ class Step3 extends Component{
 }
 
 const mapStateToProps = state =>{
-    return{ reducer: state.wr
+    return{ reducer: state.wr, auth: state.reducer
     }
 }
 export default connect(mapStateToProps, {completeWizard})(Step3);

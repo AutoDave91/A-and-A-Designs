@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 
 import {handleName, handleDescription, handlePrice} from '../../reducks/wizardReducer';
@@ -29,6 +29,9 @@ class Step1 extends Component{
 
     render(){
         // console.log('Step 1', this.state)
+        {if(!this.props.auth.user || this.props.auth.user.admin !== true){
+            return <Redirect to='/' />
+            }}
         return(
             <main>
                 <h1>Step1</h1>
@@ -48,7 +51,7 @@ class Step1 extends Component{
 }
 
 const mapStateToProps = state =>{
-    return{ reducer: state.wr
+    return{ reducer: state.wr, auth: state.reducer
     }
 }
 export default connect(mapStateToProps, {handleName, handleDescription, handlePrice})(Step1);

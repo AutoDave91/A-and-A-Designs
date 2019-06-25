@@ -27,12 +27,16 @@ class Item extends Component{
                     <h3>{product_name}</h3>
                     <h3 id='description'>{description}</h3>
                     <h3>{price}</h3>
-                    
-                    <section className='size-quantity'>
-                        <h3>Size: <input className='size' name='size' type='text' onChange={this.handleChange} /></h3>
-                        <h3>Quantity: <input className='quantity' name='quantity' type='number' placeholder={this.state.quantity} onChange={this.handleChange}/></h3>
-                    </section>
-                    <button id='addToCart' onClick={()=> {this.props.addToCart(product_id, product_name, image, this.state.size, description, price, this.state.quantity); this.setState({size: '', quantity: 1})}}>Add to Cart</button>
+                    {this.props.reducer.user.username ? (
+                    <div>
+                        <section className='size-quantity'>
+                            <h3>Size: <input className='size' name='size' type='text' onChange={this.handleChange} /></h3>
+                            <h3>Quantity: <input className='quantity' name='quantity' type='number' placeholder={this.state.quantity} onChange={this.handleChange}/></h3>
+                        </section>
+                        <button id='addToCart' onClick={()=> {this.props.addToCart(product_id, product_name, image, this.state.size, description, price, this.state.quantity); this.setState({size: '', quantity: 1})}}>Add to Cart</button>
+                    </div>
+                    ) : null
+                    }
                 </section>
             </main>
         )

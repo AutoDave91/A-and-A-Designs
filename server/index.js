@@ -9,6 +9,7 @@ const uc = require('./controllers/userController');
 const ac = require('./controllers/authController');
 const pc = require('./controllers/productController');
 const dc = require('./controllers/designerController');
+const auth = require('./middleware/auth.Middleware');
 
 
 const {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET} = process.env
@@ -40,15 +41,19 @@ app.get('/auth/user', ac.getUser)
 app.get('/api/inventory', pc.getAll)
 app.get('/api/alexis', pc.getAlexis)
 app.get('/api/april', pc.getApril)
-app.post('/api/cart', pc.addCart)
-app.post('/api/order', pc.placeOrder)
-app.delete('/api/cart/:id', pc.removeCart)
+
+// --cartController--
+app.post('/api/cart', auth.usersOnly, pc.addCart)
+app.post('/api/order', auth.usersOnly, pc.placeOrder)
+app.put('/api/cart/:id')
+app.delete('/api/cart/:id', auth.usersOnly, pc.removeCart)
+
 
 //--designerController-- 
-app.post('/api/new_item', dc.addProduct)
-app.delete('/api/remove_item', dc.removeProduct)
-app.get('/api/popular', dc.getPopular)
-app.get('/api/orders', dc.getOrder)
+app.get('/api/orders', auth.adminsOnly, dc.getOrder)
+app.post('/api/new_item', auth.adminsOnly, dc.addProduct)
+app.put('/api/inventory')
+app.delete('/api/remove_item', auth.adminsOnly, dc.removeProduct)
 
 app.listen(SERVER_PORT, ()=> {
     console.log(`Listening on port ${SERVER_PORT}.`)

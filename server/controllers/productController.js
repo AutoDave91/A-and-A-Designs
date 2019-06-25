@@ -33,17 +33,10 @@ function addCart(req, res){
     res.status(200).json(req.session.customer)
 }
 function removeCart(req, res){
-    // console.log('PC: req.params.id', req.params)
+    // console.log('PC: req.params', typeof req.params.id)
     // console.log(req.session.customer.cart)
-    const {index} = req.params
+    let index = +req.params.id
 
-    // for(let i=0; i<req.session.customer.cart.length; i++){
-    //     if(req.session.customer.cart[i].product_id == id){
-    //         console.log('for loop check, ', (req.session.customer.total - req.session.customer.cart[i].price))
-    //         req.session.customer.cart.splice(i, 1)
-    //         req.session.customer.total -= req.session.customer.cart[i].price
-    //     }
-    // }
     req.session.customer.total -= req.session.customer.cart[index].price
     req.session.customer.cart.splice(index, 1)
     

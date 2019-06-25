@@ -114,3 +114,7 @@ ul, li{
   display: flex;
   justify-content: center
 }
+.order-list:hover{
+  cursor: pointer;
+  color: darkorange;
+}

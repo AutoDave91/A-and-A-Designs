@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 import Axios from 'axios';
 
@@ -36,10 +36,14 @@ class AdminOnly extends Component {
     }
 
     render(){
-        console.log('Order Check: ', this.state.orders)
+        // console.log('Order Check: ', this.state.orders)
+        console.log(this.props)
         let {orders} = this.state;
         let {designer, order, product, quantity, notes, delivered, name, email, address, city, state, zip_code} = this.state
 
+        {if(!this.props.reducer.user || this.props.reducer.user.admin !== true){
+            return <Redirect to='/' />
+            }}
         return(
             <main>
                 <header>
@@ -98,7 +102,7 @@ class AdminOnly extends Component {
 
 const mapStateToProps = state =>{
     return{
-        username: state.username
+        reducer: state.reducer
     }
 }
 export default connect(mapStateToProps)(AdminOnly);

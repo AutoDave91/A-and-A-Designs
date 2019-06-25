@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 
 import {handleImage, handleDesigner} from '../../reducks/wizardReducer';
@@ -25,6 +25,10 @@ class Step2 extends Component{
     render(){
         console.log(this.props)
         console.log('Starting Step2', this.props.reducer.product_name, this.props.reducer.description, this.props.reducer.price)
+
+        {if(!this.props.auth.user || this.props.auth.user.admin !== true){
+            return <Redirect to='/' />
+            }}
         return(
             <main>
                 <h1>Step2</h1>
@@ -43,7 +47,7 @@ class Step2 extends Component{
 
 const mapStateToProps = state =>{
     console.log(state)
-    return{ reducer: state.wr 
+    return{ reducer: state.wr, auth: state.reducer
     }
 }
 export default connect(mapStateToProps, {handleImage, handleDesigner})(Step2);

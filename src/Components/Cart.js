@@ -71,7 +71,7 @@ class Cart extends Component{
                                 <h3>{product.quantity * product.price} ({product.quantity} for {product.price}) each.</h3>
                                 <button>edit</button>
                                 <textarea placeholder='Special Requests (color, material, ect)'/>
-                                <button onClick={()=>{this.props.removeFromCart(index); this.handleDelete(); console.log('deleted item ', index, product.product_id)}}>Delete</button>
+                                <button onClick={()=>{this.props.removeFromCart(index); this.handleDelete(); console.log('deleted item ', index)}}>Delete</button>
                             </div>)})}
                         </section>
                     </section>
