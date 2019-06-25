@@ -24,6 +24,7 @@ class AdminOnly extends Component {
             zip_code: 'zip code',
             delivered: false
         }
+        this.removeItem = this.removeItem.bind(this)
     }
 
     componentDidMount(){
@@ -34,10 +35,18 @@ class AdminOnly extends Component {
             this.setState({orders: response.data}))
             .catch(()=> console.log('order error at componentDidMount'))
     }
+    removeItem(product_id){
+        console.log(product_id)
+        Axios.delete(`/api/inventory/${product_id}`).then(response=>{console.log(response);
+            this.setState({inventory:response.data})})
+        .catch(console.log('failed to delete'))
+    }
 
     render(){
         // console.log('Order Check: ', this.state.orders)
         console.log(this.props)
+        console.log(this.state.inventory)
+        console.log(this.props.user)
         let {orders} = this.state;
         let {designer, order, product, quantity, notes, delivered, name, email, address, city, state, zip_code} = this.state
 
@@ -92,7 +101,7 @@ class AdminOnly extends Component {
                 <h1 className='items'>Inventory</h1>
                 <section className='items'>
                     {this.state.inventory.map((item, index)=>(
-                        <AdminItem key={index} item={item} inventory={this.state.inventory}/>
+                        <AdminItem key={index} item={item} inventory={this.state.inventory} removeItem={this.removeItem}/>
                     ))}
                 </section>
             </main>

@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 const initialState ={
+    product_id: 0,
     product_name: "",
     description: "",
     price: 0,
@@ -14,6 +15,8 @@ const HANDLE_PRICE = 'HANDLE_PRICE';
 const HANDLE_IMAGE = 'HANDLE_IMAGE';
 const HANDLE_DESIGNER = 'HANDLE_DESIGNER';
 const COMPLETE_WIZARD = 'COMPLETE_WIZARD';
+const EDIT_WIZARD = 'EDIT_WIZARD';
+const EDITED_WIZARD = 'EDITED_WIZARD';
 
 export const handleName = (product_name)=>{
     return{
@@ -53,10 +56,26 @@ export const completeWizard = (product_name, description, price, image, designer
         payload: data
     }
 }
+export const startEditWizard = (product_id, product_name, description, price, image, designer)=>{
+    let data = {product_id, product_name, description, price, image, designer}
+    console.log(data)
+    return{
+        type: EDIT_WIZARD,
+        payload: data
+    }
+}
+export const completeEditWizard = (product_id, product_name, description, price, image, designer)=>{
+    let data = axios.put(`/api/inventory/${product_id}`, {product_name, description, price, image, designer})
+        .then(res => res.data)
+    return{
+        type: EDITED_WIZARD,
+        payload: data
+    }
+}
 
 function wizardReducer(state= initialState, action){
-    // console.log(state)
-    // console.log(action)
+    console.log(state)
+    console.log(action)
     switch(action.type){
         case HANDLE_NAME:
             return {...state, product_name:action.payload};
@@ -74,6 +93,20 @@ function wizardReducer(state= initialState, action){
             price: 0,
             image: "",
             designer: ''}
+        case EDIT_WIZARD:
+            return {...state, product_id: action.payload.product_id,
+                product_name: action.payload.product_name,
+                description: action.payload.description,
+                price: action.payload.price,
+                image: action.payload.image,
+                designer:action.payload.designer}
+        case EDITED_WIZARD:
+        return {...state, product_id: 0,
+        product_name: "",
+        description: "",
+        price: 0,
+        image: "",
+        designer: ''}
         default: return state;
     }
 }

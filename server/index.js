@@ -52,8 +52,8 @@ app.delete('/api/cart/:id', auth.usersOnly, pc.removeCart)
 //--designerController-- 
 app.get('/api/orders', auth.adminsOnly, dc.getOrder)
 app.post('/api/new_item', auth.adminsOnly, dc.addProduct)
-app.put('/api/inventory')
-app.delete('/api/remove_item', auth.adminsOnly, dc.removeProduct)
+app.put('/api/inventory/:product_id', auth.adminsOnly, dc.editProduct)
+app.delete('/api/inventory/:product_id', auth.adminsOnly, dc.removeProduct)
 
 app.listen(SERVER_PORT, ()=> {
     console.log(`Listening on port ${SERVER_PORT}.`)

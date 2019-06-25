@@ -27,12 +27,8 @@ export const getUser = ()=>{
     }
 }
 export const addToCart =(product_id, product_name, image, description, size, price, quantity)=>{
-    // let item = {name: name, description: description, price: price, image: image}
-    // console.log(item)
-    // console.log(product_name)
     return{
         type: ADD_TO_CART,
-        // payload: item
         payload: axios.post('/api/cart', {
             product_id: product_id,
             product_name: product_name,
@@ -77,22 +73,13 @@ export const logout = ()=>{
 }
 
 function reducer(state= initialState, action){
-    // console.log(state)
-    // console.log(action)
     switch(action.type){
         case GET_USER:
-            // console.log(action.payload)
             return {...state, user:action.payload.data};
-        // case ADD_TO_CART:
-        //     return{...state, cart: [...state.cart, action.payload]};
         case `${ADD_TO_CART}_PENDING`:
             return {...state, loading: true}
         case `${ADD_TO_CART}_FULFILLED`:
             return {...state, cart: action.payload.data, loading: false}
-        // case REMOVE_FROM_CART:
-        //     let newCart = state.cart
-        //     newCart.splice(action.payload, 1)
-        //     return{...state, cart: newCart}
         case `${REMOVE_FROM_CART}_PENDING`:
             return{...state, loading:true}
         case `${REMOVE_FROM_CART}_FULFILLED`:
