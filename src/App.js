@@ -2,6 +2,7 @@ import React from 'react';
 
 import './reset.css'
 import './App.css';
+import './responsive.css'
 import Header from './Components/Header';
 import routes from './routes';
 

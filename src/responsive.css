@@ -1,0 +1,40 @@
+@media (max-width: 800px){
+    .items, .about, .cart{
+        width: 100%;
+        margin-left: 0%;
+    }
+    .item-profile{
+        width: 45vw;
+        margin: 0%;
+    }
+    .cart-footer{
+        background-color: blanchedalmond;
+    }
+    img{
+        height: 35vh;
+        width: 25vw;
+    }
+    .step1-inputs, .step2-inputs{
+        background-color: blanchedalmond;
+    }
+}
+@media (max-width: 500px){
+    .items, .about, .cart{
+        width: 100%;
+        margin-left: 0%;
+    }
+    .item-profile{
+        width: 100%;
+        margin: 0%;
+    }
+    .cart-footer{
+        background-color: blanchedalmond;
+    }
+    img{
+        height: 60vh;
+        width: 60vw;
+    }
+    .step1-inputs, .step2-inputs{
+
+    }
+}

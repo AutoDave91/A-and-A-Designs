@@ -63,7 +63,7 @@ class Cart extends Component{
                             {cart && cart.map((product, index)=>{
                                 console.log(product)
                             return(
-                                <div key={product.product_id}>
+                                <div key={index}>
                                 <img className = 'item-img' src={require(`../images/${product.image}.jpg`)} alt={product.product_name}/>
                                 <h3>{product.product_name}</h3>
                                 <h3 id='description'>{product.description}</h3>
@@ -71,7 +71,7 @@ class Cart extends Component{
                                 <h3>{product.quantity * product.price} ({product.quantity} for {product.price}) each.</h3>
                                 <button>edit</button>
                                 <textarea placeholder='Special Requests (color, material, ect)'/>
-                                <button onClick={()=>{this.props.removeFromCart(product.product_id); this.handleDelete(); console.log('deleted item ', index, product.product_id)}}>Delete</button>
+                                <button onClick={()=>{this.props.removeFromCart(index); this.handleDelete(); console.log('deleted item ', index, product.product_id)}}>Delete</button>
                             </div>)})}
                         </section>
                     </section>
