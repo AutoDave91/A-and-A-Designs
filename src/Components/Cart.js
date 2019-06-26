@@ -69,17 +69,21 @@ class Cart extends Component{
                             {/* {console.log(this.props.reducer.cart.cart)} */}
                             {cart && cart.map((product, index)=>{
                                 // console.log(product)
-                            return(
-                                <div className='cart-item' key={index}>
-                                <img className = 'item-img' src={require(`../images/${product.image}.jpg`)} alt={product.product_name}/>
-                                <h3>{product.product_name}</h3>
-                                <h3 id='description'>{product.description}</h3>
-                                <h3>{product.size}</h3>
-                                <h3>{product.quantity * product.price} ({product.quantity} for {product.price}) each.</h3>
-                                {/* <button>edit</button> */}
-                                <textarea placeholder='Special Requests (color, material, ect)'/>
-                                <button onClick={()=>{this.props.removeFromCart(index); this.handleDelete(); console.log('deleted item ', index)}}>Delete</button>
-                            </div>)})}
+                                return(
+                                    <section className='cart-items'>
+                                        <div className='cart-item' key={index}>
+                                            <img className = 'item-img' src={require(`../images/${product.image}.jpg`)} alt={product.product_name}/>
+                                            <h3>{product.product_name}</h3>
+                                            <h3 id='description'>{product.description}</h3>
+                                            <h3>{product.size}</h3>
+                                            <h3>{product.quantity * product.price} ({product.quantity} for {product.price} each).</h3>
+                                            {/* <button>edit</button> */}
+                                            <textarea placeholder='Special Requests (color, material, ect)'/>
+                                            <button onClick={()=>{this.props.removeFromCart(index); this.handleDelete(); console.log('deleted item ', index)}}>Delete</button>
+                                        </div>
+                                    </section>
+                                )
+                            })}
                         </section>
                     </section>
                     {/* {console.log(this.props.user)} */}

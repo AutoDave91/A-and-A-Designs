@@ -11,7 +11,7 @@ nav{
   align-items: center;
   height: 10vh;
 }
-button{
+button, .stripe{
   font-family: 'Lobster', cursive;
   font-size: 2.5vh;
   border-radius: 12px;
@@ -79,11 +79,7 @@ ul, li{
   height: 40vh;
   overflow: scroll;
 }
-.items{
-  width: 95vw;
-  margin: auto;
-  padding-top: 1vh;
-  padding-bottom: 3vh;
+.items, .cart-items{
   display: flex;
   flex-flow: wrap;
   justify-content: space-evenly;
@@ -112,9 +108,12 @@ ul, li{
   width: 80%;
   min-height: 25vh;
   margin: auto;
+}
+.user-cart{
   display: flex;
-  flex-flow: wrap;
+  flex-flow: row;
   justify-content: space-evenly;
+  width: 100%;
 }
 .size-quantity{
   display: flex;
@@ -155,8 +154,9 @@ ul, li{
   align-items: center;
   width: 17vw;
 }
-.cart-item{
+.cart-items{
   margin-bottom: 2vh;
+  width: 30vw;
 }
 
 /* hover styles */

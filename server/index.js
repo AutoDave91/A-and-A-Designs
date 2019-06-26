@@ -72,6 +72,7 @@ app.post("/api/checkout", async (req, res) => {
     let status;
     try {
         const { total, cart, token } = req.body;
+        console.log('Cart: ', cart)
     
         const customer = await stripe.customers.create({
         email: token.email,
@@ -85,7 +86,7 @@ app.post("/api/checkout", async (req, res) => {
             currency: "usd",
             customer: customer.id,
             receipt_email: token.email,
-            description: `Purchased the ${cart[0]} and ${cart[1]}`,
+            description: `Purchased the ${[items]}`,
             shipping: {
             name: token.card.name,
             address: {
