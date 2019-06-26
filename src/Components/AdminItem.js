@@ -26,7 +26,7 @@ class AdminItem extends Component{
                     <img className = 'item-img' src={require(`../images/${image}.jpg`)} alt={product_name}/>
                     <h3>{product_name}</h3>
                     <h3 id='description'>{description}</h3>
-                    <h3>{price}</h3>
+                    <h3>${price}</h3>
                     <h3>{ordered_amount} ordered.</h3>
                     <section>
                     <Link to='/designer/step1'><button id='editItem' onClick={()=> this.props.startEditWizard(product_id, product_name, description, price, image, designer)}>Edit</button></Link>

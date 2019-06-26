@@ -10,27 +10,41 @@ nav{
 }
 button{
   font-family: 'Lobster', cursive;
-  font-size: 2vh;
+  font-size: 2.5vh;
+  border-radius: 12px;
+  background-color: transparent;
+  color: black;
+  border: 2px solid black;
+}
+button:hover{
+  background-color: whitesmoke;
+  font-size: 3.5vh;
+  cursor: pointer;
 }
 .App {
   text-align: center;
-  background-color: wheat;
+  background-color: turquoise;
 }
 .login_register, .login, .register{
   display: flex;
   flex-direction: column;
-  width: 40vw;
   align-items: center;
   margin: auto;
 }
+.login, .register{
+  width: 45vw;
+}
 .login_register{
-  background-color: burlywood;
+  /* background-color: burlywood; */
   padding-top: 1vh;
   padding-bottom: 1vh;
   font-family: 'Lobster', cursive;
+  font-size: 5vh;
 }
-.login{
-  margin-bottom: 10vh;
+.login_register2{
+  height: 90vh;
+  display: flex;
+  align-items: center;
 }
 .header{
   display: flex;
@@ -52,13 +66,14 @@ button{
   margin-bottom: 5vh;
 }
 .admin-elements{
-  background-color: bisque;
+  background-color: whitesmoke;
   width: 45%;
-  min-height: 25vh;
+  height: 40vh;
+  overflow: scroll;
 }
 .items{
-  background-color: burlywood;
-  width: 90vw;
+  /* background-color: burlywood; */
+  width: 95vw;
   margin: auto;
   padding-top: 1vh;
   padding-bottom: 3vh;
@@ -67,31 +82,38 @@ button{
   justify-content: space-evenly;
 }
 .item-profile, .user-cart{
-  padding: 2vh;
-  width: 25vw;
+  padding-top: 2vh;
+  padding-bottom: 2vh;
+  width: 30vw;
   min-height: 40vh;
   margin: auto;
   margin-bottom: 2vh;
-  background-color: aliceblue;
+  background-color: whitesmoke;
   font-family: 'Cinzel', serif;
   font-size: 2vh;
-} 
+}
 .product-name{
   font-size: 3vh;
 }
 .about{
-  background-color: coral;
-  width: 90%;
-  margin-top: 2vh;
-  margin-left: 5vw;
-  padding-top: 3vh;
-  height: 20vh;
-  font-family: 'Seaweed Script', cursive;
+  background-color: aqua;
+  width: 96.75vw;
+  padding: 3vh;
+  font-family: 'Lobster', cursive;
   font-size: 3vh;
+}
+p{
+  padding-top: 1.5vh;
 }
 img{
   height: 30vh;
   width: 20vw;
+}
+img:hover{
+  height: 40vh;
+  width: 30vw;
+  position: relative;
+  z-index: 1;
 }
 .cart{
   background-color: coral;

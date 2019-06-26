@@ -21,6 +21,10 @@
     .title{
         font-size: 4vh;
     }
+    .login_register2{
+  flex-direction: column;
+  font-size: 2vh;
+}
 }
 @media (max-width: 500px){
     .items, .about, .cart{
@@ -40,9 +44,13 @@
         width: 60vw;
     }
     .step1-inputs, .step2-inputs{
-
+        background-color: blanchedalmond;
     }
     .title{
         font-size: 4vh;
     }
+    .login_register2{
+  flex-direction: column;
+  font-size: 2vh;
+}
 }

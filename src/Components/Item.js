@@ -26,7 +26,7 @@ class Item extends Component{
                     <img className = 'item-img' src={require(`../images/${image}.jpg`)} alt={product_name}/>
                     <h3 className='product-name'>{product_name}</h3>
                     <h3 id='description'>{description}</h3>
-                    <h3>{price}</h3>
+                    <h3>${price}</h3>
                     {this.props.reducer.user.username ? (
                     <div>
                         <section className='size-quantity'>

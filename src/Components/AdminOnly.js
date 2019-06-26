@@ -98,7 +98,7 @@ class AdminOnly extends Component {
                         </ul>
                     </section>
                 </section>
-                <h1 className='items'>Inventory</h1>
+                {/* <h1 className='items'>Inventory</h1> */}
                 <section className='items'>
                     {this.state.inventory.map((item, index)=>(
                         <AdminItem key={index} item={item} inventory={this.state.inventory} removeItem={this.removeItem}/>

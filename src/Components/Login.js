@@ -101,22 +101,24 @@ class Login extends Component {
         return(
             <main className='login_register'>
                 <Link to='/'><button>Home</button></Link>
-                <section className='login'>
-                    <h1>Login</h1>
-                    <input name='username' placeholder='username' value={username} onChange={this.handleChange}/>
-                    <input name='password' placeholder='password' value={password} onChange={this.handleChange}/>
-                    <button onClick={this.login}>Login</button>
-                </section>
-                <h2>---OR---</h2>
-                <section className='register'>
-                    <h1>Register</h1>
-                    <input name='newUsername' placeholder='username' value={newUsername} onChange={this.handleChange}/>
-                    <input name='newPassword' placeholder='password' value={newPassword} onChange={this.handleChange}/>
-                    <input name='first_name' placeholder='first name' value={first_name} onChange={this.handleChange}/>
-                    <input name='last_name' placeholder='last name' value={last_name} onChange={this.handleChange}/>
-                    <input name='email' placeholder='email' value={email} onChange={this.handleChange}/>
-                    <input name='phone_number' placeholder='phone number' value={phone_number} onChange={this.handleChange}/>
-                    <button onClick={this.register}>Sign Up</button>
+                <section className='login_register2'>
+                    <section className='login'>
+                        <h1>Login</h1>
+                        <input name='username' placeholder='username' value={username} onChange={this.handleChange}/>
+                        <input name='password' placeholder='password' value={password} onChange={this.handleChange}/>
+                        <button onClick={this.login}>Login</button>
+                    </section>
+                    <h2>OR</h2>
+                    <section className='register'>
+                        <h1>Register</h1>
+                        <input name='newUsername' placeholder='username' value={newUsername} onChange={this.handleChange}/>
+                        <input name='newPassword' placeholder='password' value={newPassword} onChange={this.handleChange}/>
+                        <input name='first_name' placeholder='first name' value={first_name} onChange={this.handleChange}/>
+                        <input name='last_name' placeholder='last name' value={last_name} onChange={this.handleChange}/>
+                        <input name='email' placeholder='email' value={email} onChange={this.handleChange}/>
+                        <input name='phone_number' placeholder='phone number' value={phone_number} onChange={this.handleChange}/>
+                        <button onClick={this.register}>Sign Up</button>
+                    </section>
                 </section>
             </main>
         )

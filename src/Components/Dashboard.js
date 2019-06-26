@@ -52,8 +52,11 @@ class Dashboard extends Component{
                     ))}
                 </section>
                 <section className='about'>
-                    <h2>About</h2>
-                    <p>About April and Alexis...</p>
+                    <h2 className='line'>About April and Alexis...</h2>
+                    <p className='line'>April and Alexis are sister-in-laws who both enjoy creating things in their spare time.</p>
+                    <p className='line'>April is a NICU Respiratory Theripist at a Dallas hospital. She has a husband, David, and a daughter, Rylie. She enjoys creating pieces on her Cricket and sharing them with those around her.</p>
+                    <p className='line'>Alexis is an Event Planner. She has a husband, Andrew, and a daughter, Ginny. She enjoys working in her craft room to create wonderful jewelry</p>
+                    <p className='line'>David is a Web Developer. He is married to April and is the creator of this wonderful online store.</p>
                 </section>
             </main>
         )
