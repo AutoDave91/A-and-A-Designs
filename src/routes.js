@@ -17,7 +17,10 @@ export default(
         <Route path='/april' component={April}></Route>
         <Route path='/alexis' component={Alexis}></Route>
         <Route path='/login' component={Login}></Route>
+
+        {/* below is user only */}
         <Route path='/cart' component={Cart}></Route>
+
         {/* below is adminOnly */}
         <Route exact path='/designer' component={AdminOnly}></Route>
         <Route  path="/designer/step1" component={Step1}></Route>

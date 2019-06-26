@@ -34,13 +34,6 @@ class Dashboard extends Component{
                 <nav>
                     <Link to='/alexis'><button>Alexis</button></Link>
                     <Link to='/april'><button>April</button></Link>
-
-                    {/* user features */}
-                    {/* <Link to='/bookmarks'><button>Bookmarks</button></Link>
-                    <Link to='/newsletter'><button>Newsletter</button></Link> */}
-
-                    {/* if admin */}
-                    {/* {console.log(this.props.admin)} */}
                     {this.props.reducer.user.admin === true ? (
                         <Link to='/designer'><button>Admin</button></Link>
                         ) : null

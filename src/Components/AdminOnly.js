@@ -55,11 +55,11 @@ class AdminOnly extends Component {
             }}
         return(
             <main>
-                <header>
+                <nav>
                     <Link to='/'><button>Home</button></Link>
-                    <Link to='/designer/step1'><button>Add Item</button></Link>
                     <h1>How may I assist you?</h1>
-                </header>
+                    <Link to='/designer/step1'><button>Add Item</button></Link>
+                </nav>
                 <section className='admin-container'>
                     <section className='admin-elements'>
                         <h1>Orders</h1>

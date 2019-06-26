@@ -7,4 +7,3 @@ import wr from './wizardReducer';
 const combinedReducers = combineReducers({reducer: reducer, wr: wr})
 
 export default createStore(combinedReducers, applyMiddleware(promise));
-// export default createStore(reducer, applyMiddleware(promise))

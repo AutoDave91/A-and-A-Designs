@@ -38,18 +38,14 @@ class Login extends Component {
     }
     login(){
         let {username, password} = this.state;
-        // Axios.post('/auth/login', {username, password})
         this.props.login(username, password)
         .then(user=>{
                 // console.log(user.data.admin)
                 // console.log(user)
                 // console.log(username, password)
-                // this.props.setUsername(user.data.username);
-                // this.props.setAdmin(user.data.admin);
                 this.setState({user: user.value.data, redirect: true});
                 // console.log(user.data)
-                // this.updateUser(user.data);
-                console.log('Logged in');
+                // console.log('Logged in');
             })
             .catch(()=>{
                 this.setState({username: '', password: ''});
@@ -90,7 +86,6 @@ class Login extends Component {
         let {username, password, newUsername, newPassword, first_name, last_name, email, phone_number} = this.state;
         // console.log(this.state.user)
         // console.log(this.state.user.admin)
-        // let {user} = this.props;
         if(this.state.redirect === true && this.state.user.admin === true){
             return <Redirect to='/designer' />
         }

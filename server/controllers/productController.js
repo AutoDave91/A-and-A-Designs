@@ -25,11 +25,11 @@ function getAll(req, res){
 function addCart(req, res){
     // console.log(req.session.customer.cart)
     // console.log(req.body)
-    const {price} = req.body
+    const {price, quantity} = req.body
     const productObject = req.body
     
     req.session.customer.cart.push(productObject)
-    req.session.customer.total += +price
+    req.session.customer.total += (+price * +quantity)
     res.status(200).json(req.session.customer)
 }
 function removeCart(req, res){
@@ -37,7 +37,7 @@ function removeCart(req, res){
     // console.log(req.session.customer.cart)
     let index = +req.params.id
 
-    req.session.customer.total -= req.session.customer.cart[index].price
+    req.session.customer.total -= (req.session.customer.cart[index].price * req.session.customer.cart[index].quantity)
     req.session.customer.cart.splice(index, 1)
     
     res.status(200).json(req.session.customer)

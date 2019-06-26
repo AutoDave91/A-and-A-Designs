@@ -22,10 +22,38 @@
         font-size: 4vh;
     }
     .login_register2{
-  flex-direction: column;
-  font-size: 2vh;
+        flex-direction: column;
+        font-size: 2vh;
+    }
+    button:hover{
+        background-color: transparent;
+        font-size: 2vh;
+    }
+    .admin-elements:hover{
+        border: 2px solid black;
+        background-color: beige;
+    }
+    img:hover{
+        height: 40vh;
+        width: 30vw;
+        position: relative;
+        z-index: 1;
+    }
+    .order-list:hover{
+        cursor: pointer;
+        border: 1px solid black;
+    }
+    button{
+            font-size: 2vh;
+    }
+    .app{
+            width: 0vw;
+    }
+    .about{
+            font-size: 2vh;
+    }
 }
-}
+
 @media (max-width: 500px){
     .items, .about, .cart{
         width: 100%;
@@ -40,7 +68,7 @@
         background-color: blanchedalmond;
     }
     img{
-        height: 60vh;
+        height: 40vh;
         width: 60vw;
     }
     .step1-inputs, .step2-inputs{
@@ -50,7 +78,35 @@
         font-size: 4vh;
     }
     .login_register2{
-  flex-direction: column;
-  font-size: 2vh;
-}
+    flex-direction: column;
+    font-size: 2vh;
+    }
+    button{
+        font-size: 2vh;
+    }
+    .app{
+        width: 0vw;
+    }
+    .about{
+        font-size: 2vh;
+    }
+    button:hover{
+        background-color: transparent;
+        font-size: 2vh;
+        cursor: pointer;
+    }
+    .admin-elements:hover{
+        border: 2px solid black;
+        background-color: beige;
+    }
+    img:hover{
+        height: 40vh;
+        width: 30vw;
+        position: relative;
+        z-index: 1;
+    }
+    .order-list:hover{
+        cursor: pointer;
+        border: 1px solid black;
+    }
 }

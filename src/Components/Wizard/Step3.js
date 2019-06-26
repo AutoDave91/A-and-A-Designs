@@ -34,7 +34,6 @@ class Step3 extends Component{
             <main>
                 <h1>Confirmation</h1>
                 <img className = 'item-img' src={require(`../../images/${this.props.reducer.image}.jpg`)} alt={this.props.reducer.product_name}/>
-                {/* <h3>{this.props.image}</h3> */}
                 <h3>{this.props.reducer.product_name}</h3>
                 <h3>{this.props.reducer.description}</h3>
                 <h3>{this.props.reducer.price}</h3>

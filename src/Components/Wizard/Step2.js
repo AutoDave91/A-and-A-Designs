@@ -8,8 +8,6 @@ class Step2 extends Component{
     constructor(){
         super()
         this.state ={
-            image: '',
-            designer: ''
         }
         this.handleImage = this.handleImage.bind(this)
         this.handleDesigner = this.handleDesigner.bind(this)

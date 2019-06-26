@@ -37,7 +37,6 @@ class Cart extends Component{
         console.log(this.state)
         // // console.log('Cart: reducer.cart.cart', this.props.reducer.cart.cart)
         console.log('being mapped', this.props.reducer.cart.cart)
-        // let {total, cart} = this.props.reducer
         let {total, cart, user} = this.state
         return(
             <main>
@@ -45,25 +44,12 @@ class Cart extends Component{
                 <section>
                     <h1>Cart total: ${total}</h1>
                     <section className='cart'>
-                        {/* {this.props.username ? this.props.cart ? this.props.cart.map((item, index)=>{
-                            return(
-                                <div key={index}>
-                                    <img className = 'item-img' src={require(`../images/${item.image}.jpg`)} alt={item.product_name}/>
-                                    <h3>{item.product_name}</h3>
-                                    <h3 id='description'>{item.description}</h3>
-                                    <h3>{item.price}</h3>
-                                    <textarea placeholder='Special Requests (size, color, ect)'/>
-                                    <button onClick={()=>{this.props.removeFromCart(index); console.log('deleted item ', index)}}>Delete</button>
-                                </div>
-                            )
-                        }) : null : (<h1>Please sign in to view cart.</h1>)} */}
-
                         <section className='user-cart'>
                             {console.log(this.props.reducer.cart.cart)}
                             {cart && cart.map((product, index)=>{
                                 console.log(product)
                             return(
-                                <div key={index}>
+                                <div className='cart-item' key={index}>
                                 <img className = 'item-img' src={require(`../images/${product.image}.jpg`)} alt={product.product_name}/>
                                 <h3>{product.product_name}</h3>
                                 <h3 id='description'>{product.description}</h3>
@@ -76,7 +62,6 @@ class Cart extends Component{
                         </section>
                     </section>
                     {/* {console.log(this.props.user)} */}
-                    {/* <h3>Total: {this.props.user.total}</h3> */}
                 </section>
                 <section>
                     <h1>{this.props.reducer.first_name}</h1>

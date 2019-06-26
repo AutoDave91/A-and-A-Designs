@@ -8,9 +8,6 @@ class Step1 extends Component{
     constructor(){
         super()
         this.state ={
-            product_name: '',
-            description: '',
-            price: 0
         }
         this.handleName = this.handleName.bind(this)
         this.handleDescription = this.handleDescription.bind(this)

@@ -10,7 +10,6 @@ class Header extends Component {
         this.state={
             user: {}
         }
-        // this.logout = this.logout.bind(this)
     }
 
     componentDidMount(){
@@ -22,11 +21,9 @@ class Header extends Component {
         // console.log(this.props.reducer)
         return(
             <main className='header'>
-                {/* <div className='space' /> */}
-
                 {this.props.reducer.user.username ? (
                     <div className='logged-in'>
-                        <h1 className='welcome'>Welcome {this.props.reducer.user.username}</h1>
+                        <h1 className='welcome'>Welcome {this.props.reducer.user.first_name}</h1>
                         <Link to='/'><button onClick={this.props.logout}>Log out</button></Link>
                     </div>
                     ) : (<div className='logged-out'>
@@ -37,7 +34,7 @@ class Header extends Component {
                 <h1 className='title'>A & A Designs</h1>
                 {this.props.reducer.cart.cart !== undefined ? (
                     <div className='space'>
-                        <Link to='/cart'><button onClick={()=>{console.log(`send ${this.props.reducer.cart.cart} to ${this.props.reducer.user.cart}`)}}>Cart</button></Link>
+                        <Link to='/cart'><button>Cart</button></Link>
                     </div>
                     ) : <div className='space' />}
             </main>

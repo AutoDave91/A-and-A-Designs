@@ -10,13 +10,8 @@ class AdminItem extends Component{
         this.state={
             
         }
-        // this.startEditing = this.startEditing.bind(this)
     }
 
-    // startEditing(){
-
-    // }
-    
     render(){
         console.log(this.props)
         let {image, product_id, product_name, description, price, designer, ordered_amount} = this.props.item
