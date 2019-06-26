@@ -44,9 +44,9 @@ class AdminOnly extends Component {
 
     render(){
         // console.log('Order Check: ', this.state.orders)
-        console.log(this.props)
-        console.log(this.state.inventory)
-        console.log(this.props.user)
+        // console.log(this.props)
+        // console.log(this.state.inventory)
+        // console.log(this.props.user)
         let {orders} = this.state;
         let {designer, order, product, quantity, notes, delivered, name, email, address, city, state, zip_code} = this.state
 

@@ -34,11 +34,11 @@ class Step1 extends Component{
                 <h1>Step1</h1>
                 <section className='step1-inputs'>
                     <h2>Product Name</h2>
-                    <input onChange={this.handleName} value={this.props.product_name}></input>
+                    <input onChange={this.handleName} value={this.props.reducer.product_name}></input>
                     <h2>Description</h2>
-                    <textarea onChange={this.handleDescription} value={this.props.description}></textarea>
+                    <textarea onChange={this.handleDescription} value={this.props.reducer.description}></textarea>
                     <h2>Price</h2>
-                    <input onChange={this.handlePrice} value={this.props.price}></input>
+                    <input onChange={this.handlePrice} value={this.props.reducer.price}></input>
                 </section>
                 <Link to='/designer'><button>Cancel</button></Link>
                 <Link to='/designer/step2'><button>Next</button></Link>

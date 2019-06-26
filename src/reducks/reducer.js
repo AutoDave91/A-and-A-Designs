@@ -73,9 +73,12 @@ export const logout = ()=>{
 }
 
 function reducer(state= initialState, action){
+    console.log(action)
     switch(action.type){
-        case GET_USER:
-            return {...state, user:action.payload.data};
+        case `${GET_USER}_PENDING`:
+            return {...state, loading: true};
+        case `${GET_USER}`:
+            return {...state, user:action.payload.data, loading: false};
         case `${ADD_TO_CART}_PENDING`:
             return {...state, loading: true}
         case `${ADD_TO_CART}_FULFILLED`:
@@ -86,9 +89,9 @@ function reducer(state= initialState, action){
                 console.log('payload.data', action.payload.data)
                 console.log('user', state.user)
             return{...state, user: action.payload.data, loading:false}
-        case SET_USERNAME:
+        case `${SET_USERNAME}_FULFILLED`:
             return {...state, username: action.payload};
-        case SET_ADMIN:
+        case `${SET_ADMIN}_FULFILLED`:
             return {...state, admin: action.payload};
         case `${LOGIN}_PENDING`:
             return {...state, loading: true};

@@ -13,7 +13,7 @@ class AdminItem extends Component{
     }
 
     render(){
-        console.log(this.props)
+        // console.log(this.props)
         let {image, product_id, product_name, description, price, designer, ordered_amount} = this.props.item
         return(
             <main>

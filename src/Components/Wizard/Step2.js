@@ -32,9 +32,9 @@ class Step2 extends Component{
                 <h1>Step2</h1>
                 <section className='step2-inputs'>
                     <h2>image</h2>
-                    <input onChange={this.handleImage} value={this.props.image}></input>
+                    <input onChange={this.handleImage} value={this.props.reducer.image}></input>
                     <h2>Designer</h2>
-                    <input onChange={this.handleDesigner} value={this.props.designer}></input>
+                    <input onChange={this.handleDesigner} value={this.props.reducer.designer}></input>
                 </section>
                 <Link to='/designer/step1'><button>Back</button></Link>
                 <Link to='/designer/step3'><button onClick={this.handleClick}>Next</button></Link>

@@ -50,10 +50,12 @@ async function logout(req, res){
     return res.status(200).send(req.session);
 }
 async function getUser(req, res){
+    // console.log('AC:53 ->', req.session)
+    // console.log(req.session.customer)
     if(req.session.customer){
         res.json(req.session.customer)
     } else {
-        res.status(401).json(console.log('req.session.customer check, ', req.session.customer))
+        res.status(401).json(console.log('no user found'))
     }
 }
 
