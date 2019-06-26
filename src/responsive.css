@@ -6,6 +6,7 @@
     .item-profile{
         width: 45vw;
         margin: 0%;
+        margin-bottom: 2vh;
     }
     .cart-footer{
         background-color: blanchedalmond;
@@ -17,6 +18,9 @@
     .step1-inputs, .step2-inputs{
         background-color: blanchedalmond;
     }
+    .title{
+        font-size: 4vh;
+    }
 }
 @media (max-width: 500px){
     .items, .about, .cart{
@@ -26,6 +30,7 @@
     .item-profile{
         width: 100%;
         margin: 0%;
+        margin-bottom: 2vh;
     }
     .cart-footer{
         background-color: blanchedalmond;
@@ -36,5 +41,8 @@
     }
     .step1-inputs, .step2-inputs{
 
+    }
+    .title{
+        font-size: 4vh;
     }
 }

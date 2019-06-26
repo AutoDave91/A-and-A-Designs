@@ -8,8 +8,13 @@ nav{
   align-items: center;
   height: 10vh;
 }
+button{
+  font-family: 'Lobster', cursive;
+  font-size: 2vh;
+}
 .App {
   text-align: center;
+  background-color: wheat;
 }
 .login_register, .login, .register{
   display: flex;
@@ -22,6 +27,7 @@ nav{
   background-color: burlywood;
   padding-top: 1vh;
   padding-bottom: 1vh;
+  font-family: 'Lobster', cursive;
 }
 .login{
   margin-bottom: 10vh;
@@ -29,14 +35,14 @@ nav{
 .header{
   display: flex;
   justify-content: space-between;
-  padding-right: 10vw;
-  padding-left: 5vw;
+  padding-right: 2vw;
+  padding-left: 2vw;
   background-color: aqua;
   height: 10vh;
   align-items: center;
 }
 .space{
-  width: .5vw;
+  width: 17vw;
 }
 .admin-container{
   display: flex;
@@ -61,9 +67,17 @@ nav{
   justify-content: space-evenly;
 }
 .item-profile, .user-cart{
-  padding-top: 2vh;
+  padding: 2vh;
   width: 25vw;
+  min-height: 40vh;
   margin: auto;
+  margin-bottom: 2vh;
+  background-color: aliceblue;
+  font-family: 'Cinzel', serif;
+  font-size: 2vh;
+} 
+.product-name{
+  font-size: 3vh;
 }
 .about{
   background-color: coral;
@@ -72,6 +86,8 @@ nav{
   margin-left: 5vw;
   padding-top: 3vh;
   height: 20vh;
+  font-family: 'Seaweed Script', cursive;
+  font-size: 3vh;
 }
 img{
   height: 30vh;
@@ -117,4 +133,18 @@ ul, li{
 .order-list:hover{
   cursor: pointer;
   color: darkorange;
+}
+.welcome{
+  font-family: 'Lobster', cursive;
+  font-size: 2.5vh;
+  margin-right: 1vw;
+}
+.title{
+  font-family: 'Monoton', cursive;
+  font-size: 6vh;
+}
+.logged-in, .logged-out{
+  display: flex;
+  align-items: center;
+  width: 17vw;
 }

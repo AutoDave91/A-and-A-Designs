@@ -58,7 +58,7 @@ export const completeWizard = (product_name, description, price, image, designer
 }
 export const startEditWizard = (product_id, product_name, description, price, image, designer)=>{
     let data = {product_id, product_name, description, price, image, designer}
-    console.log(data)
+    // console.log(data)
     return{
         type: EDIT_WIZARD,
         payload: data
@@ -74,8 +74,8 @@ export const completeEditWizard = (product_id, product_name, description, price,
 }
 
 function wizardReducer(state= initialState, action){
-    console.log(state)
-    console.log(action)
+    // console.log(state)
+    // console.log(action)
     switch(action.type){
         case HANDLE_NAME:
             return {...state, product_name:action.payload};

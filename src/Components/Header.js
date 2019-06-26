@@ -25,17 +25,18 @@ class Header extends Component {
                 {/* <div className='space' /> */}
 
                 {this.props.reducer.user.username ? (
-                    <div>
-                        <h1>Welcome {this.props.reducer.user.username}</h1>
+                    <div className='logged-in'>
+                        <h1 className='welcome'>Welcome {this.props.reducer.user.username}</h1>
                         <Link to='/'><button onClick={this.props.logout}>Log out</button></Link>
                     </div>
-                    ) : (
-                        <Link to='/login'><button>Login</button></Link>
+                    ) : (<div className='logged-out'>
+                            <Link to='/login'><button >Login</button></Link>
+                        </div>
                         )
                     }
-                <h1>A & A Designs</h1>
+                <h1 className='title'>A & A Designs</h1>
                 {this.props.reducer.cart.cart !== undefined ? (
-                    <div>
+                    <div className='space'>
                         <Link to='/cart'><button onClick={()=>{console.log(`send ${this.props.reducer.cart.cart} to ${this.props.reducer.user.cart}`)}}>Cart</button></Link>
                     </div>
                     ) : <div className='space' />}
