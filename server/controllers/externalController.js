@@ -13,9 +13,20 @@ async function checkout(req, res) {
     
     let error;
     let status;
+    let address;
     try {
         const { total, cart, token } = req.body;
-        console.log('Cart: ', cart)
+        // console.log('EC19: ', cart)
+        let items = '';
+        for(i=0; i<cart.length; i++){
+            items += `${cart[i].product_name}`
+            if(i<cart.length-1){
+                items += ', '
+            } else {
+                items += '.'
+            }
+        }
+        // console.log('EC29: ', items)
     
         const customer = await stripe.customers.create({
         email: token.email,
@@ -28,7 +39,7 @@ async function checkout(req, res) {
             currency: "usd",
             customer: customer.id,
             receipt_email: token.email,
-            description: `Purchased the stuff`,
+            description: `Purchased: ${items}`,
             shipping: {
                 name: token.card.name,
                 address: {
@@ -44,15 +55,17 @@ async function checkout(req, res) {
             idempotency_key
         }
         );
-        console.log("Charge:", { charge });
+        // console.log("Charge:", { charge });
         status = "success";
+        address = {charge};
     } catch (error) {
         console.error("Error:", error);
         status = "failure";
     }
     
-    res.json({ error, status });
-    console.log(status)
+    res.json({ error, status, address });
+    // console.log('EC67: ', status, address.charge.shipping.address)
+
 };
 
 module.exports ={

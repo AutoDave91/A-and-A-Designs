@@ -22,32 +22,54 @@ class Cart extends Component{
             cart: [],
             total: 0
         }
-        // this.handleDelete = this.handleDelete.bind(this);
         this.handleToken = this.handleToken.bind(this);
+        this.placeOrder = this.placeOrder.bind(this);
     }
 
     componentDidMount(){
         this.props.getUser()
-        // .then(response=>{this.setState({cart: response.value.data.cart, total: parseFloat(Math.round(response.value.data.total * 100) / 100).toFixed(2)})});
     }
-    // handleDelete(){
-    //     this.props.getUser()
-    //         .then(response=>{console.log('getUser', response.value.data)
-    //         this.setState({cart: response.value.data.cart, total: parseFloat(Math.round(response.value.data.total * 100) / 100).toFixed(2)})
-    //         })
-    //         .catch(()=> console.log('handleDelete error at componentDidMount'))
-    // }
 
     // Stripe
+    
+    async placeOrder(bulkAddress){
+        let {total, cart, id} = this.props.reducer.cart;
+                let customer_id = id;
+                console.log(customer_id)
+                let product_id = '{';
+                console.log(product_id)
+                let quantity = '{';
+                console.log(quantity)
+                let notes = '{';
+                console.log(notes)
+                let {line1, line2, city, state, zip_code} = bulkAddress
+                let address = `${line1} ${line2}`
+                console.log(address, city, state, zip_code)
+
+                cart.forEach(function(item){
+                    product_id += `${item.product_id}, `;
+                    quantity += `${item.quantity}, `;
+                    notes += `${item.notes}, `;
+                })
+                product_id += '}'
+                quantity += '}'
+                notes += '}'
+
+                Axios.post('/api/order', {product_id, customer_id, quantity, total, address, city, state, zip_code, notes})
+    }
+
     async handleToken(token){
-        console.log({token})
-        let {cart, total} = this.state
-        console.log(cart)
+        // console.log({token})
+        let {cart, total} = this.props.reducer.user
+        // console.log(cart)
         const response = await Axios.post('/api/checkout', {token, cart, total});
-        const {status} = response.data
-        console.log(status)
+        const {status, address} = response.data
+        // console.log(status)
         if(status === 'success'){
-            toast('Success! Check email for details.', {type: "success"})
+            toast('Success! Check email for details.', {type: "success"});
+
+            // console.log(address.charge.shipping.address)
+            this.placeOrder(address.charge.shipping.address)
         } else {
             toast('Something went wrong...', {type: 'error'})
         }
@@ -80,9 +102,11 @@ class Cart extends Component{
                                             <h3>${product.quantity * product.price} ({product.quantity} for {product.price} each).</h3>
                                             {/* <button>edit</button> */}
                                             <textarea placeholder='Special Requests (color, material, ect)'/>
-                                            <button onClick={()=>{this.props.removeFromCart(index);
-                                                // this.handleDelete(); console.log('deleted item ', index)
-                                                }}>Delete</button>
+                                            <div>
+                                                <button onClick={()=>{this.props.removeFromCart(index);
+                                                    // this.handleDelete(); console.log('deleted item ', index)
+                                                    }}>Delete</button>
+                                            </div>
                                         </div>
                                     </section>
                                 )
@@ -98,7 +122,7 @@ class Cart extends Component{
                         token={this.handleToken}
                         billingAddress
                         shippingAddress
-                        amount={total *100}
+                        amount={+total *100}
                         name={'A & A Designs'}
                     />
                     {/* {this.props.user.last_name} */}

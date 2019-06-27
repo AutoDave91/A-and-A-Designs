@@ -41,12 +41,19 @@ function removeCart(req, res){
     req.session.customer.cart.splice(index, 1)
     
     res.status(200).json(req.session.customer)
-    console.log('PC: req.session.customer.cart', req.session.customer.cart)
+    // console.log('PC: req.session.customer.cart', req.session.customer.cart)
 }
 function placeOrder(req, res){
-    const {product_id, customer_id, quantity, delivered, total, address , city , state , zip_code} = req.body;
+    const {product_id, customer_id, quantity, address , city , state , zip_code, notes} = req.body;
+    console.log(req.body)
+    let total = parseFloat(Math.round(req.body.total * 100) / 100).toFixed(2)
     const db =req.app.get('db');
-    db.add_order([product_id, customer_id, quantity, delivered, total, address , city , state , zip_code]).then(response =>res.status(200).json(response))
+
+    req.session.customer.cart = []
+    req.session.customer.total = 0
+
+    db.add_order([product_id, customer_id, quantity, total, address , city , state , zip_code, notes])
+        .then(response =>res.status(200).json(response))
         .catch(()=>console.log('Failed to add order'))
 }
 
