@@ -28,7 +28,7 @@ async function checkout(req, res) {
             currency: "usd",
             customer: customer.id,
             receipt_email: token.email,
-            description: `Purchased the ${[items]}`,
+            description: `Purchased the stuff`,
             shipping: {
                 name: token.card.name,
                 address: {
