@@ -108,8 +108,10 @@ class Login extends Component {
                         <h1>Register</h1>
                         <input name='newUsername' placeholder='username' value={newUsername} onChange={this.handleChange}/>
                         <input name='newPassword' placeholder='password' value={newPassword} onChange={this.handleChange}/>
-                        <input name='first_name' placeholder='first name' value={first_name} onChange={this.handleChange}/>
-                        <input name='last_name' placeholder='last name' value={last_name} onChange={this.handleChange}/>
+                        <section className='name-inputs'>
+                            <input className='name' name='first_name' placeholder='first name' value={first_name} onChange={this.handleChange}/>
+                            <input className='name' name='last_name' placeholder='last name' value={last_name} onChange={this.handleChange}/>
+                        </section>
                         <input name='email' placeholder='email' value={email} onChange={this.handleChange}/>
                         <input name='phone_number' placeholder='phone number' value={phone_number} onChange={this.handleChange}/>
                         <button onClick={this.register}>Sign Up</button>

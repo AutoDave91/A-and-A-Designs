@@ -28,7 +28,7 @@ class Step2 extends Component{
             return <Redirect to='/' />
             }}
         return(
-            <main>
+            <main className='step2'>
                 <h1>Step2</h1>
                 <section className='step2-inputs'>
                     <h2>image</h2>

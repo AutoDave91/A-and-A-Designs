@@ -8,7 +8,8 @@ class Header extends Component {
     constructor(){
         super()
         this.state={
-            user: {}
+            user: {},
+            toggle: false
         }
     }
 
@@ -17,8 +18,8 @@ class Header extends Component {
     }
 
     render(){
-        // console.log(this.state.user)
-        // console.log(this.props.reducer)
+        console.log(this.state)
+        console.log(this.props.reducer)
         return(
             <main className='header'>
                 {this.props.reducer.user.username ? (

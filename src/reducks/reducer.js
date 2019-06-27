@@ -23,7 +23,7 @@ const LOGOUT = 'LOGOUT';
 export const getUser = ()=>{
     return{
         type: GET_USER,
-        payload: axios.get('/auth/user').catch(()=>console.log('error getting user'))
+        payload: axios.get('/auth/user')
     }
 }
 export const addToCart =(product_id, product_name, image, description, size, price, quantity)=>{
@@ -73,12 +73,13 @@ export const logout = ()=>{
 }
 
 function reducer(state= initialState, action){
-    console.log(action)
+    // console.log(action)
     switch(action.type){
         case `${GET_USER}_PENDING`:
             return {...state, loading: true};
-        case `${GET_USER}`:
-            return {...state, user:action.payload.data, loading: false};
+        case `${GET_USER}_FULFILLED`:
+                // console.log(action)
+            return {...state, user: action.payload.data, loading: false};
         case `${ADD_TO_CART}_PENDING`:
             return {...state, loading: true}
         case `${ADD_TO_CART}_FULFILLED`:
@@ -86,8 +87,8 @@ function reducer(state= initialState, action){
         case `${REMOVE_FROM_CART}_PENDING`:
             return{...state, loading:true}
         case `${REMOVE_FROM_CART}_FULFILLED`:
-                console.log('payload.data', action.payload.data)
-                console.log('user', state.user)
+                // console.log('payload.data', action.payload.data)
+                // console.log('user', state.user)
             return{...state, user: action.payload.data, loading:false}
         case `${SET_USERNAME}_FULFILLED`:
             return {...state, username: action.payload};

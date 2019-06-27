@@ -30,7 +30,7 @@ class Step1 extends Component{
             return <Redirect to='/' />
             }}
         return(
-            <main>
+            <main className='step1'>
                 <h1>Step1</h1>
                 <section className='step1-inputs'>
                     <h2>Product Name</h2>

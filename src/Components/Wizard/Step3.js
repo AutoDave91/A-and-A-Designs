@@ -31,7 +31,7 @@ class Step3 extends Component{
             return <Redirect to='/' />
             }}
         return(
-            <main>
+            <main className='step3'>
                 <h1>Confirmation</h1>
                 <img className = 'item-img' src={require(`../../images/${this.props.reducer.image}.jpg`)} alt={this.props.reducer.product_name}/>
                 <h3>{this.props.reducer.product_name}</h3>
