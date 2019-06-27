@@ -22,20 +22,21 @@ class Cart extends Component{
             cart: [],
             total: 0
         }
-        this.handleDelete = this.handleDelete.bind(this);
+        // this.handleDelete = this.handleDelete.bind(this);
         this.handleToken = this.handleToken.bind(this);
     }
 
     componentDidMount(){
-        this.props.getUser().then(response=>{this.setState({cart: response.value.data.cart, total: parseFloat(Math.round(response.value.data.total * 100) / 100).toFixed(2)})});
-    }
-    handleDelete(){
         this.props.getUser()
-            .then(response=>{console.log('getUser', response.value.data)
-            this.setState({cart: response.value.data.cart, total: parseFloat(Math.round(response.value.data.total * 100) / 100).toFixed(2)})
-            })
-            .catch(()=> console.log('handleDelete error at componentDidMount'))
+        // .then(response=>{this.setState({cart: response.value.data.cart, total: parseFloat(Math.round(response.value.data.total * 100) / 100).toFixed(2)})});
     }
+    // handleDelete(){
+    //     this.props.getUser()
+    //         .then(response=>{console.log('getUser', response.value.data)
+    //         this.setState({cart: response.value.data.cart, total: parseFloat(Math.round(response.value.data.total * 100) / 100).toFixed(2)})
+    //         })
+    //         .catch(()=> console.log('handleDelete error at componentDidMount'))
+    // }
 
     // Stripe
     async handleToken(token){
@@ -55,15 +56,15 @@ class Cart extends Component{
     render(){
         // console.log('Cart: reducer.user.cart', this.props.reducer.user.cart)
         // console.log(this.props.customer)
-        console.log(this.state.cart)
+        console.log(this.props)
         // // console.log('Cart: reducer.cart.cart', this.props.reducer.cart.cart)
         // console.log('being mapped', this.props.reducer.cart.cart)
-        let {total, cart, user} = this.state
+        let {total, cart, user} = this.props.reducer.user
         return(
             <main>
                 <Link to='/'><button>Home</button></Link>
                 <section>
-                    <h1>Cart total: ${total}</h1>
+                    <h1 className='cart-total'>Cart total: ${parseFloat(Math.round(total * 100) / 100).toFixed(2)}</h1>
                     <section className='cart'>
                         <section className='user-cart'>
                             {/* {console.log(this.props.reducer.cart.cart)} */}
@@ -76,10 +77,12 @@ class Cart extends Component{
                                             <h3>{product.product_name}</h3>
                                             <h3 id='description'>{product.description}</h3>
                                             <h3>{product.size}</h3>
-                                            <h3>{product.quantity * product.price} ({product.quantity} for {product.price} each).</h3>
+                                            <h3>${product.quantity * product.price} ({product.quantity} for {product.price} each).</h3>
                                             {/* <button>edit</button> */}
                                             <textarea placeholder='Special Requests (color, material, ect)'/>
-                                            <button onClick={()=>{this.props.removeFromCart(index); this.handleDelete(); console.log('deleted item ', index)}}>Delete</button>
+                                            <button onClick={()=>{this.props.removeFromCart(index);
+                                                // this.handleDelete(); console.log('deleted item ', index)
+                                                }}>Delete</button>
                                         </div>
                                     </section>
                                 )
