@@ -32,8 +32,8 @@ class Dashboard extends Component{
         return(
             <main>
                 <nav>
-                    <Link to='/alexis'><button>Alexis</button></Link>
-                    <Link to='/april'><button>April</button></Link>
+                    <Link to='/jewelry'><button>Jewelry</button></Link>
+                    <Link to='/cloths'><button>Cloths & Accessories</button></Link>
                     
                     {this.props.reducer.user.admin === true ? (
                         <Link to='/designer'><button>Admin</button></Link>

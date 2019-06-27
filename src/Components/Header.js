@@ -31,7 +31,7 @@ class Header extends Component {
                         </div>
                         )
                     }
-                <h1 className='title'>A & A Designs</h1>
+                <h1 className='title'>A + A Designs</h1>
                 {this.props.reducer.cart.cart !== undefined ? (
                     <div className='space'>
                         <Link to='/cart'><button>Cart</button></Link>

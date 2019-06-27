@@ -13,7 +13,7 @@ class April extends Component{
     }
 
     componentDidMount(){
-        Axios.get('/api/april').then(response=>
+        Axios.get('/api/cloths').then(response=>
             this.setState({inventory: response.data}))
             .catch(()=> console.log('error at componentDidMount'))
     }
@@ -22,7 +22,7 @@ class April extends Component{
         return(
             <main>
                 <nav>
-                    <Link to='/alexis'><button>Alexis</button></Link>
+                    <Link to='/jewelry'><button>Jewelry</button></Link>
                     <Link to='/'><button>Home</button></Link>
                 </nav>
                 <section>

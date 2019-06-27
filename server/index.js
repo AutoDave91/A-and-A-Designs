@@ -41,8 +41,8 @@ app.get('/auth/user', ac.getUser)
 
 // --productController--
 app.get('/api/inventory', pc.getAll)
-app.get('/api/alexis', pc.getAlexis)
-app.get('/api/april', pc.getApril)
+app.get('/api/jewelry', pc.getAlexis)
+app.get('/api/cloths', pc.getApril)
 
 // --cartController--
 app.post('/api/cart', auth.usersOnly, pc.addCart)
