@@ -56,8 +56,8 @@ class AdminOnly extends Component {
         return(
             <main>
                 <nav>
+                    <Link to='/designer/newsletter'><button>Newsletter</button></Link>
                     <Link to='/'><button>Home</button></Link>
-                    <h1>How may I assist you?</h1>
                     <Link to='/designer/step1'><button>Add Item</button></Link>
                 </nav>
                 <section className='admin-container'>

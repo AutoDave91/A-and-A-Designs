@@ -10,7 +10,8 @@ const ac = require('./controllers/authController');
 const pc = require('./controllers/productController');
 const dc = require('./controllers/designerController');
 const auth = require('./middleware/auth.Middleware');
-const ec = require('./controllers/externalController');
+const sc = require('./controllers/stripeController');
+const nc = require('./controllers/nodeMailerController');
 
 
 // general server setup w/session and database
@@ -51,8 +52,9 @@ app.post('/api/order', auth.usersOnly, pc.placeOrder)
 app.put('/api/cart/:id')
 app.delete('/api/cart/:id', auth.usersOnly, pc.removeCart)
 
-// --externalController--
-app.post('/api/checkout',auth.usersOnly, ec.checkout)
+// --stripeController & nodeMailerController--
+app.post('/api/checkout',auth.usersOnly, sc.checkout)
+app.post('/api/email', auth.adminsOnly, nc.newsletter)
 
 //--designerController-- 
 app.get('/api/orders', auth.adminsOnly, dc.getOrder)

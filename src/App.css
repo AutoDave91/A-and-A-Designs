@@ -171,8 +171,13 @@ ul, li{
   margin-bottom: 2vh;
   width: 30vw;
 }
-.step1, .step2, .step3, .cart-total{
+.step1, .step2, .step3, .cart-total, .newsletter{
   color: aqua;
+}
+.news-text{
+  width: 50vw;
+  height: 50vh;
+  text-align: left;
 }
 
 /* hover styles */
