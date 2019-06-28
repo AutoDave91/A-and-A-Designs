@@ -37,7 +37,7 @@ class Dashboard extends Component{
                     {this.props.reducer.user.id ? (
                         <section className='user-buttons'>
                             {/* <button>Favorites</button> */}
-                            {/* <button>Profile</button> */}
+                            <Link to='/profile'><button>Profile</button></Link>
                         </section>
                         ) : null
                     }
