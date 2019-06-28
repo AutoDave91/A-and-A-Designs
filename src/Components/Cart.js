@@ -37,25 +37,43 @@ class Cart extends Component{
                 let customer_id = id;
                 console.log(customer_id)
                 let product_id = '{';
-                console.log(product_id)
                 let quantity = '{';
-                console.log(quantity)
                 let notes = '{';
+                let {address_line1, address_line2, address_city, address_state, address_zip} = bulkAddress
+                let city = address_city
+                let state = address_state
+                let zip = address_zip
+                let address = `${address_line1}`
+                if(address_line2 !== null){
+                    address += ` ${address_line2}`
+                }
+                console.log(address, city, state, zip)
+                
+                for(let i=0; i<cart.length; i++){
+                    product_id += cart[i].product_id
+                    quantity += cart[i].quantity
+                    
+                    if(cart[i].notes !== undefined){
+                        notes += cart[i].notes
+                    } else{
+                        notes += 'none'
+                    }
+                    if(i<cart.length-1){
+                        product_id += ', '
+                        quantity += ', '
+                        notes += ', '
+                    } else {
+                        product_id += '}'
+                        quantity += '}'
+                        notes += '}'
+                    }
+                }
+                
+                console.log(product_id)
+                console.log(quantity)
                 console.log(notes)
-                let {line1, line2, city, state, zip_code} = bulkAddress
-                let address = `${line1} ${line2}`
-                console.log(address, city, state, zip_code)
 
-                cart.forEach(function(item){
-                    product_id += `${item.product_id}, `;
-                    quantity += `${item.quantity}, `;
-                    notes += `${item.notes}, `;
-                })
-                product_id += '}'
-                quantity += '}'
-                notes += '}'
-
-                Axios.post('/api/order', {product_id, customer_id, quantity, total, address, city, state, zip_code, notes})
+                Axios.post('/api/order', {product_id, customer_id, quantity, total, address, city, state, zip, notes})
     }
 
     async handleToken(token){
@@ -69,7 +87,7 @@ class Cart extends Component{
             toast('Success! Check email for details.', {type: "success"});
 
             // console.log(address.charge.shipping.address)
-            this.placeOrder(address.charge.shipping.address)
+            this.placeOrder(address.charge.source)
         } else {
             toast('Something went wrong...', {type: 'error'})
         }

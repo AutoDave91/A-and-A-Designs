@@ -34,8 +34,9 @@ async function login(req, res){
     if(!isAuthenticated){
         return res.status(403).json('Try again');
     }
+    console.log(user)
     req.session.customer = {
-        id: user.id,
+        id: user.customer_id,
         username: user.username,
         admin: user.admin,
         first_name: user.first_name,
