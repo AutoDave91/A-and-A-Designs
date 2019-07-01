@@ -37,7 +37,6 @@ ul, li{
   /* background-color: turquoise; */
   background-color: black;
   min-height: 100vh;
-  font-family: 'Lobster', cursive;
 }
 .login_register, .login, .register{
   color: aqua;
@@ -179,6 +178,9 @@ ul, li{
   width: 50vw;
   height: 50vh;
   text-align: left;
+}
+.profile{
+  font-family: 'Lobster', cursive;
 }
 
 /* hover styles */

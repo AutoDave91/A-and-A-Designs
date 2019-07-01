@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import {Link, Redirect} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import Axios from 'axios';
-import {connect} from 'react-redux';
+// import {connect} from 'react-redux';
 
 class Newsletter extends Component {
     constructor(){

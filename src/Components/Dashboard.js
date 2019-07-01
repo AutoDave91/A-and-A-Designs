@@ -24,11 +24,6 @@ class Dashboard extends Component{
     }
 
     render(){
-        // console.log(this.props)
-        // console.log(this.state.user)
-        // console.log(this.props.customer)
-        // console.log(this.state.inventory)
-        // console.log(this.props.inventory)
         return(
             <main>
                 <nav>
@@ -36,7 +31,6 @@ class Dashboard extends Component{
                     <Link to='/cloths'><button>Cloths & Accessories</button></Link>
                     {this.props.reducer.user.id ? (
                         <section className='user-buttons'>
-                            {/* <button>Favorites</button> */}
                             <Link to='/profile'><button>Profile</button></Link>
                         </section>
                         ) : null

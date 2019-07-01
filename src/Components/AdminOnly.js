@@ -22,8 +22,7 @@ class AdminOnly extends Component {
             city: 'city',
             state: 'state',
             zip_code: 'zip code',
-            delivered: false,
-            target: 0
+            delivered: false
         }
         this.removeItem = this.removeItem.bind(this)
         this.orderShipped = this.orderShipped.bind(this)
@@ -44,7 +43,7 @@ class AdminOnly extends Component {
         .catch(console.log('failed to delete'))
     }
     orderShipped(order_id){
-        console.log(order_id.order)
+        // console.log(order_id.order)
         // let {target} = this.state
         let status = true
         this.setState({delivered: true})
@@ -52,12 +51,9 @@ class AdminOnly extends Component {
     }
 
     render(){
-        // console.log('Order Check: ', this.state.orders)
-        // console.log(this.props)
-        // console.log(this.state.inventory)
-        // console.log(this.props.user)
         let {orders} = this.state;
         let {designer, order, product, quantity, notes, delivered, name, email, address, city, state, zip_code} = this.state
+        // console.log(this.state.orders)
 
         {if(!this.props.reducer.user || this.props.reducer.user.admin !== true){
             return <Redirect to='/' />
@@ -94,7 +90,7 @@ class AdminOnly extends Component {
                         <h1>Order Details</h1>
                         <ul>
                             <li>Designer: {designer.toUpperCase()}</li>
-                            <li>Order {order} has been shipped: {delivered.toString()}</li>
+                            <li>Order {order} has been shipped: {delivered.toString().toUpperCase()}</li>
                             <li>{quantity} of {product}</li>
                             <li>{notes}</li>
                             <h1>Customer Profile</h1>
@@ -104,11 +100,10 @@ class AdminOnly extends Component {
                                 <li>{address}</li>
                                 <li>{`${city}, ${state}, ${zip_code}`}</li>
                             </ul>
-                            <button onClick={()=> {this.orderShipped({order}); console.log('shipped: ', order)}}>Log Order Shipped</button>
+                            <Link to='/designer'><button onClick={()=> {this.orderShipped({order})}}>Log Order Shipped</button></Link>
                         </ul>
                     </section>
                 </section>
-                {/* <h1 className='items'>Inventory</h1> */}
                 <section className='items'>
                     {this.state.inventory.map((item, index)=>(
                         <AdminItem key={index} item={item} inventory={this.state.inventory} removeItem={this.removeItem}/>

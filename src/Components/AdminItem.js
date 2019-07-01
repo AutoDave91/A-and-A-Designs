@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Link, Redirect} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 
 import {startEditWizard} from '../reducks/wizardReducer';
@@ -13,7 +13,6 @@ class AdminItem extends Component{
     }
 
     render(){
-        // console.log(this.props)
         let {image, product_id, product_name, description, price, designer, ordered_amount} = this.props.item
         return(
             <main>

@@ -32,14 +32,16 @@ function editProduct(req, res){
     .catch(()=>console.log('error editing product'))
 }
 function shippedOrder(req, res){
-    console.log('shipped', req.body)
+    console.log('shipped', req.body.status)
+    let {order_id} = req.params
     let {status} = req.body;
     let delivered = status;
+    console.log('DC38: ', typeof delivered)
     const db = req.app.get('db');
 
-    db.order_shipped([delivered])
+    db.order_shipped([order_id])
     .then(response => res.status(200).json(response))
-    .catch(()=>console.log('error shipping order'))
+    .catch((error)=>console.log(error, 'error shipping order'))
 }
 
 module.exports={

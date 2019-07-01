@@ -96,7 +96,7 @@ class Cart extends Component{
         console.log(this.props)
         // // console.log('Cart: reducer.cart.cart', this.props.reducer.cart.cart)
         // console.log('being mapped', this.props.reducer.cart.cart)
-        let {total, cart, user} = this.props.reducer.user
+        let {total, cart} = this.props.reducer.user
         return(
             <main>
                 <Link to='/'><button>Home</button></Link>

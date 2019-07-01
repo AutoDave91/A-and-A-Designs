@@ -10,7 +10,7 @@ async function register(req, res){
     // console.log('existingUser', existingUser)
     const salt = bcrypt.genSaltSync(10);
     const hash = bcrypt.hashSync(password, salt);
-    console.log(req.body)
+    // console.log(req.body)
     
     if(existingUser > 0){
         console.log('Choose another username');
@@ -34,7 +34,7 @@ async function login(req, res){
     if(!isAuthenticated){
         return res.status(403).json('Try again');
     }
-    console.log(user)
+    // console.log(user)
     req.session.customer = {
         id: user.customer_id,
         username: user.username,
@@ -55,7 +55,7 @@ async function logout(req, res){
 }
 async function getUser(req, res){
     // console.log('AC:53 ->', req.session)
-    console.log('AC55: ', req.session.customer)
+    // console.log('AC55: ', req.session.customer)
     if(req.session.customer){
         res.json(req.session.customer)
     } else {
@@ -63,7 +63,7 @@ async function getUser(req, res){
     }
 }
 async function userOrders(req, res){
-    console.log('AC66: ', req.body)
+    // console.log('AC66: ', req.body)
     const {id} = req.body
     let customer_id = id
     const db = req.app.get('db');
