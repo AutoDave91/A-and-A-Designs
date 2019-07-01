@@ -63,6 +63,7 @@ app.post('/api/email', auth.adminsOnly, nc.newsletter)
 //--designerController-- 
 app.get('/api/orders', auth.adminsOnly, dc.getOrder)
 app.post('/api/new_item', auth.adminsOnly, dc.addProduct)
+app.put('/api/shipped/:order_id', auth.adminsOnly, dc.shippedOrder)
 app.put('/api/inventory/:product_id', auth.adminsOnly, dc.editProduct)
 app.delete('/api/inventory/:product_id', auth.adminsOnly, dc.removeProduct)
 

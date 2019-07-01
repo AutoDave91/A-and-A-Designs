@@ -31,7 +31,17 @@ function editProduct(req, res){
     db.edit_product([product_id, product_name, description, price, image, designer]).then(response => res.status(200).json(response))
     .catch(()=>console.log('error editing product'))
 }
+function shippedOrder(req, res){
+    console.log('shipped', req.body)
+    let {status} = req.body;
+    let delivered = status;
+    const db = req.app.get('db');
+
+    db.order_shipped([delivered])
+    .then(response => res.status(200).json(response))
+    .catch(()=>console.log('error shipping order'))
+}
 
 module.exports={
-    addProduct, editProduct, removeProduct, getOrder
+    addProduct, editProduct, removeProduct, getOrder, shippedOrder
 }

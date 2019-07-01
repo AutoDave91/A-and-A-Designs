@@ -4,3 +4,4 @@ INNER JOIN inventory as i
 ON o.product_id = i.product_id
 INNER JOIN customer AS c
 ON o.customer_id = c.customer_id
+WHERE delivered = FALSE

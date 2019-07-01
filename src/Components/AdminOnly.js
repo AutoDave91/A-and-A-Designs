@@ -22,9 +22,11 @@ class AdminOnly extends Component {
             city: 'city',
             state: 'state',
             zip_code: 'zip code',
-            delivered: false
+            delivered: false,
+            target: 0
         }
         this.removeItem = this.removeItem.bind(this)
+        this.orderShipped = this.orderShipped.bind(this)
     }
 
     componentDidMount(){
@@ -40,6 +42,13 @@ class AdminOnly extends Component {
         Axios.delete(`/api/inventory/${product_id}`).then(response=>{console.log(response);
             this.setState({inventory:response.data})})
         .catch(console.log('failed to delete'))
+    }
+    orderShipped(order_id){
+        console.log(order_id.order)
+        // let {target} = this.state
+        let status = true
+        this.setState({delivered: true})
+        Axios.put(`/api/shipped/${order_id.order}`, {status})
     }
 
     render(){
@@ -95,6 +104,7 @@ class AdminOnly extends Component {
                                 <li>{address}</li>
                                 <li>{`${city}, ${state}, ${zip_code}`}</li>
                             </ul>
+                            <button onClick={()=> {this.orderShipped({order}); console.log('shipped: ', order)}}>Log Order Shipped</button>
                         </ul>
                     </section>
                 </section>
