@@ -21,7 +21,7 @@ export default(
     <Switch>
         <Route exact path='/' component={DashBoard}></Route>
         <Route path='/cloths' component={Cloths}></Route>
-        <Route path='/jewelry' component={Jewelry}></Route>
+        <Route path='/bows+bands' component={Jewelry}></Route>
         <Route path='/login' component={Login}></Route>
 
         {/* below is user only */}

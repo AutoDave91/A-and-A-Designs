@@ -23,9 +23,9 @@ class Newsletter extends Component {
     }
 
     render(){
-        {if(!this.props.reducer.user || this.props.reducer.user.admin !== true){
-            return <Redirect to='/' />
-            }}
+        // {if(!this.props.reducer.user || this.props.reducer.user.admin !== true){
+        //     return <Redirect to='/' />
+        //     }}
         return(
             <main className='newsletter'>
                 <h1>--- Newsletter ---</h1>

@@ -32,7 +32,7 @@ class Dashboard extends Component{
         return(
             <main>
                 <nav>
-                    <Link to='/jewelry'><button>Jewelry</button></Link>
+                    <Link to='/bows+bands'><button>Hair Bows & Bands</button></Link>
                     <Link to='/cloths'><button>Cloths & Accessories</button></Link>
                     {this.props.reducer.user.id ? (
                         <section className='user-buttons'>

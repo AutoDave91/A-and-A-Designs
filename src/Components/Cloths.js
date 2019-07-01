@@ -22,7 +22,7 @@ class April extends Component{
         return(
             <main>
                 <nav>
-                    <Link to='/jewelry'><button>Jewelry</button></Link>
+                    <Link to='/bows+bands'><button>Hair Bows & Bands</button></Link>
                     <Link to='/'><button>Home</button></Link>
                 </nav>
                 <section>

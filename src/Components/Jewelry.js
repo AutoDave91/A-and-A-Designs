@@ -13,7 +13,7 @@ class Alexis extends Component {
     }
 
     componentDidMount(){
-        Axios.get('/api/jewelry').then(response=>
+        Axios.get('/api/bows&bands').then(response=>
             this.setState({inventory: response.data}))
             .catch(()=>console.log('DidMount failed in Alexis'))
     }

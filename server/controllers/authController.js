@@ -40,6 +40,9 @@ async function login(req, res){
         username: user.username,
         admin: user.admin,
         first_name: user.first_name,
+        last_name: user.last_name,
+        email: user.email,
+        newsletter: user.newsletter,
         cart:[],
         total: 0
     }
@@ -52,14 +55,25 @@ async function logout(req, res){
 }
 async function getUser(req, res){
     // console.log('AC:53 ->', req.session)
-    // console.log(req.session.customer)
+    console.log('AC55: ', req.session.customer)
     if(req.session.customer){
         res.json(req.session.customer)
     } else {
         res.status(401).json(console.log('no user found'))
     }
 }
+async function userOrders(req, res){
+    console.log('AC66: ', req.body)
+    const {id} = req.body
+    let customer_id = id
+    const db = req.app.get('db');
+    db.get_user_orders([customer_id]).then(response =>{console.log('AC70: ', response); res.status(200).json(response)})
+        .catch(()=> {
+            console.log('error loading orders');
+            res.sendStatus(500)
+        })
+}
 
 module.exports={
-    register, login, logout, getUser
+    register, login, logout, getUser, userOrders
 }

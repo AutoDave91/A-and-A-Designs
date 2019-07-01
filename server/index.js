@@ -40,10 +40,14 @@ app.get('/auth/logout', ac.logout)
 app.post('/auth/register', ac.register)
 app.post('/auth/login', ac.login)
 app.get('/auth/user', ac.getUser)
+// app.get('/api/order/history', ac.userOrders)
+
+// --userController--
+app.put('/api/sub', uc.switchSub)
 
 // --productController--
 app.get('/api/inventory', pc.getAll)
-app.get('/api/jewelry', pc.getAlexis)
+app.get('/api/bows&bands', pc.getAlexis)
 app.get('/api/cloths', pc.getApril)
 
 // --cartController--
