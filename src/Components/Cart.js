@@ -14,10 +14,6 @@ class Cart extends Component{
         super()
         this.state ={
             special_requests: '',
-            address: '',
-            city: '',
-            state: '',
-            zip_code: '',
             user: {},
             cart: [],
             total: 0
@@ -34,46 +30,47 @@ class Cart extends Component{
     
     async placeOrder(bulkAddress){
         let {total, cart, id} = this.props.reducer.cart;
-                let customer_id = id;
-                console.log(customer_id)
-                let product_id = '{';
-                let quantity = '{';
-                let notes = '{';
-                let {address_line1, address_line2, address_city, address_state, address_zip} = bulkAddress
-                let city = address_city
-                let state = address_state
-                let zip = address_zip
-                let address = `${address_line1}`
-                if(address_line2 !== null){
-                    address += ` ${address_line2}`
-                }
-                console.log(address, city, state, zip)
-                
-                for(let i=0; i<cart.length; i++){
-                    product_id += cart[i].product_id
-                    quantity += cart[i].quantity
-                    
-                    if(cart[i].notes !== undefined){
-                        notes += cart[i].notes
-                    } else{
-                        notes += 'none'
-                    }
-                    if(i<cart.length-1){
-                        product_id += ', '
-                        quantity += ', '
-                        notes += ', '
-                    } else {
-                        product_id += '}'
-                        quantity += '}'
-                        notes += '}'
-                    }
-                }
-                
-                console.log(product_id)
-                console.log(quantity)
+        let customer_id = id;
+        console.log(customer_id)
+        let product_id = '{';
+        let quantity = '{';
+        let notes = '{';
+        let {address_line1, address_line2, address_city, address_state, address_zip} = bulkAddress
+        let city = address_city
+        let state = address_state
+        let zip = address_zip
+        let address = `${address_line1}`
+        if(address_line2 !== null){
+            address += ` ${address_line2}`
+        }
+        console.log(address, city, state, zip)
+        
+        for(let i=0; i<cart.length; i++){
+            product_id += cart[i].product_id
+            quantity += cart[i].quantity
+            
+            if(cart[i].notes !== undefined){
                 console.log(notes)
+                notes += cart[i].notes
+            } else{
+                notes += 'none'
+            }
+            if(i<cart.length-1){
+                product_id += ', '
+                quantity += ', '
+                notes += ', '
+            } else {
+                product_id += '}'
+                quantity += '}'
+                notes += '}'
+            }
+        }
+        
+        console.log(product_id)
+        console.log(quantity)
+        console.log(notes)
 
-                Axios.post('/api/order', {product_id, customer_id, quantity, total, address, city, state, zip, notes})
+        Axios.post('/api/order', {product_id, customer_id, quantity, total, address, city, state, zip, notes})
     }
 
     async handleToken(token){
@@ -118,8 +115,8 @@ class Cart extends Component{
                                             <h3 id='description'>{product.description}</h3>
                                             <h3>{product.size}</h3>
                                             <h3>${product.quantity * product.price} ({product.quantity} for {product.price} each).</h3>
+                                            <h3>{product.notes}</h3>
                                             {/* <button>edit</button> */}
-                                            <textarea placeholder='Special Requests (color, material, ect)'/>
                                             <div>
                                                 <button onClick={()=>{this.props.removeFromCart(index);
                                                     // this.handleDelete(); console.log('deleted item ', index)

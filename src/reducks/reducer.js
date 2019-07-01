@@ -26,7 +26,7 @@ export const getUser = ()=>{
         payload: axios.get('/auth/user')
     }
 }
-export const addToCart =(product_id, product_name, image, description, size, price, quantity)=>{
+export const addToCart =(product_id, product_name, image, description, size, price, quantity, notes)=>{
     return{
         type: ADD_TO_CART,
         payload: axios.post('/api/cart', {
@@ -36,7 +36,8 @@ export const addToCart =(product_id, product_name, image, description, size, pri
             description: description,
             size: size,
             price: price,
-            quantity: quantity
+            quantity: quantity,
+            notes: notes
         })
     }
 }

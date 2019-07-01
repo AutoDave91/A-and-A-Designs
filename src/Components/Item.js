@@ -7,8 +7,9 @@ class Item extends Component{
     constructor(){
         super()
         this.state={
-            size: '',
-            quantity: 1
+            size: 'clothing size',
+            quantity: 1,
+            notes: ''
         }
         this.handleChange = this.handleChange.bind(this)
     }
@@ -19,6 +20,7 @@ class Item extends Component{
     
     render(){
         // console.log(this.props.item)
+        // console.log(this.state.notes)
         let {product_id, product_name, image, description, price, designer} = this.props.item
         return(
             <main>
@@ -36,7 +38,10 @@ class Item extends Component{
                         }
                             <h3>Quantity: <input className='quantity' name='quantity' type='number' placeholder={this.state.quantity} onChange={this.handleChange}/></h3>
                         </section>
-                        <button id='addToCart' onClick={()=> {this.props.addToCart(product_id, product_name, image, this.state.size, description, price, this.state.quantity); this.setState({size: '', quantity: 1})}}>Add to Cart</button>
+                        <section>
+                        <textarea name='notes' onChange={this.handleChange} placeholder='Special Requests (color, material, ect)' />
+                        <button id='addToCart' onClick={()=> {this.props.addToCart(product_id, product_name, image, this.state.size, description, price, this.state.quantity, this.state.notes); this.setState({size: '', quantity: 1, notes: ''})}}>Add to Cart</button>
+                        </section>
                     </div>
                     ) : null
                     }
