@@ -45,7 +45,7 @@ function removeCart(req, res){
 }
 function placeOrder(req, res){
     const {product_id, customer_id, quantity, address , city , state , zip, notes} = req.body;
-    console.log('PC48: ', req.body)
+    // console.log('PC48: ', req.body)
     let total = parseFloat(Math.round(req.body.total * 100) / 100).toFixed(2)
     const db =req.app.get('db');
     
@@ -55,7 +55,7 @@ function placeOrder(req, res){
     db.add_order([product_id, customer_id, quantity, total, address , city , state , zip, notes])
     .then(response =>res.status(200).json(response))
     .catch(()=>console.log('Failed to add order'))
-    console.log('PC58: ', req.session.customer)
+    // console.log('PC58: ', req.session.customer)
 }
 
 module.exports ={

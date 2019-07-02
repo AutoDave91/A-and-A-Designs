@@ -37,8 +37,9 @@ class AdminOnly extends Component {
             .catch(()=> console.log('order error at componentDidMount'))
     }
     removeItem(product_id){
-        console.log(product_id)
-        Axios.delete(`/api/inventory/${product_id}`).then(response=>{console.log(response);
+        // console.log(product_id)
+        Axios.delete(`/api/inventory/${product_id}`).then(response=>{
+            // console.log(response);
             this.setState({inventory:response.data})})
         .catch(console.log('failed to delete'))
     }
