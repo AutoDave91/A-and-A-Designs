@@ -19,7 +19,7 @@ function getOrder(req, res){
     const db = req.app.get('db');
     db.get_orders().then(response =>res.status(200).json(response))
         .catch(()=> {
-            console.log('error loading orders');
+            // console.log('error loading orders');
             res.sendStatus(500)
         })
 }
@@ -32,11 +32,11 @@ function editProduct(req, res){
     .catch(()=>console.log('error editing product'))
 }
 function shippedOrder(req, res){
-    console.log('shipped', req.body.status)
+    // console.log('shipped', req.body.status)
     let {order_id} = req.params
     let {status} = req.body;
     let delivered = status;
-    console.log('DC38: ', typeof delivered)
+    // console.log('DC38: ', typeof delivered)
     const db = req.app.get('db');
 
     db.order_shipped([order_id])

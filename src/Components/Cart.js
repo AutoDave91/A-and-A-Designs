@@ -31,7 +31,7 @@ class Cart extends Component{
     async placeOrder(bulkAddress){
         let {total, cart, id} = this.props.reducer.cart;
         let customer_id = id;
-        console.log(customer_id)
+        // console.log(customer_id)
         let product_id = '{';
         let quantity = '{';
         let notes = '{';
@@ -43,16 +43,16 @@ class Cart extends Component{
         if(address_line2 !== null){
             address += ` ${address_line2}`
         }
-        console.log(address, city, state, zip)
+        // console.log(address, city, state, zip)
         
         for(let i=0; i<cart.length; i++){
             product_id += cart[i].product_id
             quantity += cart[i].quantity
-            console.log(cart[i])
+            // console.log(cart[i])
             
             if(cart[i].notes !== undefined && cart[i].notes !== null && cart[i].notes !== ""){
-                console.log(cart[i].notes)
-                console.log(notes)
+                // console.log(cart[i].notes)
+                // console.log(notes)
                 notes += cart[i].notes
             } else{
                 notes += 'none'
@@ -68,9 +68,9 @@ class Cart extends Component{
             }
         }
         
-        console.log(product_id)
-        console.log(quantity)
-        console.log(notes)
+        // console.log(product_id)
+        // console.log(quantity)
+        // console.log(notes)
 
         Axios.post('/api/order', {product_id, customer_id, quantity, total, address, city, state, zip, notes})
     }
@@ -121,7 +121,6 @@ class Cart extends Component{
                                             {/* <button>edit</button> */}
                                             <div>
                                                 <button onClick={()=>{this.props.removeFromCart(index);
-                                                    // this.handleDelete(); console.log('deleted item ', index)
                                                     }}>Delete</button>
                                             </div>
                                         </div>
@@ -130,7 +129,6 @@ class Cart extends Component{
                             })}
                         </section>
                     </section>
-                    {/* {console.log(this.props.user)} */}
                 </section>
                 <section>
                     <h1>{this.props.reducer.cart.first_name}, are you ready to purchase your cart?</h1>
@@ -142,18 +140,7 @@ class Cart extends Component{
                         amount={+total *100}
                         name={'A & A Designs'}
                     />
-                    {/* {this.props.user.last_name} */}
-                    {/* <section className='cart-footer'>
-                        <h3 className='mark'>Address: <input /></h3>
-                        <h3>Apt number: <input /></h3>
-                    </section>
-                    <section className='cart-footer'>
-                        <h3 className='mark'>City: <input /></h3>
-                        <h3 className='mark'>State: <input /></h3>
-                        <h3>Zip code: <input /></h3>
-                    </section> */}
                 </section>
-                {/* <button onClick={()=>{console.log(`send cart to orders table`)}}>Checkout {total}</button> */}
             </main>
         )
     }

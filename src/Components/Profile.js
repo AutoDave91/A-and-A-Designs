@@ -16,12 +16,12 @@ class Profile extends Component {
     componentDidMount(){
         Axios.get('/auth/user')
         .then(response => {
-            console.log(response);
+            // console.log(response);
             this.setState({user: response.data})
         })
         Axios.get('/api/order/history')
             .then(response =>{
-                console.log(response);
+                // console.log(response);
                 this.setState({orders: response.data})
             })
     }
@@ -29,14 +29,14 @@ class Profile extends Component {
         let customer_id = this.state.user.id
         let newsletter = this.state.user.newsletter
         Axios.put('/api/sub', {customer_id, newsletter}).then(response =>{
-            console.log(response.data[0])
+            // console.log(response.data[0])
             this.setState({user:{first_name: response.data[0].first_name, last_name: response.data[0].last_name, username: response.data[0].username, email: response.data[0].email, newsletter: response.data[0].newsletter}})
             // this.setState({user: response.data[0]})
         })
     }
 
     render(){
-        console.log(this.state.user)
+        // console.log(this.state.user)
         let {first_name, last_name, username, email, newsletter} = this.state.user
         
         return(

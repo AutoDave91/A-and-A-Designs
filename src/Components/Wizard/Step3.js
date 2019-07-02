@@ -24,8 +24,8 @@ class Step3 extends Component{
     }
 
     render(){
-        console.log(this)
-        console.log('Starting Step3', this.props.reducer.product_id, this.props.reducer.product_name, this.props.reducer.description, this.props.reducer.price, this.props.reducer.image, this.props.reducer.designer)
+        // console.log(this)
+        // console.log('Starting Step3', this.props.reducer.product_id, this.props.reducer.product_name, this.props.reducer.description, this.props.reducer.price, this.props.reducer.image, this.props.reducer.designer)
 
         {if(!this.props.auth.user || this.props.auth.user.admin !== true){
             return <Redirect to='/' />

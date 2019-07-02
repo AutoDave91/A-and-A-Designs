@@ -50,7 +50,7 @@ async function login(req, res){
 }
 async function logout(req, res){
     req.session.destroy();
-    console.log('logged out')
+    // console.log('logged out')
     return res.status(200).send(req.session);
 }
 async function getUser(req, res){
@@ -67,9 +67,11 @@ async function userOrders(req, res){
     const {id} = req.body
     let customer_id = id
     const db = req.app.get('db');
-    db.get_user_orders([customer_id]).then(response =>{console.log('AC70: ', response); res.status(200).json(response)})
+    db.get_user_orders([customer_id]).then(response =>{
+        // console.log('AC70: ', response);
+        res.status(200).json(response)})
         .catch(()=> {
-            console.log('error loading orders');
+            // console.log('error loading orders');
             res.sendStatus(500)
         })
 }

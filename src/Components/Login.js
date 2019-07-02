@@ -49,7 +49,7 @@ class Login extends Component {
             })
             .catch(()=>{
                 this.setState({username: '', password: ''});
-                console.log('Login failed in Login component');
+                // console.log('Login failed in Login component');
             })
     }
     register(){
@@ -67,7 +67,7 @@ class Login extends Component {
                     redirect: true,
                 });
                 this.updateUser(user.data)
-                console.log('registered')
+                // console.log('registered')
             })
             .catch(()=>{
                 this.setState({
@@ -78,7 +78,7 @@ class Login extends Component {
                     email: '',
                     phone_number: ''
                 })
-                console.log('error registering')
+                // console.log('error registering')
             })
     }
 

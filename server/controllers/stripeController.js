@@ -55,16 +55,16 @@ async function checkout(req, res) {
             idempotency_key
         }
         );
-        console.log("Charge:", { charge });
+        // console.log("Charge:", { charge });
         status = "success";
         address = {charge};
     } catch (error) {
-        console.error("Error:", error);
+        // console.error("Error:", error);
         status = "failure";
     }
     
     res.json({ error, status, address });
-    console.log('EC67: ', status, address.charge)
+    // console.log('EC67: ', status, address.charge)
 
 };
 

@@ -21,8 +21,8 @@ class Step2 extends Component{
     }
 
     render(){
-        console.log(this.props)
-        console.log('Starting Step2', this.props.reducer.product_name, this.props.reducer.description, this.props.reducer.price)
+        // console.log(this.props)
+        // console.log('Starting Step2', this.props.reducer.product_name, this.props.reducer.description, this.props.reducer.price)
 
         {if(!this.props.auth.user || this.props.auth.user.admin !== true){
             return <Redirect to='/' />
@@ -44,7 +44,7 @@ class Step2 extends Component{
 }
 
 const mapStateToProps = state =>{
-    console.log(state)
+    // console.log(state)
     return{ reducer: state.wr, auth: state.reducer
     }
 }
