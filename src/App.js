@@ -1,8 +1,11 @@
 import React from 'react';
 
-import './reset.css'
+import './reset.css';
 import './App.css';
-import './responsive.css'
+import './Components/header_dashboard_cart.css';
+import './Components/login_wizard.css';
+import './Components/admin_userProfile.css';
+import './responsive.css';
 import Header from './Components/Header';
 import routes from './routes';
 

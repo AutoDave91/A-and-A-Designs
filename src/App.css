@@ -1,5 +1,10 @@
-/* default styles */
-input, h1, textarea{
+/* universal styles */
+.App {
+  text-align: center;
+  background-color: black;
+  min-height: 100vh;
+}
+h1 {
   margin-top: 2vh;
   margin-bottom: 2vh;
   font-family: 'Lobster', cursive;
@@ -17,7 +22,6 @@ button, .stripe{
   font-size: 2.5vh;
   border-radius: 12px;
   background-color: transparent;
-  /* color: black; */
   background-color: aqua;
   border: 2px solid black;
   outline: none;
@@ -31,66 +35,6 @@ img{
 }
 ul, li{
   list-style-type: none;
-}
-.App {
-  text-align: center;
-  /* background-color: turquoise; */
-  background-color: black;
-  min-height: 100vh;
-}
-.login_register, .login, .register{
-  color: aqua;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: auto;
-}
-.name-inputs{
-  display: flex;
-  justify-content: space-between;
-}
-.name{
-  margin-left: 2vw;
-}
-.login, .register{
-  width: 45vw;
-}
-.login_register{
-  padding-top: 1vh;
-  padding-bottom: 1vh;
-  font-family: 'Lobster', cursive;
-  font-size: 5vh;
-}
-.login_register2{
-  height: 90vh;
-  display: flex;
-  align-items: center;
-}
-.header{
-  display: flex;
-  justify-content: space-between;
-  padding-right: 2vw;
-  padding-left: 2vw;
-  background-color: aqua;
-  height: 10vh;
-  align-items: center;
-}
-.space{
-  width: 17vw;
-}
-.admin-container{
-  color: whitesmoke;
-  display: flex;
-  justify-content: space-evenly;
-  margin-left: 2vw;
-  margin-right: 2vw;
-  margin-bottom: 5vh;
-}
-.admin-elements{
-  border: 1px dashed aqua;
-  width: 45%;
-  height: 40vh;
-  overflow: scroll;
 }
 .items, .cart-items{
   display: flex;
@@ -111,93 +55,12 @@ ul, li{
 .product-name{
   font-size: 3vh;
 }
-.about{
-  background-color: aqua;
-  font-family: 'Lobster', cursive;
-  font-size: 2.25vh;
-  padding-bottom: 1vh;
-}
-.cart{
-  width: 80%;
-  min-height: 25vh;
-  margin: auto;
-}
-.user-cart{
-  display: flex;
-  flex-flow: row;
-  justify-content: space-evenly;
-  width: 100%;
-}
-.size-quantity{
-  display: flex;
-  justify-content: center;
-}
-.size{
-  width: 5vw;
-  margin-right: 2vw;
-}
-.quantity{
-  width: 3vw;
-}
-.cart-footer{
-  display: flex;
-  justify-content: center;
-}
-.mark{
-  margin-right: 2vw;
-}
-.order-list{
-  margin: 1vh;
-}
 .city-state-zip{
   display: flex;
   justify-content: center
 }
-.welcome{
-  font-family: 'Lobster', cursive;
-  font-size: 2.5vh;
-  margin-right: 1vw;
-}
-.title{
-  font-family: 'Monoton', cursive;
-  font-size: 6vh;
-}
-.logged-in, .logged-out{
-  display: flex;
-  align-items: center;
-  width: 17vw;
-}
-.cart-items{
-  margin-bottom: 2vh;
-  width: 30vw;
-}
 .step1, .step2, .step3, .cart-total, .newsletter, .profile{
   color: aqua;
-}
-.news-text{
-  width: 50vw;
-  height: 50vh;
-  text-align: left;
-}
-.profile{
-  font-family: 'Lobster', cursive;
-  font-size: 1.5vw;
-}
-.order-history{
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-}
-.order{
-  display: flex;
-  flex-flow: column;
-  width: 25%;
-  padding: 2vh 0 2vh 0;
-  margin: 2vh;
-  border: 1px solid aqua;
-  background-color: aqua;
-  color: black;
-  font-size: 1.5vw;
 }
 
 /* hover styles */

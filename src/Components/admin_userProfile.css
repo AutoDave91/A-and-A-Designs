@@ -1,0 +1,46 @@
+/* Admin_UserProfile */
+.admin-container{
+    color: whitesmoke;
+    display: flex;
+    justify-content: space-evenly;
+    margin-left: 2vw;
+    margin-right: 2vw;
+    margin-bottom: 5vh;
+  }
+  .admin-elements{
+    border: 1px dashed aqua;
+    width: 45%;
+    height: 40vh;
+    overflow: scroll;
+  }
+  .mark{
+    margin-right: 2vw;
+  }
+  .order-list{
+    margin: 1vh;
+  }
+  .news-text{
+    width: 50vw;
+    height: 50vh;
+    text-align: left;
+  }
+  .profile{
+    font-family: 'Lobster', cursive;
+    font-size: 1.5vw;
+  }
+  .order-history{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  .order{
+    display: flex;
+    flex-flow: column;
+    width: 25%;
+    padding: 2vh 0 2vh 0;
+    margin: 2vh;
+    border: 1px solid aqua;
+    background-color: aqua;
+    color: black;
+    font-size: 1.5vw;
+  }

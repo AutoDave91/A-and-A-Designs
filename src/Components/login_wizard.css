@@ -1,0 +1,36 @@
+/* Login_Wizard */
+input, textarea{
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    font-family: 'Lobster', cursive;
+    font-size: 3vh;
+    text-align: center;
+  }
+  .login_register, .login, .register{
+    color: aqua;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+  }
+  .name-inputs{
+    display: flex;
+    justify-content: space-between;
+  }
+  .name{
+    margin-left: 2vw;
+  }
+  .login, .register{
+    width: 45vw;
+  }
+  .login_register{
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+    font-family: 'Lobster', cursive;
+    font-size: 5vh;
+  }
+  .login_register2{
+    height: 90vh;
+    display: flex;
+    align-items: center;
+  }
