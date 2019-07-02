@@ -48,8 +48,10 @@ class Cart extends Component{
         for(let i=0; i<cart.length; i++){
             product_id += cart[i].product_id
             quantity += cart[i].quantity
+            console.log(cart[i])
             
-            if(cart[i].notes !== undefined){
+            if(cart[i].notes !== undefined && cart[i].notes !== null && cart[i].notes !== ""){
+                console.log(cart[i].notes)
                 console.log(notes)
                 notes += cart[i].notes
             } else{
@@ -93,7 +95,7 @@ class Cart extends Component{
     render(){
         // console.log('Cart: reducer.user.cart', this.props.reducer.user.cart)
         // console.log(this.props.customer)
-        console.log(this.props)
+        // console.log(this.props)
         // // console.log('Cart: reducer.cart.cart', this.props.reducer.cart.cart)
         // console.log('being mapped', this.props.reducer.cart.cart)
         let {total, cart} = this.props.reducer.user

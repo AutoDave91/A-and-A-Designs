@@ -40,8 +40,8 @@ class Item extends Component{
                         </section>
                         <section>
                         <textarea name='notes' onChange={this.handleChange} placeholder='Special Requests (color, material, ect)' />
-                        <button id='addToCart' onClick={()=> {this.props.addToCart(product_id, product_name, image, this.state.size, description, price, this.state.quantity, this.state.notes); this.setState({size: '', quantity: 1, notes: ''})}}>Add to Cart</button>
                         </section>
+                        <button id='addToCart' onClick={()=> {this.props.addToCart(product_id, product_name, image, this.state.size, description, price, this.state.quantity, this.state.notes); this.setState({size: '', quantity: 1, notes: ''})}}>Add to Cart</button>
                     </div>
                     ) : null
                     }
