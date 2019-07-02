@@ -181,6 +181,23 @@ ul, li{
 }
 .profile{
   font-family: 'Lobster', cursive;
+  font-size: 1.5vw;
+}
+.order-history{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.order{
+  display: flex;
+  flex-flow: column;
+  width: 25%;
+  padding: 2vh 0 2vh 0;
+  margin: 2vh;
+  border: 1px solid aqua;
+  background-color: aqua;
+  color: black;
+  font-size: 1.5vw;
 }
 
 /* hover styles */

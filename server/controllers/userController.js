@@ -14,15 +14,33 @@ function switchSub(req, res){
 
     if(newsletter === true){
         console.log('switchSub: unsub', customer_id)
-        db.unsub([customer_id]).then(response =>{console.log(response); res.status(200).json(response)}).catch(err => console.log(err))
+        db.unsub([customer_id]).then(response =>{
+            console.log(response);
+            res.status(200).json(response)})
+            .catch(err => console.log(err))
     } else if(newsletter === false){
         console.log('switchSub: sub', customer_id)
-        db.sub([customer_id]).then(response =>{console.log(response);res.status(200).json(response)}).catch( err => console.log(err))
+        db.sub([customer_id]).then(response =>{
+            console.log(response);
+            res.status(200).json(response)})
+            .catch( err => console.log(err))
     } else {
         console.log('UC17: failed')
     }
 }
+function getOrderHistory(req, res){
+    console.log('UC32: ', req.params)
+    console.log(req.body)
+    console.log(req.session.customer)
+    const db = req.app.get('db');
+
+    db.get_user_orders(req.session.customer.id).then(response =>{
+        console.log(response);
+        res.status(200).json(response)
+        // .catch(err = console.log('UC38: ', err))
+    })
+}
 
 module.exports={
-    getUser, switchSub
+    getUser, switchSub, getOrderHistory
 }

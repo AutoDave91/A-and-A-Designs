@@ -44,7 +44,8 @@ app.get('/auth/user', ac.getUser)
 // app.get('/api/order/history', ac.userOrders)
 
 // --userController--
-app.put('/api/sub', uc.switchSub)
+app.put('/api/sub', auth.usersOnly, uc.switchSub)
+app.get('/api/order/history', auth.usersOnly, uc.getOrderHistory)
 
 // --productController--
 app.get('/api/inventory', pc.getAll)

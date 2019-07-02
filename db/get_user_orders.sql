@@ -5,3 +5,4 @@ ON o.product_id = i.product_id
 INNER JOIN customer AS c
 ON o.customer_id = c.customer_id
 WHERE o.customer_id = $1
+ORDER BY delivered ASC

@@ -14,9 +14,16 @@ class Profile extends Component {
     }
 
     componentDidMount(){
-        // let {id} = this.state.user
-        Axios.get('/auth/user').then(response => {console.log(response); this.setState({user: response.data})})
-        // Axios.get('/api/order/history', this.state.user.id).then(response =>{console.log(response); this.setState({orders: response.data})})
+        Axios.get('/auth/user')
+        .then(response => {
+            console.log(response);
+            this.setState({user: response.data})
+        })
+        Axios.get('/api/order/history')
+            .then(response =>{
+                console.log(response);
+                this.setState({orders: response.data})
+            })
     }
     handleClick(){
         let customer_id = this.state.user.id
@@ -54,13 +61,13 @@ class Profile extends Component {
                     }
                 </section>
                 <section className='order-history'>
-                    {/* {this.state.orders.map((order)=>(
-                        <section>
+                    {this.state.orders.map((order)=>(
+                        <section className='order'>
                             <h2>Order number: {order.order_id}</h2>
-                            <h3>{order.quantity} of {order.product_name}.</h3>
+                            <h3>{order.quantity}x {order.product_name}.</h3>
                             <h3>Order delivered: {order.delivered.toString()}</h3>
                         </section>
-                        ))} */}
+                        ))}
                 </section>
             </main>
         )
