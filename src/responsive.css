@@ -89,6 +89,7 @@
     .login_register2{
     flex-direction: column;
     font-size: 2vh;
+    height: 100vh;
     }
     button{
         background-color: aqua;
