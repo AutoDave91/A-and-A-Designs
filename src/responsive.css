@@ -26,7 +26,7 @@
         font-size: 2vh;
     }
     button:hover{
-        background-color: transparent;
+        background-color: aqua;
         font-size: 2vh;
     }
     .admin-elements:hover{
@@ -44,6 +44,7 @@
         border: 1px solid black;
     }
     button{
+        background-color: aqua;
             font-size: 2vh;
     }
     .app{
@@ -90,6 +91,7 @@
     font-size: 2vh;
     }
     button{
+        background-color: aqua;
         font-size: 2vh;
     }
     .app{
@@ -99,7 +101,7 @@
         font-size: 2vh;
     }
     button:hover{
-        background-color: transparent;
+        background-color: aqua;
         font-size: 2vh;
         cursor: pointer;
     }
