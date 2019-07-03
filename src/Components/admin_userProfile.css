@@ -8,7 +8,7 @@
     margin-bottom: 5vh;
   }
   .admin-elements{
-    border: 1px dashed aqua;
+    border: 1px dashed rgba(0, 255, 255, 0.788);
     width: 45%;
     height: 40vh;
     overflow: scroll;
@@ -39,8 +39,8 @@
     width: 25%;
     padding: 2vh 0 2vh 0;
     margin: 2vh;
-    border: 1px solid aqua;
-    background-color: aqua;
+    border: 1px solid rgba(0, 255, 255, 0.788);
+    background-color: rgba(0, 255, 255, 0.788);
     color: black;
     font-size: 1.5vw;
   }

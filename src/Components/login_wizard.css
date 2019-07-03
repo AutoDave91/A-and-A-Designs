@@ -7,7 +7,7 @@ input, textarea{
     text-align: center;
   }
   .login_register, .login, .register{
-    color: aqua;
+    color: rgba(0, 255, 255, 0.788);
     display: flex;
     flex-direction: column;
     align-items: center;

@@ -22,7 +22,7 @@ button, .stripe{
   font-size: 2.5vh;
   border-radius: 12px;
   background-color: transparent;
-  background-color: aqua;
+  background-color: rgba(0, 255, 255, 0.788);
   border: 2px solid black;
   outline: none;
 }
@@ -60,7 +60,7 @@ ul, li{
   justify-content: center
 }
 .step1, .step2, .step3, .cart-total, .newsletter, .profile{
-  color: aqua;
+  color: rgba(0, 255, 255, 0.788);
 }
 
 /* hover styles */
@@ -76,7 +76,7 @@ img:hover{
   z-index: 1;
 }
 .admin-elements:hover{
-  border: 2px solid aqua;
+  border: 2px solid rgba(0, 255, 255, 0.788);
   background-color: slategray;
   color: black;
 }
