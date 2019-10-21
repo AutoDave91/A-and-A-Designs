@@ -53,6 +53,9 @@ class Dashboard extends Component{
                     <p className='line'>Alexis is an Event Planner. She has a husband, Andrew, and a daughter, Ginny. She enjoys working in her craft room to create wonderful jewelry</p>
                     <p className='line'>David is a Web Developer. He is married to April and is the creator of this wonderful online store.</p>
                 </section>
+                <footer>
+                    <a href='https://github.com/AutoDave91/A-and-A-Designs'>Github Repo</a>
+                </footer>
             </main>
         )
     }
